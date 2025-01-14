@@ -1,5 +1,5 @@
 #FED Assignment 2 (MokeSell)
-View project live [here]()
+View project live [here](https://razorbird360.github.io/FED-Assg02-MokeSell/)
 
 
 ### Team Members
