@@ -4,7 +4,7 @@ View project live [here](https://razorbird360.github.io/FED-Assg02-MokeSell/)
 
 ### Team Members
 Ranen Sim | S10267339B  
-Amir | S10267740J
+Amir | S10267740H
 
 ### Run project locally
 ```shell

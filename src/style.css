@@ -1,0 +1,153 @@
+body {
+    margin:0;
+}
+div {
+    display: flex;
+    flex-direction: row;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 35px;
+}
+nav img{
+    vertical-align: middle;
+    margin-right:20px;
+}
+.logo {
+    width: 100px;
+    height: 75px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.itim-regular {
+    font-family: "Itim", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:30px;
+    margin:0px;
+    position: relative;
+    top:6px;
+    left:10px;
+  }
+#login-form h1 {
+    text-align: center;
+}
+#login-form {
+    border:3px solid black;
+    background-color: #ADD8E6;
+    border-radius: 40px;
+    width:50%;
+    margin: 4.5em auto;
+    display:flex;
+    flex-direction: column;
+}
+form {
+    display:flex;
+    flex-direction: column;
+    width:35%;
+    margin: 0 auto;
+    gap:20px;
+}
+.form-input {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.form-input input {
+    width:100%;
+    height:25px;
+    border-radius:20px;
+}
+#reset-passwd {
+    margin-top:0;
+    font-size:14px;
+    opacity:0.65;
+}
+.submit {
+    width:70%;
+    height: 30px;
+    margin: 0 auto;
+    border-radius:20px;
+}
+#signin-divide {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:10px;
+    opacity:0.45;
+    margin-top: 25px;   
+}
+.line{
+    border:1px solid black;
+    width: 25%;
+    height:0;
+    opacity:0.45;
+    margin-top: 25px;
+}
+#google-signin {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin:45px;
+}
+#google-signin img {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    margin-right:20px;
+    vertical-align: middle;
+}
+#google-signin button {
+    width:50%;
+    margin-left:10px;
+    text-align:left;
+    border-radius: 10px;
+}
+footer {
+    background-color: #ADD8E6;
+}
+#footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap:8em;
+    margin: 0 35px;
+    padding: 75px 0px;
+}
+#footer-content h3 {
+    font-size:30px;
+}
+#footer-logo img{
+    width:200px;
+    height:175px;
+    object-fit:cover;
+    border-radius:20px;
+    margin-left:calc(8em-30px);
+    margin-top:auto; margin-bottom:auto;
+}
+#footer-group {
+    display: flex;
+    flex-direction: row;
+    gap:8em;
+}
+.footer-text {
+    flex-direction: column;
+    word-wrap:break-word;
+}
+.footer-links {
+    text-decoration: none;
+    color:black;
+}
+#social-media-icons {
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+}
+#copyright {
+    margin:0;
+    padding:15px;
+    text-align: center;
+}
