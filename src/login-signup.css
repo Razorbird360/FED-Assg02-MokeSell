@@ -98,11 +98,11 @@ form {
 }
 .password-input img {
     position: absolute;
-    right: 10px; /* Position the image 10px from the right edge */
-    top: 50%; /* Vertically center the image */
-    transform: translateY(-50%); /* Adjust vertical centering */
-    width: 20px; /* Set the size of the image */
-    height: 20px; /* Set the size of the image */
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    width: 20px; 
+    height: 20px; 
 }
 #show-password,#hide-password {
     cursor:pointer;
