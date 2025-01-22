@@ -243,7 +243,7 @@ footer {
     }
     .form-input {
         position: relative;
-        right: 12px;
+        right: 0px;
     }
     .submit {
         width:100%;
@@ -285,6 +285,10 @@ footer {
     }
 }
 @media (max-width:561px){
+    #confirm-password,#password,#username {
+        padding-left:0;
+
+    }
     #social-media-icons {
         display: flex;
         flex-direction: row;
@@ -303,5 +307,4 @@ footer {
     .footer-text {
         font-size: 12px;
     }
-
 }
