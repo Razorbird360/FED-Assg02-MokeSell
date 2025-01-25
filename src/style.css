@@ -197,6 +197,19 @@ a {
     margin: 100px auto;
     padding:100px;
 }
+#join-us {
+    display: flex;
+    flex-direction: column;
+    gap: -0.5rem;
+}
+#join-us a {
+    height: 1.5vh;
+}
+#join-us h3{
+    margin: 0;
+}
+
+
 
 
 /* Frostbitten Scrollbar Design */
@@ -210,7 +223,7 @@ a {
     border-radius: 12px 0 0 12px;
   }
   
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: 
       linear-gradient(
         135deg,
@@ -229,9 +242,9 @@ a {
       inset 0 2px 4px rgba(255, 255, 255, 0.1),
       inset 0 -2px 4px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
-  }
+}
   
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: 
       linear-gradient(
         45deg,
@@ -255,9 +268,9 @@ a {
     animation: 
       glacial-glow 3s ease-in-out infinite alternate,
       frost-pulse 4s linear infinite;
-  }
+}
   
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: 
       linear-gradient(
         45deg,
@@ -277,32 +290,25 @@ a {
       inset 0 0 15px rgba(255, 255, 255, 0.5);
   }
   
-  /* Scrollbar Corner */
-  ::-webkit-scrollbar-corner {
+/* Scrollbar Corner */
+::-webkit-scrollbar-corner {
     background: rgba(224, 255, 255, 0.05);
     border-radius: 0 0 12px 0;
-  }
+}
   
   /* Animations */
-  @keyframes glacial-glow {
+@keyframes glacial-glow {
     0% { opacity: 0.9; }
     50% { opacity: 0.95; }
     100% { opacity: 0.9; }
-  }
+}
   
-  @keyframes frost-pulse {
+@keyframes frost-pulse {
     0% { background-position: 100% 50%; }
     100% { background-position: -100% 50%; }
-  }
+}
   
-  /* Firefox Support */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: 
-      rgba(135, 206, 235, 0.7) 
-      rgba(240, 248, 255, 0.05);
-    scrollbar-border-radius: 12px;
-  }
+
 
 
 /*Footer Styling */
@@ -339,6 +345,7 @@ footer {
     gap:5em;
 }
 .footer-text {
+    margin-top: 4vh;
     flex-direction: column;
     gap:1em;
     font-size:16px;
@@ -384,24 +391,14 @@ footer {
 
 
 @media (max-width: 800px){
-    footer {
-        background-color: #ADD8E6;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+
     #favourite {
         margin-left: 5vw;
     }
     #chat {
         margin-left: 5vw;
     }
-    #footer-content{
-        flex-wrap: wrap;
-    }
-    #footer-content img{
-        margin: 0;
-    }
+
     .mobileh{
         display: none !important;
     }
@@ -418,8 +415,26 @@ footer {
     .search_container {
         width: 50vw;
     }
-
     
+    
+}
+
+
+/* Footer */
+@media (max-width: 800px){
+
+    footer {
+        background-color: #ADD8E6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #footer-content{
+        flex-wrap: wrap;
+    }
+    #footer-content img{
+        margin: 0;
+    }
     #footer-group {
         margin-left:20px;margin-right:20px;
         flex-wrap: wrap;
@@ -446,6 +461,9 @@ footer {
     #follow-us h3 {
         text-align: center;
     }
+    #join-us h3{
+        margin-bottom: 1.5vh;
+    }
     #footer-content h3 {
         font-size:20px;
     }
@@ -456,12 +474,15 @@ footer {
         width: 75vw;
         height: 20vh;
     }
-
+    .footer-text{
+        margin: 0;
+    }
+}
 
 
 
     
-}
+
 
 
 
