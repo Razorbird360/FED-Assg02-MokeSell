@@ -8,41 +8,53 @@
     <link rel="icon" href="/images/Logos/Favicon.ico">
 </head>
 <body>
-    <nav>
-        <img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo">
-        <div class="dropdown">
-            <a href="#">Categories</a>
-            <div class="dropdown-cat">
-                <a href="#">Electronics</a>
-                <a href="#">Clothing</a>
-                <a href="#">Furniture</a>
-                <a href="#">Books</a>
-                <a href="#">Toys</a>
-                <a href="#">Others</a>
+    
+    <nav class="desktop_navbar">
+        <div class="navbar_left">
+            <img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo">
+            <div class="dropdown mobileh">
+                <a href="#" class="navbar_categories">Categories</a>
+                <div class="dropdown-cat">
+                    <a href="#">Electronics</a>
+                    <a href="#">Clothing</a>
+                    <a href="#">Furniture</a>
+                    <a href="#">Books</a>
+                    <a href="#">Toys</a>
+                    <a href="#">Others</a>
+                </div>
+            </div>
+            <a href="#" class="navbar_button mobileh">About Us</a>
+            <a href="#" class="navbar_button mobileh" id="contact_us">Contact Us</a>
+            <a href="#" class="navbar_button mobileh">Products</a>
+        </div>
+        <div class="navbar_right">
+            <div class="search_container">
+                <input type="text" id="search" placeholder="Search...">
+                <button class="search_button" id="search_button">
+                    <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
+                </button>
+            </div>
+                        
+            <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
+            <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            <div id="profile" class="mobileh">
+                <div class="profilepic_container"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></div>
+                <p id="profilename">Name</p>
             </div>
         </div>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Products</a>
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="Search..">
-            <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
-        </div>
-        <img src="/images/Logos/heart-regular.svg" class="nav-icons" alt="Favourite" id="favourite">
-        <img src="/images/Logos/message-regular.svg" class="nav-icons" alt="Chat" id="chat">
-        <div id="profile">
-            <img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic">
-            <p id="profilename">Name</p>
-        </div>
     </nav>
+    
+    
     <div id="threejs">
         <a href="./threejs/threejs-index.html">scene here</a>
     </div>
+
+
     <a href="./login.html">login here</a>
     <footer>
         <div id="footer-content">  
             <div id="footer-logo">
-                <img src="/images/Logos/Logo.png" alt="MokeSell Logo">
+                <img src="/images/Logos/Logo.png" alt="MokeSell Logo" data-tilt data-tilt-glare>
             </div>
             <div id="footer-group">
                 <div id="our-location" class="footer-text">
@@ -75,8 +87,13 @@
 
         </div>
         <hr>
-        <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
+        <div class="copyright_container">
+            <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
+        </div>
     </footer>
+
+    
+    <script src="/vanilla-tilt/dist/vanilla-tilt.min.js"></script>
     <script type="module" src="main.js"></script>
 </body>
 </html>
