@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MokeSell</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
     <link rel="icon" href="/images/Logos/Favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="rewards.css">
+    <title>Rewards Page</title>
 </head>
 <body>
     <nav class="desktop_navbar">
@@ -32,7 +33,8 @@
                 <button class="search_button" id="search_button">
                     <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
                 </button>
-            </div>           
+            </div>
+                        
             <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
             <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
             <div id="profile" class="mobileh">
@@ -41,7 +43,6 @@
             </div>
         </div>
     </nav>
-
     <div class="mobile_menu">
         <button class="mobile_menu_trigger">
             <img src="/images/Logos/menu.svg" alt="Menu">
@@ -66,14 +67,35 @@
         </div>
     </div>
     
-    
-    <div id="threejs">
-        <a href="./threejs/threejs-index.html">scene here</a>
+    <a href="wheelspin.html" id="spin-to-win">Spin to Win!</a>
+    <div id="reward-content">
+        <div id="reward-container1">
+            <h1>Redeem Rewards for Moka Points!</h1>
+            <div id="moka-point-display">
+                <img src = "/images/Logos/Favicon_PNG.png" alt="Moka Points">
+                <div id="moke-points">10</div>
+            </div>
+        </div>
+        <div id="reward-container2">
+            <div id="tier-status">
+                <h4>Tier Status</h4>
+                <p>Pebble</p>
+            </div>
+            <div id="coupons">
+                <h4>Available Coupons</h4>
+                <div class="coupon">
+                    <p>$5 Off</p>
+                    <p>mfomfomv</p>
+                    <button>Copy</button>
+                </div>
+            </div>
+        </div>
+        <div id="reward-container3">
+            <h2>Buy Vouchers & Spin to win!</h2>
+            <div id="rewards">
+            </div>
+        </div>
     </div>
-
-
-    <a href="./login.html">login here</a>
-    <a href="./rewards.html">rewards</a>
 
     <footer>
         <div id="footer-content">  
@@ -116,8 +138,12 @@
         </div>
     </footer>
 
-    
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Chart JS Plugin for displaying text over chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+    <!-- Script -->
     <script src="/vanilla-tilt/dist/vanilla-tilt.min.js"></script>
-    <script type="module" src="main.js"></script>
+    <script src="rewards.js"></script>
 </body>
 </html>
