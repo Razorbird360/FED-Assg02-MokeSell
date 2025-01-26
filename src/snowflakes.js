@@ -105,6 +105,12 @@ function updateClones() {
         clone.mesh.rotation.x += 0.01;
         clone.mesh.rotation.y += 0.005;
 
+        clone.velocity.y = THREE.MathUtils.lerp(
+            clone.velocity.y,
+            -0.02,
+            0.012
+        );
+
         if (clone.mesh.position.y < -camera.position.z) {
             scene.remove(clone.mesh);
             snowflakeClones.splice(i, 1);
