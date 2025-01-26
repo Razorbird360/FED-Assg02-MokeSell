@@ -37,10 +37,7 @@ export default defineConfig({
     assetsInlineLimit: 0,
     copyPublicDir: true,
     rollupOptions: {
-      input: getHtmlFiles(resolve(__dirname, 'src')),
-      output: {
-        assetFileNames: 'assets/[name][extname]'
-      }
+      external: ['/node_modules/vanilla-tilt/dist/vanilla-tilt.min.js'],
     }
   },
 });
