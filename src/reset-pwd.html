@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="login-signup.css" rel="stylesheet">
-    <link rel="icon" href="/images/Logos/Favicon.ico">
-    <title>Login Page</title>
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="login-signup.css">
 </head>
 <body>
     <nav>
@@ -16,7 +15,7 @@
     </nav>
     <div id="form">
         <form>
-            <h1>Log In</h1>
+            <h1>Reset Password</h1>
             <div class="form-input">
                 <label for="username" class="labels">Username</label>
                 <div class="username-input">
@@ -29,22 +28,16 @@
                     <input type="password" id="password" name="password" placeholder="  Password" required>
                     <img src="/images/Logos/eye-solid.svg" alt="Show Password" id="show-password">
                 </div>
-                <p id="reset-passwd">Forget password? Reset <a href="./reset-pwd.html">here</a></p>
             </div>
-            <button class="submit" type="submit">Log In</button>
+            <div class="form-input">
+                <label for="confirm-password" class="labels">Confirm Password</label>
+                <div class="password-input">
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="  Confirm Password" required>
+                </div>
+                <div id="password-match"></div>
+            </div>
+            <button class="submit" type="submit">Reset</button>
         </form>
-        <div id="signin-divide">
-            <div class="line"></div>
-            <p>OR</p>
-            <div class="line"></div>
-        </div>
-        <div id="google-signin">
-            <button>
-                <img src="/images/Logos/google.png">
-                <p>Google</p>
-            </button>
-        </div>
-        <p id="sign-up">New to MokeSell? <a href="./signup.html">Sign Up</a></p>
     </div>
     <footer>
         <div id="footer-content">  
