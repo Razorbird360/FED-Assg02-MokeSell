@@ -386,12 +386,21 @@ footer {
     border-top: #bdbdbd 2px solid;
 }
 
+.categories_container{
+    margin-top: 2vh;
+    width: 100vw;
+    height: 12vh;
+    background-color: #bdbdbd;
+}
 
 
 #canvas{
     position: fixed;
     top: 0;
     pointer-events: none;
+}
+.desktoph{
+    display: none;
 }
 
 @media (max-width: 800px){
@@ -405,6 +414,10 @@ footer {
 
     .mobileh{
         display: none !important;
+    }
+
+    .desktoph{
+        display: flex;
     }
 
     .navbar_right{

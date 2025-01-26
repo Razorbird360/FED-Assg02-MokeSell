@@ -73,7 +73,12 @@ function createSnowflakeClone() {
     if (!snowflake) return;
 
     const clone = snowflake.clone();
-    const scale = Math.random() * 0.001 + 0.00015;
+    let scale;
+    if (window.innerWidth < 800) {
+        scale = Math.random() * 0.0005 + 0.0001;
+    } else {
+        scale = Math.random() * 0.001 + 0.0001;
+    }    
     clone.scale.set(scale, scale, scale);
 
     const speed = Math.random() * 0.03 + 0.02;
