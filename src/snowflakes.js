@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
+import { BASE_PATH } from '@/threejs/utils/utils.js'
 
 const scene = new THREE.Scene();
 const canvas = document.querySelector('#canvas');
@@ -47,11 +48,11 @@ window.addEventListener('resize', () => {
 setSize();
 
 async function loadSnowflake() {
-    const materials = await mtlLoader.loadAsync('/models/snowflake.mtl');
-    materials.preload();
+    const materials = await mtlLoader.loadAsync(`${BASE_PATH}models/snowflake.mtl`);
+        materials.preload();
     objLoader.setMaterials(materials);
     
-    const model = await objLoader.loadAsync('/models/snowflake.obj');
+    const model = await objLoader.loadAsync(`${BASE_PATH}models/snowflake.obj`);
     
     model.traverse(child => {
         if (child instanceof THREE.Mesh) {
@@ -117,12 +118,17 @@ function updateClones() {
     }
 }
 
-snowflake = await loadSnowflake();
-snowflake.scale.set(0.001, 0.001, 0.001);
-// scene.add(snowflake);
-
+async function init() {
+    snowflake = await loadSnowflake();
+    snowflake.scale.set(0.001, 0.001, 0.001);
+    animate(); // Start animation after loading
+  }
+  
+init().catch(console.error);
+  
 const ambientLight = new THREE.AmbientLight(0xffffff, 5);
 scene.add(ambientLight);
+
 
 
 function handleMouseInfluence() {

@@ -34,8 +34,13 @@ export default defineConfig({
   build: {
     outDir: '../dist',
     emptyOutDir: true,
+    assetsInlineLimit: 0,
+    copyPublicDir: true,
     rollupOptions: {
       input: getHtmlFiles(resolve(__dirname, 'src')),
-    },
+      output: {
+        assetFileNames: 'assets/[name][extname]'
+      }
+    }
   },
 });

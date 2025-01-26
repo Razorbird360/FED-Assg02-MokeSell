@@ -5,8 +5,9 @@
   "main": "vite.config.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "build": "vite build && cp -R public/models dist/models",
+    "preview": "vite preview --port 4173"
   },
   "keywords": [],
   "author": "",
