@@ -388,7 +388,11 @@ footer {
 
 
 
-
+#canvas{
+    position: fixed;
+    top: 0;
+    pointer-events: none;
+}
 
 @media (max-width: 800px){
 
