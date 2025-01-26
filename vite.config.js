@@ -35,6 +35,7 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
     assetsInlineLimit: 0,
+    chunkSizeWarningLimit: 1500,
     copyPublicDir: true,
     rollupOptions: {
       external: ['/node_modules/vanilla-tilt/dist/vanilla-tilt.min.js'],

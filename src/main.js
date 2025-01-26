@@ -1,3 +1,4 @@
+import VanillaTilt from 'vanilla-tilt';
 document.querySelector('.mobile_menu_trigger').addEventListener('click', function() {
     const mobileMenu = document.querySelector('.mobile_menu');
     
