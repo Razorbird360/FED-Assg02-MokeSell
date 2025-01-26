@@ -82,7 +82,7 @@ function createSnowflakeClone() {
     }    
     clone.scale.set(scale, scale, scale);
 
-    const speed = Math.random() * 0.03 + 0.02;
+    const speed = Math.random() * 0.04 + 0.02;
     const velocity = new THREE.Vector3(0, -speed, 0);
 
     const verticalView = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z;
@@ -105,12 +105,6 @@ function updateClones() {
         clone.mesh.rotation.x += 0.01;
         clone.mesh.rotation.y += 0.005;
 
-        clone.velocity.y = THREE.MathUtils.lerp(
-            clone.velocity.y, 
-            -0.05,
-            0.02
-        );
-
         if (clone.mesh.position.y < -camera.position.z) {
             scene.remove(clone.mesh);
             snowflakeClones.splice(i, 1);
@@ -121,7 +115,7 @@ function updateClones() {
 async function init() {
     snowflake = await loadSnowflake();
     snowflake.scale.set(0.001, 0.001, 0.001);
-    animate(); // Start animation after loading
+    animate();
   }
   
 init().catch(console.error);
