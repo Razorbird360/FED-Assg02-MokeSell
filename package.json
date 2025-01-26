@@ -4,6 +4,7 @@
   "description": "",
   "main": "vite.config.js",
   "scripts": {
+    "dev": "vite",
     "build": "vite build && cpx \"public/models/**/*\" dist/models",
     "serve": "vite preview"
   },
