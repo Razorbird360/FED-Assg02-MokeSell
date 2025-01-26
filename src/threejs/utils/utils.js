@@ -1,3 +1,3 @@
-export const BASE_PATH = typeof import.meta.env !== 'undefined' && import.meta.env.BASE_URL?.startsWith('/')
-  ? import.meta.env.BASE_URL
-  : "/";
+// Add explicit path construction
+export const BASE_PATH = (import.meta.env.BASE_URL || '/') + 
+  (import.meta.env.BASE_URL?.endsWith('/') ? '' : '/');

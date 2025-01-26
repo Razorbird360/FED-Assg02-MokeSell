@@ -34,8 +34,10 @@ export default defineConfig({
   build: {
     outDir: '../dist',
     emptyOutDir: true,
+    assetsInlineLimit: 0,
+    copyPublicDir: true,
     rollupOptions: {
-      input: getHtmlFiles(resolve(__dirname, 'src')),
-    },
+      external: ['/node_modules/vanilla-tilt/dist/vanilla-tilt.min.js'],
+    }
   },
 });

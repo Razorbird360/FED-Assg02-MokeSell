@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MokeSell</title>
+    <link rel="stylesheet" href="Normalize.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/images/Logos/Favicon.ico">
 </head>
@@ -66,9 +67,15 @@
         </div>
     </div>
     
+    <div class="categories_container desktoph">
+        <div class="category_item">
+            <img src="" alt="Electronics">
+            <p>Electronics</p>
+        </div>
+    </div>
     
     <div id="threejs">
-        <a href="./threejs/threejs-index.html">scene here</a>
+        <a href="/threejs/threejs-index.html">scene here</a>
     </div>
 
 
@@ -117,7 +124,8 @@
     </footer>
 
     
-    <script src="/vanilla-tilt/dist/vanilla-tilt.min.js"></script>
-    <script type="module" src="main.js"></script>
+    <canvas id="canvas"></canvas>
+    <script type="module" src="/node_modules/vanilla-tilt/dist/vanilla-tilt.min.js"></script>    <script type="module" src="main.js"></script>
+    <script type="module" src="snowflakes.js"></script>
 </body>
 </html>

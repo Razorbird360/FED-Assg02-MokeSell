@@ -12,3 +12,4 @@ document.querySelector('.mobile_menu_trigger').addEventListener('click', functio
         mobileMenu.classList.add('active');
     }
 });
+
