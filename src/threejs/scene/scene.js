@@ -1,8 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { WebGLRenderer } from "three";
-import { gameState } from '../state/state.js';
-
+import { gameState } from '@/threejs/utils/state.js';
 
 export async function createScene() {
   const scene = new THREE.Scene();

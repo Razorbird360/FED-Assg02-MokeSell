@@ -1,11 +1,9 @@
 import * as THREE from "three";
 import {createGround, createScene, resize} from './scene/scene.js';
-
-import { gameState } from "./state/state.js";
-
+import { gameState } from '@/threejs/utils/state.js';
 
 
-window.addEventListener('resize', () => resize(renderer, camera));
+
 
 
 async function init() {
@@ -17,6 +15,7 @@ async function init() {
   gameState.listener = listener;
   gameState.controls = controls;
   
+  window.addEventListener('resize', () => resize(gameState.renderer, gameState.camera));
   
   const ground = createGround();
   scene.add(ground);
@@ -41,7 +40,6 @@ async function init() {
     controls.update();  
     const deltaTime = clock.getDelta();
     renderer.render(scene, camera);
-    resize(renderer, camera);
   
     if (gameState.mixer) {
       gameState.mixer.update(deltaTime);

@@ -1,3 +1,2 @@
-// Add explicit path construction
 export const BASE_PATH = (import.meta.env.BASE_URL || '/') + 
   (import.meta.env.BASE_URL?.endsWith('/') ? '' : '/');

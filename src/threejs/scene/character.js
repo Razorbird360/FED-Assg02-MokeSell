@@ -1,4 +1,4 @@
-import { gameState } from 'state/state.js';
+import { gameState } from '@/threejs/utils/state.js';
 
 export function face(direction) {
     if (gameState.facing === direction) {
