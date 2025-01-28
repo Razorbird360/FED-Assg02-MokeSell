@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import {createGround, createScene, resize} from './scene/scene.js';
+import {characterMovement, initCharacter, isMoving} from './scene/character.js';
 import { gameState } from '@/threejs/utils/state.js';
+import {setupInputHandlers} from '@/threejs/utils/input.js';
 
 
 
@@ -14,6 +16,15 @@ async function init() {
   gameState.scene = scene;
   gameState.listener = listener;
   gameState.controls = controls;
+
+  await Promise.all([
+    initCharacter(scene),
+    // initAudio(listener),
+    // loadWorldObjects(scene),
+    // initPhysicalBodies(scene, world),
+    // createBorders(world)
+  ]);
+
   
   window.addEventListener('resize', () => resize(gameState.renderer, gameState.camera));
   
@@ -33,7 +44,7 @@ async function init() {
   }
 
 
-
+  setupInputHandlers();
 
   async function animate() {
     requestAnimationFrame(animate);

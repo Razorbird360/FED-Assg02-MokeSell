@@ -1,3 +1,6 @@
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { BASE_PATH } from "@/threejs/utils/utils.js";
 import { gameState } from '@/threejs/utils/state.js';
 
 export function face(direction) {
@@ -166,15 +169,15 @@ export function face(direction) {
   
   export async function initCharacter(scene) {
     const gltfloader = new GLTFLoader();
-    const adam = await gltfloader.loadAsync(`${BASE_PATH}adam/adam_animated.glb`);
+    let character = await gltfloader.loadAsync(`${BASE_PATH}models/adam/adam_animated.glb`);
   
-    gameState.character = adam.scene;
+    gameState.character = character.scene;
     scene.add(gameState.character);
     gameState.character.scale.set(1, 1, 1);
     gameState.character.position.set(0, 0, 0);
   
     gameState.mixer = new THREE.AnimationMixer(gameState.character);
-    const clips = adam.animations;
+    const clips = character.animations;
   
     const animationNames = ['idle', 'run', 'walk',  'bwalk', 'jump', 'dance'];
     animationNames.forEach(name => {
