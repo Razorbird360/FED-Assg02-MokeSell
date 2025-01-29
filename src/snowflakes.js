@@ -111,11 +111,25 @@ function updateClones() {
             0.012
         );
 
-        if (clone.mesh.position.y < -camera.position.z) {
+        if (clone.mesh.position.y < -5) {
             scene.remove(clone.mesh);
+            disposeSnowflake(clone.mesh);
             snowflakeClones.splice(i, 1);
         }
     }
+}
+
+function disposeSnowflake(mesh) {
+    mesh.traverse(child => {
+        if (child instanceof THREE.Mesh) {
+            child.geometry.dispose();
+            if (Array.isArray(child.material)) {
+                child.material.forEach(m => m.dispose());
+            } else {
+                child.material.dispose();
+            }
+        }
+    });
 }
 
 async function init() {

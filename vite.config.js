@@ -3,7 +3,6 @@ import { resolve } from 'node:path';
 import { readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
-// Recursively get all HTML files in the given directory
 const getHtmlFiles = (dir) => {
   const files = readdirSync(dir);
   let htmlFiles = {};
@@ -13,7 +12,6 @@ const getHtmlFiles = (dir) => {
     if (statSync(fullPath).isDirectory()) {
       htmlFiles = { ...htmlFiles, ...getHtmlFiles(fullPath) };
     } else if (file.endsWith('.html')) {
-      // Generate a relative path for Rollup compatibility
       const name = relative(resolve(__dirname, 'src'), fullPath).replace(/\.html$/, '');
       htmlFiles[name] = fullPath;
     }
@@ -38,6 +36,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 1500,
     copyPublicDir: true,
     rollupOptions: {
+      input: getHtmlFiles(resolve(__dirname, 'src')),
       external: ['/node_modules/vanilla-tilt/dist/vanilla-tilt.min.js'],
     }
   },
