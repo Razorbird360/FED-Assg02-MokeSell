@@ -36,6 +36,7 @@
   align-items: center;
   justify-content: center;
   margin: 10vh 10vw;
+  font-family: "Itim";
 }
 #reward-container1, #reward-container2, #reward-container3 {
   display:flex;
@@ -44,16 +45,21 @@
 #reward-container1 {
   align-items: center;
   justify-content: center;
-  gap:25rem;
+  gap:20rem;
 }
 #moka-point-display {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width:10vw;
   margin: 2vh auto;
-  border: 1px solid #202020;
-  background-color: #ffffff;
+  padding: 1vw;
+  border: 2px solid #202020;
+  background-color: #94d9f0;
+  border-radius: 40px;
+  font-size:18px;
+  font-family: 'Poppins';
 }
 #moka-point-display img {
   height: 5vh;
@@ -63,17 +69,32 @@
   align-items: center;
   justify-content: center;
   margin: 10vh 0;
-  gap:25rem;
+  gap:15rem;
 }
 #tier-status {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border:1px solid #202020;
+  border:2px solid #202020;
+  background-color: #94d9f0;
   border-radius: 20px;
   padding:1vw;
-  width:10vw;
-  height:20vh;
+  width:15vw;
+  height:15vw;
+
+  font-family: 'Poppins';
+}
+#tier-status hr {
+  width: 80%;
+  margin: 1vh auto;
+  border: 1px solid #202020;
+}
+#tier-status h4 {
+  font-size:1.65rem;
+}
+#tier {
+  margin: auto;
+  font-size: 1.5rem;
 }
 #coupons {
   display: flex;
@@ -92,21 +113,60 @@
   justify-content: center;
   margin: 1vh 0;
   padding: 1vw;
-  border:1px solid #202020;
+  border:2px solid #202020;
   border-radius: 20px;
   gap:6.7rem;
   background-color: #ffffff;
+  font-family: "Poppins";
+}
+.coupon button {
+  padding:0.75vh;
+  border-radius: 5px;
+  border:1px solid #202020;
+  background-color: #000000;
+  color: #ffffff;
 }
 #reward-container3 {
+  display:flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 10vh 0;
-  gap:10rem;
+  gap:3rem;
 }
 #reward-container3 h2 {
   font-size: 2em;
-  margin-right: 30vw;
+  margin-right: 40vw;
   color: #202020;
+}
+#rewards {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:4rem;
+}
+.reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  height:32vh;
+  padding: 1vw;
+  border:3px solid #202020;
+  border-radius: 20px;
+  background-color: #ffffff;
+  gap:2.5rem;
+  font-family: "Poppins";
+}
+.reward h4 {
+  font-size: 1.125rem;
+}
+.reward button {
+  width:10vw;
+  padding:0.55vw;
+  border-radius:13px;
+  background-color: #000000;
+  color:#ffffff;
 }
 /* Wheel Spin Styling */
   .container {
@@ -167,5 +227,10 @@
     }
     #final-value {
       font-size: 1.2em;
+    }
+    #rewards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
     }
   }
