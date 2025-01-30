@@ -6,6 +6,7 @@
     <link rel="icon" href="/images/Logos/Favicon.ico">
     <link rel="stylesheet" href="rewards.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Normalize.css">
     <title>Wheelspin Page</title>
 </head>
 <body>
@@ -67,14 +68,16 @@
         </div>
     </div>
     <!-- Add data like mokapoints and free tier up-->
-            <div class="container">
-              <canvas id="wheel"></canvas>
-              <button id="spin-btn">Spin</button>
-              <img src="/images/Logos/play-solid.svg" id="arrow" alt="Arrow">
-            </div>
-            <div id="final-value">
+     <div id="flexbox">
+        <div class="container">
+            <canvas id="wheel"></canvas>
+            <button id="spin-btn">Spin</button>
+            <img src="/images/Logos/play-solid.svg" id="arrow" alt="Arrow">
+          </div>
+          <div id="final-value">
               <p>Click On The Spin Button To Start</p>
-            </div>
+          </div>
+     </div>
     <footer>
         <div id="footer-content">  
             <div id="footer-logo">
@@ -115,13 +118,13 @@
             <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
         </div>
     </footer>
-
+    
     <!-- Chart JS -->
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <!-- Chart JS Plugin for displaying text over chart -->
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
     <!-- Script -->
-    <script type="module" src="/vanilla-tilt/dist/vanilla-tilt.min.js"></script>
+    <script type="module" src="main.js"></script>
     <script type="module" src="wheelspin.js"></script>
 </body>
 </html>

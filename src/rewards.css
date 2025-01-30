@@ -56,7 +56,7 @@
   margin: 2vh auto;
   padding: 1vw;
   border: 2px solid #202020;
-  background-color: #94d9f0;
+  background-color: #27bef08b ;
   border-radius: 40px;
   font-size:18px;
   font-family: 'Poppins';
@@ -76,13 +76,12 @@
   flex-direction: column;
   align-items: center;
   border:2px solid #202020;
-  background-color: #94d9f0;
+  background: linear-gradient(to bottom, #27bdf0 0%, #94d9f0 100%);
   border-radius: 20px;
   padding:1vw;
   width:15vw;
   height:15vw;
-
-  font-family: 'Poppins';
+  box-shadow: 0 0 1rem #202020dc;
 }
 #tier-status hr {
   width: 80%;
@@ -122,9 +121,12 @@
 .coupon button {
   padding:0.75vh;
   border-radius: 5px;
-  border:1px solid #202020;
-  background-color: #000000;
+  border:2px solid #202020;
+  background-color: #4d4545;
   color: #ffffff;
+}
+.coupon button:hover {
+  background-color: #202020;
 }
 #reward-container3 {
   display:flex;
@@ -154,9 +156,11 @@
   padding: 1vw;
   border:3px solid #202020;
   border-radius: 20px;
-  background-color: #ffffff;
+  background: linear-gradient(to bottom, #27bdf0 0%, #94d9f0 100%);
+  box-shadow: 0 0 1rem #202020f1;
   gap:2.5rem;
   font-family: "Poppins";
+  transition: transform 0.4s ease-in-out;
 }
 .reward h4 {
   font-size: 1.125rem;
@@ -165,21 +169,36 @@
   width:10vw;
   padding:0.55vw;
   border-radius:13px;
-  background-color: #000000;
+  border:1px solid #202020;
+  background-color: #4d4545;
   color:#ffffff;
 }
+.reward:hover {
+  transform: scale(1.08);
+}
+.reward button:hover {
+  background-color: #202020;
+}
 /* Wheel Spin Styling */
+  #flexbox {
+    display: flex;
+    margin: 0 auto;
+    padding:0;
+    width:80vw;
+  }
   .container {
     position: relative;
-    width: 40%;
-    height: 40%;
+    width: 35%;
+    height: 35%;
     margin: 12vh auto;
+    z-index:1;
   }
   #wheel {
     max-height: inherit;
     width: inherit;
     top: 0;
     padding: 0;
+    z-index:1;
   }
   @keyframes rotate {
     100% {
@@ -199,24 +218,37 @@
     background: radial-gradient(#fdcf3b 50%, #d88a40 85%);
     color: #c66e16;
     text-transform: uppercase;
-    font-size: 1.8em;
-    letter-spacing: 0.1em;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
     font-weight: 600;
+    z-index:1;
   }
-  svg {
+  #arrow {
     position: absolute;
-    width: 4em;
+    width: 3rem;
     top: 45%;
-    right: -8%;
+    right: -5.5%;
     transform: rotate(180deg)
   }
   #final-value {
-    font-size: 1.4em;
-    text-align: center;
-    margin-top: 0.8em;
-    margin-bottom:12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin-top: 25vh;
+    margin-bottom:25vh;
     color: #202020;
     font-weight: 500;
+    margin-left:4vw;
+    margin-right:4vw;
+    width:40vw;
+    height:20vh;
+    border: 2px solid #202020;
+    border-radius: 40px;
+    font-family:"Poppins";
+    background: linear-gradient(to bottom, #27bdf0 0%, #94d9f0 100%);
   }
 @media (max-width: 768px) {
     .container {
@@ -226,11 +258,14 @@
       font-size: 20px;
     }
     #final-value {
-      font-size: 1.2em;
+      font-size: 1.2rem;
     }
     #rewards {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: auto;
+    }
+    #arrow {
+      width:2rem; 
     }
   }
