@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MokeSell</title>
-    <link rel="stylesheet" href="Normalize.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/images/Logos/Favicon.ico">
+    <link rel="stylesheet" href="rewards.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Normalize.css">
+    <title>Wheelspin Page</title>
 </head>
 <body>
     <nav class="desktop_navbar">
@@ -33,7 +34,8 @@
                 <button class="search_button" id="search_button">
                     <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
                 </button>
-            </div>           
+            </div>
+                        
             <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
             <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
             <div id="profile" class="mobileh">
@@ -42,7 +44,6 @@
             </div>
         </div>
     </nav>
-
     <div class="mobile_menu">
         <button class="mobile_menu_trigger">
             <img src="/images/Logos/menu.svg" alt="Menu">
@@ -66,22 +67,17 @@
             </a>
         </div>
     </div>
-    
-    <div class="categories_container desktoph">
-        <div class="category_item">
-            <img src="/images/Logos/electronics.svg" alt="Electronics">
-            <p>Electronics</p>
-        </div>
-    </div>
-    
-    <div id="threejs">
-        <a href="./threejs/threejs-index.html">scene here</a>
-    </div>
-
-
-    <a href="./login.html">login here</a>
-    <a href="./rewards.html">rewards</a>
-
+    <!-- Add data like mokapoints and free tier up-->
+     <div id="flexbox">
+        <div class="container">
+            <canvas id="wheel"></canvas>
+            <button id="spin-btn">Spin</button>
+            <img src="/images/Logos/play-solid.svg" id="arrow" alt="Arrow">
+          </div>
+          <div id="final-value">
+              <p>Click On The Spin Button To Start</p>
+          </div>
+     </div>
     <footer>
         <div id="footer-content">  
             <div id="footer-logo">
@@ -122,10 +118,13 @@
             <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
         </div>
     </footer>
-
     
-    <canvas id="canvas"></canvas>
+    <!-- Chart JS -->
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Chart JS Plugin for displaying text over chart -->
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+    <!-- Script -->
     <script type="module" src="main.js"></script>
-    <script type="module" src="snowflakes.js"></script>
+    <script type="module" src="wheelspin.js"></script>
 </body>
 </html>
