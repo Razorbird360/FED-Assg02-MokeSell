@@ -31,11 +31,18 @@ rewards.forEach(function(reward) {
   const rewardDiv = document.createElement("div");
 
   // Creating the innerHTML for the reward
+  if (reward.rewardName === "Spin and Win !") {
+    rewardDiv.innerHTML = `
+      <h4>${reward.rewardName}</h4> 
+      ${reward.points} Moke Points 
+      <button>Spin</button>
+    `;
+  } else {
   rewardDiv.innerHTML = `
     <h4>${reward.rewardName}</h4> 
     ${reward.points} Moke Points 
     <button>Redeem</button>
-  `;
+  `;}
 
   // Add event listener to the button
   rewardDiv.querySelector("button").addEventListener("click", function() {

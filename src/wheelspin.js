@@ -61,9 +61,9 @@ let myChart = new Chart(wheel, {
       },
       //display labels inside pie chart
       datalabels: {
-        color: "#ffffff",
+        color: "#00000",
         formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-        font: { size: getFontSize()},
+        font: { size: getFontSize()}, 
       },
     },
   },
