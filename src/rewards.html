@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MokeSell</title>
-    <link rel="stylesheet" href="Normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
     <link rel="icon" href="/images/Logos/Favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="rewards.css">
+    <link rel="stylesheet" href="Normalize.css">
+    <title>Rewards Page</title>
 </head>
 <body>
     <nav class="desktop_navbar">
@@ -33,7 +34,8 @@
                 <button class="search_button" id="search_button">
                     <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
                 </button>
-            </div>           
+            </div>
+                        
             <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
             <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
             <div id="profile" class="mobileh">
@@ -42,10 +44,6 @@
             </div>
         </div>
     </nav>
-
-    <div class="ice_container"></div>
-    <div class="ice_background"></div>
-
     <div class="mobile_menu">
         <button class="mobile_menu_trigger">
             <img src="/images/Logos/menu.svg" alt="Menu">
@@ -70,47 +68,36 @@
         </div>
     </div>
     
-    <div class="categories_container desktoph">
-        <div class="category_item">
-            <img src="/images/Logos/electronics.svg" alt="Electronics">
-            <p>Electronics</p>
-        </div>
-    </div>
     
-    <div class="threejs_container">
-        <div id="threejs">
-            <a href="./threejs/threejs-index.html">scene here</a>
+    <div id="reward-content">
+        <div id="reward-container1">
+            <h1>Redeem Rewards for Moka Points!</h1>
+            <div id="moka-point-display">
+                <img src = "/images/Logos/Favicon_PNG.png" alt="Moka Points">
+                <div id="moke-points"></div>
+            </div>
         </div>
-    </div>
-
-    <a href="./login.html">login here</a>
-    <a href="./rewards.html">rewards</a>
-
-    
-    <div class="container">
-
-        <div class="container_title">
-            <h1>Trending Now</h1>
-            <button></button>
-        </div>
-        <div class="listing_container">
-            <div class="listing">
-                <span class="listing_photo">
-                    <span class="rating">rating</span>
-                </span>
-
-                <div class="listing_details">
-                    <h3>Title</h3>
-                    <h5>Brand Name</h5>
-                    <div class="details_container">
-                        <h4>$328.10</h4>
-                        <h5>17h</h5>
-                    </div>
+        <div id="reward-container2">
+            <div id="tier-status">
+                <h4>Tier Status</h4>
+                <hr>
+                <p id="tier">Pebble 🪨</p>
+            </div>
+            <div id="coupons">
+                <h4>Available Coupons</h4>
+                <div class="coupon">
+                    <p>$5 Off</p>
+                    <p>mfomfomv</p>
+                    <button>Copy</button>
                 </div>
             </div>
         </div>
+        <div id="reward-container3">
+            <h2>Buy Vouchers & Spin to win!</h2>
+            <div id="rewards">
+            </div>
+        </div>
     </div>
-
     <footer>
         <div id="footer-content">  
             <div id="footer-logo">
@@ -152,11 +139,9 @@
         </div>
     </footer>
 
-    
-    
-    <canvas id="canvas"></canvas>
-    <script type="module" src="app.js"></script>
+
+    <!-- Script -->
+    <script type="module" src="rewards.js"></script>
     <script type="module" src="main.js"></script>
-    <script type="module" src="snowflakes.js"></script>
 </body>
 </html>
