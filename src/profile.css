@@ -28,13 +28,14 @@ html, body {
     overflow-x: hidden;
   }
   
-  * {
-    max-width: 100%; /* Constrain all elements */
-  }
+* {
+max-width: 100%; /* Constrain all elements */
+}
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 body {
     overflow-x: hidden;
@@ -44,6 +45,23 @@ a {
     color: #000000;
     font-family: "Roboto", sans-serif;
 }
+a.focusable {
+    text-decoration: none;
+    padding-left: 10px;
+    transition: padding-left 0.2s ease-in-out;
+}
+
+a.focusable.focused {
+    border-left: 0.25rem solid #3498db;
+    padding-left: 10px;
+    font-weight: bold;
+    transition: border-left 0.2s ease-in-out, padding-left 0.2s ease-in-out;
+}
+
+input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
 #edit-profile {
     position:relative;
     display: flex;
@@ -51,8 +69,9 @@ a {
     align-items: center;
     justify-content: center;
     border: 3px solid #000000;
-    margin:10vh auto;
+    margin:06vh auto;
     width:85vw;
+    height:130vh;
 }
 #profile-menu {
     display: flex;
@@ -64,29 +83,58 @@ a {
     border:1px solid #000000;
 }
 #profilepic-page {
+    position: relative;
+    display: inline-block;
     border: 1px solid #000000;
     border-radius: 50%; 
     width: 12vw; 
     height: 12vw; 
+    margin: 2.3rem 0;
     object-fit: cover; 
 }
-#edit-profile form {
+#pictureprofile-page {
+    cursor: pointer;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    border: 2px solid #ddd;
+}
+#pictureprofile-page img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#edit-profile-form {
     display: flex;
     flex-direction: column;
     padding: 1rem;
     width:40vw;
+    gap: 0.5rem;
 }
-#edit-profile form input {
+#edit-profile-form input , #change-password-form input {
     margin: 0.5rem;
     padding: 0.5rem;
     width: 100%;
     border: 1px solid #000000;
+    border-radius: 10px;
 }
-#edit-profile form textarea {
+#edit-profile-form textarea{
     resize:none;
     margin: 0.5rem;
     padding: 0.5rem;
     width: 100%;
     height:30vh;
     border: 1px solid #000000;
+    border-radius: 10px;
+}
+#change-password-form {
+    display: none;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width:40vw;
+    height:100vh;
 }
