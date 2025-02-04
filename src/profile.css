@@ -40,6 +40,12 @@ max-width: 100%; /* Constrain all elements */
 body {
     overflow-x: hidden;
 }
+#back-home {
+    position: absolute;
+    top: 8vh;
+    left: 5vw;
+    font-size: 1rem;
+}
 a {
     text-decoration: none;
     color: #000000;
@@ -47,13 +53,13 @@ a {
 }
 a.focusable {
     text-decoration: none;
-    padding-left: 10px;
+    padding-left: 0.625rem;
     transition: padding-left 0.2s ease-in-out;
 }
 
 a.focusable.focused {
-    border-left: 0.25rem solid #3498db;
-    padding-left: 10px;
+    border-left: 0.25rem solid blueviolet;
+    padding-left: 0.625rem;
     font-weight: bold;
     transition: border-left 0.2s ease-in-out, padding-left 0.2s ease-in-out;
 }
@@ -61,17 +67,24 @@ a.focusable.focused {
 input[type="file"] {
     display: none; /* Hide the default file input */
 }
-
+label {
+    font-size: 1.05rem;
+}
 #edit-profile {
     position:relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px solid #000000;
-    margin:06vh auto;
+    margin: 6vh auto;
     width:85vw;
     height:130vh;
+}
+#edit-profile h1 {
+    font-size:2.25rem;
+}
+#edit-profile h3 {
+    font-size:1.55rem;
 }
 #profile-menu {
     display: flex;
@@ -80,7 +93,6 @@ input[type="file"] {
     top:5vh;
     left:0;
     padding:1rem;
-    border:1px solid #000000;
 }
 #profilepic-page {
     position: relative;
@@ -101,25 +113,31 @@ input[type="file"] {
     background-color: #f0f0f0;
     overflow: hidden;
     border: 2px solid #ddd;
+    margin-top:2.5rem;
 }
 #pictureprofile-page img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-#edit-profile-form {
+#edit-profile-form{
     display: flex;
     flex-direction: column;
     padding: 1rem;
     width:40vw;
-    gap: 0.5rem;
+}
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 2.5rem;
 }
 #edit-profile-form input , #change-password-form input {
     margin: 0.5rem;
     padding: 0.5rem;
     width: 100%;
     border: 1px solid #000000;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 }
 #edit-profile-form textarea{
     resize:none;
@@ -128,13 +146,21 @@ input[type="file"] {
     width: 100%;
     height:30vh;
     border: 1px solid #000000;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 }
 #change-password-form {
     display: none;
     display: flex;
+    position: absolute;
     flex-direction: column;
     padding: 1rem;
     width:40vw;
-    height:100vh;
+    top: 5vh;
+}
+
+@media (max-width: 768px) {
+    #edit-profile-form{
+        width:70vw;
+    }
+    
 }

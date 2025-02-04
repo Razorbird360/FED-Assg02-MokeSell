@@ -252,21 +252,73 @@
     background: linear-gradient(to bottom, #27bdf0 0%, #94d9f0 100%);
   }
 @media (max-width: 768px) {
-    .container {
-      width: 70%;
-    }
-    #spin-btn {
-      font-size: 20px;
-    }
-    #final-value {
-      font-size: 1.2rem;
-    }
-    #rewards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: auto;
-    }
-    #arrow {
-      width:2rem; 
-    }
+  #rewards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
   }
+  #reward-container1 {
+    gap:2rem;
+  }
+  #moka-point-display {
+    width:70vw;
+  }
+
+  .container {
+    width: 70%;
+  }
+  #spin-btn {
+    font-size: 20px;
+  }
+  #final-value {
+    font-size: 1.2rem;
+  }
+  #arrow {
+    width:2rem; 
+  }
+  #reward-container2 {
+    flex-direction: column;
+    gap:5rem;
+  }
+  #tier-status {
+    width:35vw;
+    height:35vw;
+  }
+  .coupon {
+    margin: 1vh 0;
+    padding: 4vw;
+    border:2px solid #202020;
+    border-radius: 20px;
+    gap:4.5rem;
+    background-color: #ffffff;
+    font-family: "Poppins";
+  }
+  .coupon button {
+    padding:0.75vh;
+    border-radius: 5px;
+    border:2px solid #202020;
+    background-color: #4d4545;
+    color: #ffffff;
+  }
+  .coupon button:hover {
+    background-color: #202020;
+  }
+  #reward-container3 h2 {
+    margin-right: 0;
+  }
+  .reward {
+    width: 40vw;
+    height: 20vh;
+    padding: 1vw;
+    box-shadow: 0 0 1rem #202020f1;
+    gap: 2.5rem;
+    font-family: "Poppins";
+    transition: transform 0.4s ease-in-out;
+  }
+  #rewards {
+    gap:2rem;
+  }
+  .reward button {
+    width: 20vw;
+  }
+}
