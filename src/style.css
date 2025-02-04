@@ -47,10 +47,11 @@ a {
 .desktop_navbar{
     display: flex;
     width: 100vw;
-    height: 5vh;
+    height: 10vh;
     padding: 1vh 2vw;
     justify-content: space-between;
     position: relative;
+    background: linear-gradient(to bottom, #f4e8e8 0%, #C1C2C4 90%);
 }
 .navbar_left { 
     display: flex;
@@ -189,13 +190,21 @@ a {
     display: block;
 }
 
+.threejs_container{
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
 #threejs {
+    position: relative;
     border: 2px solid #000000;
-    width:80%;
-    height:80%;
-    border-radius: 20px;
-    margin: 100px auto;
-    padding:100px;
+    width: 80vw;
+    height: 45vh;
+    border-radius: 0.5rem;
+    margin: 10vh 0;
+    background: url(/images/main/3dshopping.webp) no-repeat center;
+    background-size: cover;
 }
 #join-us {
     display: flex;
@@ -207,6 +216,98 @@ a {
 }
 #join-us h3{
     margin: 0;
+}
+
+.container{
+    width: 100vw;
+    height: auto;
+    background-color: #5a818f;
+    margin-bottom: 10vh;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+.container_title{
+    margin-left: 10vw;
+    width: 80vw;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container_title h1{
+    font-size: 1.8rem;
+    width: fit-content;
+    font-family: Poppins_Light;
+
+}
+.listing_container{
+    height: auto;
+    width: 90vw;
+    overflow-x: hidden;
+    margin-left: 10vw;
+    background-color: #333;
+}
+.listing{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    height: 45vh;
+    background-color:antiquewhite;
+    align-items: center;
+}
+
+
+.listing_photo {
+    position: relative;
+    width: 100%;
+    height: 60%;
+    background-color: #886a6a;
+}
+.rating {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
+.listing_details{
+    position: relative;
+    height: 40%;
+    width: 80%;
+    overflow: hidden;
+}
+.listing_details h3{
+    font-family: Poppins_Light;
+    font-size: 1.5rem;
+    margin-top: 8%;
+}
+.listing_details h5{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 1.1rem;
+    margin-top: 4%;
+}
+.details_container{
+    margin-top: 5%;
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.details_container h4{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 1.5rem;
+}
+.details_container h5{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 0.9rem;
 }
 
 
@@ -223,7 +324,7 @@ a {
     border-radius: 12px 0 0 12px;
   }
   
-::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     background: 
       linear-gradient(
         135deg,
@@ -235,18 +336,18 @@ a {
         rgba(255, 255, 255, 0.15) 0%,
         transparent 60%
       );
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 4px 0;
-    box-shadow: 
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 4px 0;
+      box-shadow: 
       inset 0 2px 4px rgba(255, 255, 255, 0.1),
       inset 0 -2px 4px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
 }
-  
+
 ::-webkit-scrollbar-thumb {
     background: 
-      linear-gradient(
+    linear-gradient(
         45deg,
         transparent 0%,
         rgba(176, 224, 230, 0.7) 50%,
@@ -256,24 +357,24 @@ a {
         circle at center,
         rgba(240, 255, 255, 0.9) 0%,
         rgba(135, 206, 235, 0.6) 100%
-      );
-    border-radius: 10px;
-    border: 
+        );
+        border-radius: 10px;
+        border: 
       1px solid rgba(255, 255, 255, 0.4),
       inset 0 0 12px rgba(255, 255, 255, 0.3);
-    transition: 
+      transition: 
       all 0.4s cubic-bezier(0.4, 0, 0.2, 1),
       background-size 0.8s ease;
-    background-size: 200% 100%;
-    animation: 
+      background-size: 200% 100%;
+      animation: 
       glacial-glow 3s ease-in-out infinite alternate,
       frost-pulse 4s linear infinite;
-}
-  
-::-webkit-scrollbar-thumb:hover {
-    background: 
-      linear-gradient(
-        45deg,
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: 
+        linear-gradient(
+            45deg,
         transparent 0%,
         rgba(135, 206, 235, 0.8) 50%,
         transparent 100%
@@ -283,36 +384,36 @@ a {
         rgba(240, 255, 255, 1) 0%,
         rgba(135, 206, 235, 0.8) 100%
       );
-    background-size: 400% 100%;
-    transform: scaleX(1.08);
-    box-shadow: 
+      background-size: 400% 100%;
+      transform: scaleX(1.08);
+      box-shadow: 
       0 0 20px rgba(176, 224, 230, 0.4),
       inset 0 0 15px rgba(255, 255, 255, 0.5);
-  }
-  
-/* Scrollbar Corner */
-::-webkit-scrollbar-corner {
-    background: rgba(224, 255, 255, 0.05);
-    border-radius: 0 0 12px 0;
-}
-  
-  /* Animations */
-@keyframes glacial-glow {
-    0% { opacity: 0.9; }
-    50% { opacity: 0.95; }
-    100% { opacity: 0.9; }
-}
-  
-@keyframes frost-pulse {
-    0% { background-position: 100% 50%; }
-    100% { background-position: -100% 50%; }
-}
-  
-
-
-
-/*Footer Styling */
-footer {
+    }
+    
+    /* Scrollbar Corner */
+    ::-webkit-scrollbar-corner {
+        background: rgba(224, 255, 255, 0.05);
+        border-radius: 0 0 12px 0;
+    }
+    
+    /* Animations */
+    @keyframes glacial-glow {
+        0% { opacity: 0.9; }
+        50% { opacity: 0.95; }
+        100% { opacity: 0.9; }
+    }
+    
+    @keyframes frost-pulse {
+        0% { background-position: 100% 50%; }
+        100% { background-position: -100% 50%; }
+    }
+    
+    
+    
+    
+    /*Footer Styling */
+    footer {
     background-color: #ADD8E6;
     display: flex;
     flex-direction: column;
@@ -394,6 +495,7 @@ footer {
 }
 
 
+
 #canvas{
     position: fixed;
     top: 0;
@@ -402,6 +504,31 @@ footer {
 .desktoph{
     display: none;
 }
+
+.ice_container{
+    top: 0;
+    margin-top: 7vh;
+    width: 100vw;
+    height: 6vh;
+    position: absolute;
+    background: url('/images/main/icyscreen_cropped.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    z-index: 1;
+}
+.ice_background {
+    top: 0;
+    margin-top: 7vh;
+    width: 100vw;
+    height: 6vh;
+    position: absolute;
+    background-color: white;
+    z-index: 0;
+}
+
+
+
+
 
 @media (max-width: 800px){
 
@@ -433,6 +560,16 @@ footer {
         width: 50vw;
     }
     
+    .listing_container{
+        position: relative;
+        margin-left: 10vw;
+    }
+    .listing{
+        position: relative;
+        width: 70vw;
+        height: 40vh;
+    }
+
     
 }
 
