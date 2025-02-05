@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Itim';
+    src: url('/fonts/Itim-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins_Light';
+    src: url(/fonts/Poppins/Poppins-Light.ttf);
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(/fonts/Poppins/Poppins-Medium.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+* {
+max-width: 100%; /* Constrain all elements */
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+body {
+    overflow-x: hidden;
+}
+#chat-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    gap: 3.5rem;
+    padding: 1rem;
+    height: 110vh;
+    margin:7.5vh 3vw;
+}
+.chats {
+    display: flex;
+    flex-direction: column;
+    width:32.5vw;
+    gap: 5vh;
+}
+.chat {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(107, 107, 188, 0.4); 
+    backdrop-filter: blur(100rem); 
+    -webkit-backdrop-filter: blur(100rem); 
+    border: 2px solid #000000;
+    border-radius: 10px;
+    height:10vh;
+}
+.chat-message {
+    position: absolute;
+    top:6vh;
+    width: 100vw;
+    font-size: 0.75rem;
+    overflow-wrap: break-word;
+}
+.chat-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    gap: 1rem;
+    top:1.5vh;
+}
+.chat-profile img {
+    width: 2vw;
+    height: 2vw;
+    padding: 0.2rem;
+    border-radius: 50%;
+    border: 1px solid #000000;
+}
+.currentchat-profile {
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2vh;
+    margin-left:2.5vw;
+    font-size:1.25rem;
+}
+.currentchat-profile img {
+    width: 3vw;
+    height: 3vw;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: 1px solid #000000;
+}
+#current-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border:2px solid #000000;
+    background-color: rgba(107, 107, 188, 0.4); 
+    backdrop-filter: blur(100rem); 
+    -webkit-backdrop-filter: blur(100rem); 
+    border-radius: 10px;
+    width: 100vw;
+    height:100%;
+}
+#messages {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height:100vh;
+}
+#chat-input {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 1.875rem;
+    padding: 0.625rem 1rem;
+    box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: relative;
+    height: 3.125rem;
+    box-sizing: border-box;
+}
+
+#clip, #mic, #send {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+#chat-input input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.9375rem;
+    margin-left: 0.625rem;
+    outline: none;
+    height: 1.875rem;
+}
+
+#chat-input input[type="text"]:focus {
+    border: 0.125rem solid #007bff;
+    box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.3);
+}
+
+#mic, #send {
+    margin-left: 0.625rem;
+}
+
+#send {
+    margin-left: 1.25rem;
+}
+
+
+

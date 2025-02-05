@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/images/Logos/Favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="rewards.css">
+    <title>MokeSell</title>
     <link rel="stylesheet" href="Normalize.css">
-    <title>Rewards Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/Logos/Favicon.ico">
 </head>
 <body>
     <nav class="desktop_navbar">
@@ -34,13 +33,20 @@
                 <button class="search_button" id="search_button">
                     <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
                 </button>
-            </div>
-                        
-            <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
-            <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </div>    
+            <a href="./favourites.html">
+                <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
+            </a>       
+            <a href="./chat.html">
+                <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </a>
             <div id="profile" class="mobileh">
-                <div class="profilepic_container"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></div>
-                <p id="profilename">Name</p>
+                <div class="profilepic_container">
+                    <a href="./profile.html">
+                        <img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic">
+                    </a>
+                </div>
+                <a href="./profile.html" id="profilename">Name</a>
             </div>
         </div>
     </nav>
@@ -72,36 +78,40 @@
         </div>
     </div>
     
-    
-    <div id="reward-content">
-        <div id="reward-container1">
-            <h1>Redeem Rewards for Moka Points!</h1>
-            <div id="moka-point-display">
-                <img src = "/images/Logos/Favicon_PNG.png" alt="Moka Points">
-                <div id="moke-points"></div>
-            </div>
+    <div class="categories_container desktoph">
+        <div class="category_item">
+            <img src="/images/Logos/electronics.svg" alt="Electronics">
+            <p>Electronics</p>
         </div>
-        <div id="reward-container2">
-            <div id="tier-status">
-                <h4>Tier Status</h4>
-                <hr>
-                <p id="tier">Pebble 🪨</p>
-            </div>
-            <div id="coupons">
-                <h4>Available Coupons</h4>
-                <div class="coupon">
-                    <p>$5 Off</p>
-                    <p>mfomfomv</p>
-                    <button>Copy</button>
+    </div>
+
+    <div>
+
+    </div>
+
+
+    <div class="favourites_container">
+        <h1>Favourites</h1>
+        <div class="favourites">
+            <div class="favourite">
+                <div class="listing_container">
+                    <div class="listing">
+                        <span class="listing_photo">
+                            <span class="rating">rating</span>
+                        </span>
+        
+                        <div class="listing_details">
+                            <h3>Title</h3>
+                            <h5>Brand Name</h5>
+                            <div class="details_container">
+                                <h4>$328.10</h4>
+                                <h5>17h</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="reward-container3">
-            <h2>Buy Vouchers & Spin to win!</h2>
-            <div id="rewards">
-            </div>
-        </div>
-    </div>
     <footer>
         <div id="footer-content">  
             <div id="footer-logo">
@@ -142,10 +152,6 @@
             <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
         </div>
     </footer>
-
-
-    <!-- Script -->
-    <script type="module" src="rewards.js"></script>
     <script type="module" src="main.js"></script>
 </body>
 </html>
