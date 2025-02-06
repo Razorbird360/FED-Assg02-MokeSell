@@ -1,4 +1,4 @@
-import { gameState } from '@/threejs/utils/state.js';
+import { gameState } from "@/threejs/utils/state.js";
 
 export function setupInputHandlers() {
   window.addEventListener('keydown', onKeyDown);
@@ -16,7 +16,8 @@ function onKeyDown(event) {
     shift: () => { gameState.keys.shift = true; },
     t: () => {
       gameState.keys.t = gameState.keys.t === 3 ? 1 : (gameState.keys.t || 1) + 1;
-    }
+    },
+    space: () => { gameState.keys.space = true; }
   };
 
   const action = keyActions[event.key.toLowerCase()];
@@ -31,7 +32,8 @@ function onKeyUp(event) {
     a: () => gameState.keys.a = false,
     s: () => gameState.keys.s = false,
     d: () => gameState.keys.d = false,
-    shift: () => gameState.keys.shift = false
+    shift: () => gameState.keys.shift = false,
+    space: () => gameState.keys.space = true
   };
 
   const action = keyActions[event.key.toLowerCase()];

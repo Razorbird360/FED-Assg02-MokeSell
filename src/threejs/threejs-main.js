@@ -1,14 +1,21 @@
 import * as THREE from "three";
 import {createGround, createScene, resize} from './scene/scene.js';
 import {characterMovement, initCharacter, isMoving} from './scene/character.js';
-import { gameState } from '@/threejs/utils/state.js';
-import {setupInputHandlers} from '@/threejs/utils/input.js';
-
+import { gameState } from './utils/state.js';
+import {setupInputHandlers} from './utils/input.js';
+import {initAudio} from './scene/audio.js';
+import {initPhysicalBodies, setupCharacterPhysics, setupPhysicsWorld, updatePhysics} from './scene/physics.js';
 
 
 
 
 async function init() {
+
+  const { world, groundBody, groundMat } = setupPhysicsWorld();
+
+
+  const { characterBody, hitboxMesh } = setupCharacterPhysics(world, groundMat);
+
   
   const { scene, renderer, camera, listener, controls} = await createScene();
   gameState.camera = camera;
@@ -19,9 +26,9 @@ async function init() {
 
   await Promise.all([
     initCharacter(scene),
-    // initAudio(listener),
+    initAudio(listener),
     // loadWorldObjects(scene),
-    // initPhysicalBodies(scene, world),
+    initPhysicalBodies(scene, world),
     // createBorders(world)
   ]);
 
@@ -54,6 +61,13 @@ async function init() {
   
     if (gameState.mixer) {
       gameState.mixer.update(deltaTime);
+    }
+
+    console.log(gameState.keys);
+
+    if (gameState.character) {
+      characterMovement(deltaTime);
+      updatePhysics(deltaTime, ground, groundBody);
     }
   }
   animate();

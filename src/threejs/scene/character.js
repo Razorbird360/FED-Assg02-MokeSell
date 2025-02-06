@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { BASE_PATH } from "@/threejs/utils/utils.js";
-import { gameState } from '@/threejs/utils/state.js';
+import { gameState } from "@/threejs/utils/state.js";
 
 export function face(direction) {
     if (gameState.facing === direction) {
