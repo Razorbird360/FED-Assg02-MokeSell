@@ -41,6 +41,10 @@
                 <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
             </a>
             <div id="profile" class="mobileh">
+                <div class="profilepic_container"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></div>
+                <a href="" id="profilelink">
+                    <p id="profilename">Login</p>
+                </a>
                 <div class="profilepic_container">
                     <a href="./profile.html">
                         <img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic">
@@ -96,12 +100,11 @@
 
     
     <div class="container">
-
         <div class="container_title">
             <h1>Trending Now</h1>
             <button></button>
         </div>
-        <div class="listing_container">
+        <div class="listing_container trending_container">
             <div class="listing">
                 <span class="listing_photo">
                     <span class="rating">rating</span>
@@ -118,6 +121,72 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="container_title">
+            <h1>Brand New</h1>
+            <button></button>
+        </div>
+        <div class="listing_container newItem_container">
+            <div class="listing">
+                <span class="listing_photo">
+                    <span class="rating">rating</span>
+                </span>
+
+                <div class="listing_details">
+                    <h3>Title</h3>
+                    <h5>Brand Name</h5>
+                    <div class="details_container">
+                        <h4>$328.10</h4>
+                        <h5>17h</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="carousel">
+        <div class="container_wrapper">
+            <div class="carousel_container">
+                <div class="carousel_item">
+                    <img src="/images/main/3dshopping.jpg" alt="Advertisement Event">
+                    <h3>Item Name 1</h3>
+                    <h4>$328.10</h4>
+                </div>
+                <div class="carousel_item">
+                    <img src="/images/main/3dshopping.jpg" alt="Advertisement Event">
+                    <h3>Item Name 2</h3>
+                    <h4>$199.99</h4>
+                </div>
+                <div class="carousel_item">
+                    <img src="/images/main/3dshopping.jpg" alt="Advertisement Event">
+                    <h3>Item Name 3</h3>
+                    <h4>$49.99</h4>
+                </div>
+                <div class="carousel_item">
+                    <img src="/images/main/3dshopping.jpg" alt="Advertisement Event">
+                    <h3>Item Name 4</h3>
+                    <h4>$249.50</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel_indicators">
+            <div class="prev_container carousel_btn">
+                <img src="/images/Logos/arrow_left.svg" alt="prev slide">
+            </div>
+            <div class="next_container carousel_btn">
+                <img src="/images/Logos/arrow_right.svg" alt="next slide">
+            </div>
+            <div class="indicators">
+                <span class="indicator" data-index="0" onclick="goToSlide(0)"></span>
+                <span class="indicator" data-index="1" onclick="goToSlide(1)"></span>
+                <span class="indicator" data-index="2" onclick="goToSlide(2)"></span>
+                <span class="indicator" data-index="3" onclick="goToSlide(3)"></span>
+            </div>
+        </div>
+
+    </section>
 
     <footer>
         <div id="footer-content">  
