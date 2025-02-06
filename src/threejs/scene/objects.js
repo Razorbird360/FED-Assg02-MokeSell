@@ -4,6 +4,7 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { BASE_PATH } from "@/threejs/utils/utils.js";
 import { gameState } from "@/threejs/utils/state.js";
 import { castShadow } from "@/threejs/scene/scene.js";
+import { setCharacterOpacity } from './camera.js';
 
 const gltfLoader = new GLTFLoader();
 const fbxLoader = new FBXLoader();
@@ -16,6 +17,7 @@ async function loadGameStore(scene) {
   store.position.set(0, 2.22, 0);
   store.scale.set(0.12, 0.12, 0.12);
   castShadow(store);
+//   setCharacterOpacity(store, 0.5);
   gameState.store = store;
   scene.add(gameState.store);
 }

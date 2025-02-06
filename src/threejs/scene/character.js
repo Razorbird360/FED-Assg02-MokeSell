@@ -67,7 +67,7 @@ export function characterMovement(deltaTime) {
   const walkingSpeed = 150;
   const runningSpeed = 300;
   const backwardSpeed = 75;
-  const turnSpeed = 2.5;
+  const turnSpeed = 3;
 
   if (gameState.keys.space) {
     gameState.dancing = true;

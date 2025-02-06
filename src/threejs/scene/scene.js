@@ -29,7 +29,7 @@ export async function createScene() {
   controls.dampingFactor = 0.25;
 
   // Add helper axes
-  const axesHelper = new THREE.AxesHelper(5);
+  const axesHelper = new THREE.AxesHelper(10);
   scene.add(axesHelper);
 
   // Add ambient light

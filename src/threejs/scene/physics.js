@@ -76,21 +76,72 @@ export function updatePhysics(deltaTime, ground, groundBody) {
   gameState.world.step(1 / 60, deltaTime);
 }
 
+export function createBorders(world) {
+  const leftBorder = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(0.1, 100, 100)),
+  });
+  leftBorder.position.set(-50, 50, 0);
+  world.addBody(leftBorder);
+
+  const rightBorder = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(0.1, 100, 100)),
+  });
+  rightBorder.position.set(50, 50, 0);
+  world.addBody(rightBorder);
+
+  const backBorder = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(100, 100, 0.1)),
+  });
+  backBorder.position.set(0, 50, -50);
+  world.addBody(backBorder);
+  
+  const frontBorder = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(100, 100, 0.1)),
+  });
+  frontBorder.position.set(0, 50, 50);
+  world.addBody(frontBorder);
+  
+}
+
+export function createWall(width, height, depth, world, scene, x, y, z, rotate90 = false) {
+  const wallBody = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(width / 2, height / 2, depth / 2)),
+    position: new CANNON.Vec3(x, y, z),
+  });
+  if (rotate90) {
+    wallBody.quaternion.setFromEuler(0, Math.PI / 2, 0); 
+  }
+  world.addBody(wallBody);
+  const geometry = new THREE.BoxGeometry(width, height, depth);
+  const material = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true });
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(x, y, z);
+  if (rotate90) {
+    mesh.rotation.y = Math.PI / 2;
+  }
+  scene.add(mesh);
+  return { wallBody, mesh };
+}
+
 export function initPhysicalBodies(scene, world) {
 
-  // const houseBoxBody = new CANNON.Body({
-  //   shape: new CANNON.Box(new CANNON.Vec3(2.75, 5, 4.25)),
-  //   type: CANNON.Body.STATIC,
-  //   position: new CANNON.Vec3(0, 5, -9),
-  // });
-  // world.addBody(houseBoxBody);
+  let walls = [
+  createWall(7.5, 5, 0.3, world, scene, 2.6, 2, -0.8),
+  createWall(1.2, 5, 0.3, world, scene, -3.2, 2, -0.8),
+  createWall(9.3, 5, 0.3 , world, scene, 1.3, 2, 3.7),
+  createWall(10, 5, 0.3, world, scene, 1.2, 2, -6.4),
+  createWall(2, 5, 0.3, world, scene, -3.7, 2, 2.8, true),
+  createWall(3.5, 5, 0.3, world, scene, 0.2, 2, -2.7, true),
+  createWall(0.3, 5, 0.3, world, scene, 0.2, 2, -6, true),
+  createWall(7, 5, 0.3, world, scene, -3.7, 2, -3.2, true),
+  createWall(10, 5, 0.3, world, scene, 6, 2, -1, true)
+  ];
 
-  // const soccerBallBody = new CANNON.Body({
-  //   mass: 50,
-  //   position: new CANNON.Vec3(-10, 3, 0),
-  //   shape: new CANNON.Sphere(0.8),
-  // });
-  // world.addBody(soccerBallBody);
-  // gameState.soccerBallBody = soccerBallBody;
+  walls.forEach(({ mesh }) => scene.remove(mesh));
 }
 

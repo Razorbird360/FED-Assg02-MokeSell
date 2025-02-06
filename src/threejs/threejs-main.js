@@ -4,10 +4,12 @@ import {characterMovement, initCharacter, isMoving} from './scene/character.js';
 import { gameState } from './utils/state.js';
 import {setupInputHandlers} from './utils/input.js';
 import {initAudio} from './scene/audio.js';
-import {initPhysicalBodies, setupCharacterPhysics, setupPhysicsWorld, updatePhysics} from './scene/physics.js';
+import {initPhysicalBodies, setupCharacterPhysics, setupPhysicsWorld, updatePhysics, createBorders} from './scene/physics.js';
 import { loadWorldObjects } from "./scene/objects.js";
+import { updateCamera } from "./scene/camera.js";
 
 
+gameState.keys.t = 2;
 
 
 async function init() {
@@ -30,7 +32,7 @@ async function init() {
     initAudio(listener),
     loadWorldObjects(scene),
     initPhysicalBodies(scene, world),
-    // createBorders(world)
+    createBorders(world)
   ]);
 
   
@@ -69,6 +71,7 @@ async function animate() {
   if (gameState.character) {
     characterMovement(deltaTime);
     updatePhysics(deltaTime, ground, groundBody);
+    updateCamera(camera, controls, gameState.characterBody, gameState.character);
   }
 }
   animate();
