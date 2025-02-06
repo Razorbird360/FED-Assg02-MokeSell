@@ -59,13 +59,6 @@ async function animate() {
   requestAnimationFrame(animate);
   controls.update();
   
-  // Sync character rotation with camera
-  if (gameState.character && gameState.camera) {
-    const cameraQuaternion = gameState.camera.quaternion;
-    const euler = new THREE.Euler().setFromQuaternion(cameraQuaternion, 'YXZ');
-    gameState.character.rotation.y = euler.y;
-  }
-
   const deltaTime = clock.getDelta();
   renderer.render(scene, camera);
 

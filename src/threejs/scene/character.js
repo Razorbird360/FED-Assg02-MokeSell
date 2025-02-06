@@ -3,86 +3,16 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { BASE_PATH } from "@/threejs/utils/utils.js";
 import { gameState } from "@/threejs/utils/state.js";
 
-export function face(direction) {
-  if (gameState.facing === direction) {
-    return;
-  }
-
-  let rotateto = 0;
-  switch (direction) {
-    case 'back': rotateto = 0; break;
-    case 'front': rotateto = Math.PI; break;
-    case 'right': rotateto = Math.PI / 2; break;
-    case 'left': rotateto = -Math.PI / 2; break;
-  }
-
-  const rot = gameState.character.rotation.y;
-  const pi = Math.PI;
-  let difference = rotateto - rot;
-
-  if (difference > Math.PI) {
-    difference -= 2 * Math.PI;
-  } else if (difference <= -Math.PI) {
-    difference += 2 * Math.PI;
-  }
-
-  if (difference > 0) {
-    gameState.character.rotation.y += 0.09;
-  } else {
-    gameState.character.rotation.y -= 0.09;
-  }
-
-  // Update facing based on rotation ranges
-  const rotationRanges = [
-    {
-      range: rot => (rot > -0.1 && rot < 0.1) ||
-        (rot > 2 * pi - 0.1 && rot < 2 * pi + 0.1) ||
-        (rot > -(2 * pi) - 0.1 && rot < -(2 * pi) + 0.1),
-      facing: 'back',
-      defaultRotation: 0
-    },
-    {
-      range: rot => (rot > pi - 0.1 && rot < pi + 0.1) ||
-        (rot > 3 * pi - 0.1 && rot < 3 * pi + 0.1) ||
-        (rot > -pi - 0.1 && rot < -pi + 0.1),
-      facing: 'front',
-      defaultRotation: Math.PI
-    },
-    {
-      range: rot => (rot > pi / 2 - 0.1 && rot < pi / 2 + 0.1) ||
-        (rot > 5 * pi / 2 - 0.1 && rot < 5 * pi / 2 + 0.1) ||
-        (rot > -(3 * pi) / 2 - 0.1 && rot < -(3 * pi) / 2 + 0.1),
-      facing: 'right',
-      defaultRotation: pi / 2
-    },
-    {
-      range: rot => (rot > -pi / 2 - 0.1 && rot < -pi / 2 + 0.1) ||
-        (rot > 3 * pi / 2 - 0.1 && rot < 3 * pi / 2 + 0.1) ||
-        (rot > -5 * pi / 2 - 0.1 && rot < -5 * pi / 2 + 0.1),
-      facing: 'left',
-      defaultRotation: -pi / 2
-    }
-  ];
-
-  for (const { range, facing, defaultRotation } of rotationRanges) {
-    if (range(rot)) {
-      gameState.facing = facing;
-      if (!range(rot)) {
-        gameState.character.rotation.y = defaultRotation;
-      }
-      break;
-    }
-  }
-}
 
 export function playAnimation(event) {
   if (!gameState.mixer) return;
 
-  const animationMap = {
-    idle: gameState.animations.idle,
-    walk: gameState.animations.walk,
-    run: gameState.animations.run
-  };
+const animationMap = {
+  idle: gameState.animations.idle,
+  walk: gameState.animations.walk,
+  run: gameState.animations.run,
+  bwalk: gameState.animations.bwalk
+};
 
   const targetAction = animationMap[event];
   if (!targetAction || gameState.currentAction === targetAction) return;
@@ -105,10 +35,9 @@ export function move(speed, deltaTime) {
     Math.sin(gameState.character.rotation.y),
     0,
     Math.cos(gameState.character.rotation.y)
-  );
+  ).normalize();
 
-  direction.normalize();
-
+  // Apply direction based on speed sign
   gameState.characterBody.velocity.set(
     direction.x * speed * deltaTime,
     gameState.characterBody.velocity.y,
@@ -116,73 +45,90 @@ export function move(speed, deltaTime) {
   );
 }
 
+function handleRunningSound() {
+  if (gameState.sounds.walking.isPlaying) gameState.sounds.walking.stop();
+  if (!gameState.sounds.running.isPlaying) gameState.sounds.running.play();
+}
+
+function handleWalkingSound() {
+  if (gameState.sounds.running.isPlaying) gameState.sounds.running.stop();
+  if (!gameState.sounds.walking.isPlaying) gameState.sounds.walking.play();
+}
+
+function stopMovementSounds() {
+  if (gameState.sounds.walking.isPlaying) gameState.sounds.walking.stop();
+  if (gameState.sounds.running.isPlaying) gameState.sounds.running.stop();
+}
+
 export function characterMovement(deltaTime) {
-
-
-
   const walkingSpeed = 150;
   const runningSpeed = 300;
+  const backwardSpeed = 75;
+  const turnSpeed = 2.5; // Radians per second
 
-  if (gameState.keys.shift) {
+  // Running (Shift + W)
+  if (gameState.keys.shift && gameState.keys.w) {
+    // Handle turning
+    if (gameState.keys.a) gameState.character.rotation.y += turnSpeed * deltaTime;
+    if (gameState.keys.d) gameState.character.rotation.y -= turnSpeed * deltaTime;
+    
     move(runningSpeed, deltaTime);
     playAnimation("run");
-    if (gameState.sounds.walking.isPlaying) {
-      gameState.sounds.walking.stop();
-    }
-    if (!gameState.sounds.running.isPlaying) {
-      gameState.sounds.running.play();
-    }
-    return;
+    handleRunningSound();
   }
-
-  if (gameState.keys.w || gameState.keys.a || gameState.keys.s || gameState.keys.d) {
+  // Walking Forward (W)
+  else if (gameState.keys.w) {
+    // Handle turning
+    if (gameState.keys.a) gameState.character.rotation.y += turnSpeed * deltaTime;
+    if (gameState.keys.d) gameState.character.rotation.y -= turnSpeed * deltaTime;
+    
     move(walkingSpeed, deltaTime);
     playAnimation("walk");
-    if (gameState.sounds.running.isPlaying) {
-      gameState.sounds.running.stop();
-    }
-    if (!gameState.sounds.walking.isPlaying) {
-      gameState.sounds.walking.play();
-    }
-    return;
+    handleWalkingSound();
   }
-
-  playAnimation("idle");
-  if (gameState.sounds.walking.isPlaying || gameState.sounds.running.isPlaying) {
-    gameState.sounds.walking.stop();
-    gameState.sounds.running.stop();
+  // Walking Backward (S)
+  else if (gameState.keys.s) {
+    move(-backwardSpeed, deltaTime);
+    playAnimation("bwalk");
+    handleWalkingSound();
+  }
+  // Idle
+  else {
+    playAnimation("idle");
+    stopMovementSounds();
   }
 }
 
-  export async function initCharacter(scene) {
-    const gltfloader = new GLTFLoader();
-    let character = await gltfloader.loadAsync(`${BASE_PATH}models/adam/adam_animated.glb`);
-  
-    gameState.character = character.scene;
-    scene.add(gameState.character);
-    gameState.character.scale.set(1, 1, 1);
-    gameState.character.position.set(0, 0, 0);
-  
-    gameState.mixer = new THREE.AnimationMixer(gameState.character);
-    const clips = character.animations;
-  
-    const animationNames = ['idle', 'run', 'walk',  'bwalk', 'jump', 'dance'];
-    animationNames.forEach(name => {
-      gameState.animations[name] = gameState.mixer.clipAction(
-        THREE.AnimationClip.findByName(clips, name)
-      );
-    });
-  
-    gameState.currentAction = gameState.animations.idle;
-    gameState.animations.idle.play();
-  }
-  
-  export function isMoving() {
-    const velocity = gameState.characterBody.velocity;
-    const moving = 
-      Math.abs(velocity.x) > 0.02 ||
-      Math.abs(velocity.y) > 0.02 ||
-      Math.abs(velocity.z) > 0.02;
-    return moving;
-  }
+
+export async function initCharacter(scene) {
+  const gltfloader = new GLTFLoader();
+  let character = await gltfloader.loadAsync(`${BASE_PATH}models/adam/adam_animated.glb`);
+
+  gameState.character = character.scene;
+  scene.add(gameState.character);
+  gameState.character.scale.set(1, 1, 1);
+  gameState.character.position.set(0, 0, 0);
+
+  gameState.mixer = new THREE.AnimationMixer(gameState.character);
+  const clips = character.animations;
+
+  const animationNames = ['idle', 'run', 'walk',  'bwalk', 'jump', 'dance'];
+  animationNames.forEach(name => {
+    gameState.animations[name] = gameState.mixer.clipAction(
+      THREE.AnimationClip.findByName(clips, name)
+    );
+  });
+
+  gameState.currentAction = gameState.animations.idle;
+  gameState.animations.idle.play();
+}
+
+export function isMoving() {
+  const velocity = gameState.characterBody.velocity;
+  const moving = 
+    Math.abs(velocity.x) > 0.02 ||
+    Math.abs(velocity.y) > 0.02 ||
+    Math.abs(velocity.z) > 0.02;
+  return moving;
+}
   
