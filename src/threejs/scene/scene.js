@@ -25,6 +25,8 @@ export async function createScene() {
   camera.add(listener);
 
   const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.25;
 
   // Add helper axes
   const axesHelper = new THREE.AxesHelper(5);

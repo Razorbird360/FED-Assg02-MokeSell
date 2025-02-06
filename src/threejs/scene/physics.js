@@ -7,6 +7,7 @@ export function setupPhysicsWorld() {
     gravity: new CANNON.Vec3(0, -9.81, 0)
   });
 
+  gameState.world = world;
   const groundMat = new CANNON.Material();
   const groundBody = new CANNON.Body({
     shape: new CANNON.Plane(),
@@ -58,6 +59,10 @@ export function clampVelocity(body) {
 }
 
 export function updatePhysics(deltaTime, ground, groundBody) {
+  if (!gameState.characterBody || !gameState.character) {
+    console.log('Character or body not found');
+    return;
+  }
   ground.position.copy(groundBody.position);
   ground.quaternion.copy(groundBody.quaternion);
 
@@ -72,26 +77,20 @@ export function updatePhysics(deltaTime, ground, groundBody) {
 }
 
 export function initPhysicalBodies(scene, world) {
-  //Object bodies and visual representation
-  const houseBoxGeo = new THREE.BoxGeometry(5.5, 10, 8.5, 16);
-  const houseBoxMat = new THREE.MeshBasicMaterial({ color: 0xFFFF00, wireframe: true });
-  const houseBoxMesh = new THREE.Mesh(houseBoxGeo, houseBoxMat);
-  houseBoxMesh.position.set(0, 5, -9);
-  // scene.add(houseBoxMesh);
 
-  const houseBoxBody = new CANNON.Body({
-    shape: new CANNON.Box(new CANNON.Vec3(2.75, 5, 4.25)),
-    type: CANNON.Body.STATIC,
-    position: new CANNON.Vec3(0, 5, -9),
-  });
-  world.addBody(houseBoxBody);
+  // const houseBoxBody = new CANNON.Body({
+  //   shape: new CANNON.Box(new CANNON.Vec3(2.75, 5, 4.25)),
+  //   type: CANNON.Body.STATIC,
+  //   position: new CANNON.Vec3(0, 5, -9),
+  // });
+  // world.addBody(houseBoxBody);
 
-  const soccerBallBody = new CANNON.Body({
-    mass: 50,
-    position: new CANNON.Vec3(-10, 3, 0),
-    shape: new CANNON.Sphere(0.8),
-  });
-  world.addBody(soccerBallBody);
-  gameState.soccerBallBody = soccerBallBody;
+  // const soccerBallBody = new CANNON.Body({
+  //   mass: 50,
+  //   position: new CANNON.Vec3(-10, 3, 0),
+  //   shape: new CANNON.Sphere(0.8),
+  // });
+  // world.addBody(soccerBallBody);
+  // gameState.soccerBallBody = soccerBallBody;
 }
 

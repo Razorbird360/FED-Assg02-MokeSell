@@ -5,6 +5,7 @@ import { gameState } from './utils/state.js';
 import {setupInputHandlers} from './utils/input.js';
 import {initAudio} from './scene/audio.js';
 import {initPhysicalBodies, setupCharacterPhysics, setupPhysicsWorld, updatePhysics} from './scene/physics.js';
+import { loadWorldObjects } from "./scene/objects.js";
 
 
 
@@ -15,7 +16,7 @@ async function init() {
 
 
   const { characterBody, hitboxMesh } = setupCharacterPhysics(world, groundMat);
-
+  gameState.characterBody = characterBody;
   
   const { scene, renderer, camera, listener, controls} = await createScene();
   gameState.camera = camera;
@@ -27,7 +28,7 @@ async function init() {
   await Promise.all([
     initCharacter(scene),
     initAudio(listener),
-    // loadWorldObjects(scene),
+    loadWorldObjects(scene),
     initPhysicalBodies(scene, world),
     // createBorders(world)
   ]);
@@ -53,23 +54,30 @@ async function init() {
 
   setupInputHandlers();
 
-  async function animate() {
-    requestAnimationFrame(animate);
-    controls.update();  
-    const deltaTime = clock.getDelta();
-    renderer.render(scene, camera);
+// Modify the animate function:
+async function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
   
-    if (gameState.mixer) {
-      gameState.mixer.update(deltaTime);
-    }
-
-    console.log(gameState.keys);
-
-    if (gameState.character) {
-      characterMovement(deltaTime);
-      updatePhysics(deltaTime, ground, groundBody);
-    }
+  // Sync character rotation with camera
+  if (gameState.character && gameState.camera) {
+    const cameraQuaternion = gameState.camera.quaternion;
+    const euler = new THREE.Euler().setFromQuaternion(cameraQuaternion, 'YXZ');
+    gameState.character.rotation.y = euler.y;
   }
+
+  const deltaTime = clock.getDelta();
+  renderer.render(scene, camera);
+
+  if (gameState.mixer) {
+    gameState.mixer.update(deltaTime);
+  }
+
+  if (gameState.character) {
+    characterMovement(deltaTime);
+    updatePhysics(deltaTime, ground, groundBody);
+  }
+}
   animate();
 }
 

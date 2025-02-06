@@ -21,6 +21,7 @@ const db = getFirestore(app, 'fedmokesell');
 const storage = getStorage(app)
 const auth = getAuth(app);
 
+const storageRef = ref(db, 'photos');
 const listingsRef = collection(db, 'listings');
 
 async function postListing(listing) {
