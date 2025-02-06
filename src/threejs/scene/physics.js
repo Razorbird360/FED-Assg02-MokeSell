@@ -1,6 +1,6 @@
 import * as CANNON from 'cannon-es';
 import * as THREE from 'three';
-import { gameState } from '@threejs/utils/state.js';
+import { gameState } from "@/threejs/utils/state.js";
 
 export function setupPhysicsWorld() {
   const world = new CANNON.World({
@@ -50,36 +50,6 @@ export function setupCharacterPhysics(world, groundMat) {
   return { characterBody, hitboxMesh };
 }
 
-export function createBorders(world) {
-  const leftBorder = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(0.1, 100, 100)),
-  });
-  leftBorder.position.set(-50, 50, 0);
-  world.addBody(leftBorder);
-
-  const rightBorder = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(0.1, 100, 100)),
-  });
-  rightBorder.position.set(50, 50, 0);
-  world.addBody(rightBorder);
-
-  const backBorder = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(100, 100, 0.1)),
-  });
-  backBorder.position.set(0, 50, -50);
-  world.addBody(backBorder);
-  
-  const frontBorder = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(100, 100, 0.1)),
-  });
-  frontBorder.position.set(0, 50, 50);
-  world.addBody(frontBorder);
-  
-}
 
 export function clampVelocity(body) {
   if (Math.abs(body.velocity.x) < 0.005) body.velocity.x = 0;
@@ -91,8 +61,6 @@ export function updatePhysics(deltaTime, ground, groundBody) {
   ground.position.copy(groundBody.position);
   ground.quaternion.copy(groundBody.quaternion);
 
-  // hitboxMesh.position.copy(gameState.characterBody.position);
-  // hitboxMesh.quaternion.copy(gameState.characterBody.quaternion);
 
   gameState.character.position.copy(gameState.characterBody.position);
   gameState.character.position.y -= 0.9;

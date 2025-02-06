@@ -11,6 +11,7 @@ export class GameState {
         s: false,
         d: false,
         shift: false,
+        space: false
       };
       this.loadedObjects = false;
       this.objects = {
@@ -25,5 +26,5 @@ export class GameState {
     }
   }
   
-  export const gameState = new GameState();
+export const gameState = new GameState();
   
