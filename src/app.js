@@ -1,7 +1,8 @@
 // Import the correct Firestore functions
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
-import { getFirestore, collection, addDoc, getDoc, getDocs, Timestamp, setDoc, doc, initializeFirestore , getStorage, getAuth} from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+import { getFirestore, collection, addDoc, getDoc, getDocs, Timestamp, setDoc, doc, initializeFirestore } from "firebase/firestore";
 import { add } from "three/tsl";
 
 // Your web app's Firebase configuration
@@ -142,6 +143,27 @@ function displayListings(listings) {
       </div>
     `;
 
+    let isDragging = false;
+
+    listing.addEventListener('dragstart', (event) => {
+      isDragging = true;
+    });
+    
+    listing.addEventListener('dragend', (event) => {
+      setTimeout(() => {
+        isDragging = false;
+      }, 0);
+    });
+    
+    listing.addEventListener('click', (event) => {
+      if (isDragging) {
+        event.preventDefault();
+        event.stopPropagation(); 
+        return;
+      }
+    
+      console.log('Listing clicked:', listingData);
+    });    
     if (listingData.likes > 20) {
       listingContainer.appendChild(listing);
     }

@@ -99,74 +99,103 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //carousel 
 document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.querySelector('.carousel');
-    const container = document.querySelector('.carousel_container');
-    const prevBtn = document.querySelector('.prev_container');
-    const nextBtn = document.querySelector('.next_container');
-    const indicators = document.querySelectorAll('.indicator');
-    const totalSlides = 4;
-    let currentIndex = 0;
-    let isAnimating = false;
+  const carousel = document.querySelector('.carousel');
+  const container = document.querySelector('.carousel_container');
+  const prevBtn = document.querySelector('.prev_container');
+  const nextBtn = document.querySelector('.next_container');
+  const indicators = document.querySelectorAll('.indicator');
+  const totalSlides = 4;
+  let currentIndex = 0;
+  let isAnimating = false;
+  let autoScrollInterval;
 
-    function getSlideWidth() {
-        return carousel.offsetWidth * 0.8; // 80vw
-    }
+  function getSlideWidth() {
+      const item = document.querySelector('.carousel_item');
+      return item ? item.offsetWidth : 0;
+  }
 
-    function getMargin() {
-        return carousel.offsetWidth * 0.1; // 10vw
-    }
+  function getMargin() {
+      const containerStyle = window.getComputedStyle(container);
+      return parseFloat(containerStyle.gap) || 0;
+  }
 
-    function updateCarousel() {
-        if (isAnimating) return;
-        isAnimating = true;
+  function updateCarousel() {
+      if (isAnimating) return;
+      isAnimating = true;
 
-        const slideWidth = getSlideWidth();
-        const margin = getMargin();
-        const containerWidth = (slideWidth + margin * 2) * totalSlides;
-        const translateX = -((slideWidth + margin * 2) * currentIndex) + margin;
+      const slideWidth = getSlideWidth();
+      const margin = getMargin();
+      const containerWidth = (slideWidth * totalSlides) + (margin * (totalSlides - 1));
+      const translateX = -currentIndex * (slideWidth + margin);
 
-        container.style.width = `${containerWidth}px`;
-        container.style.transform = `translateX(${translateX}px)`;
+      container.style.width = `${containerWidth}px`;
+      container.style.transform = `translateX(${translateX}px)`;
 
-        setTimeout(() => {
-            isAnimating = false;
-        }, 500);
-    }
+      setTimeout(() => {
+          isAnimating = false;
+      }, 500);
+  }
 
-    function updateIndicators() {
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentIndex);
-        });
-    }
+  function updateIndicators() {
+      indicators.forEach((indicator, index) => {
+          indicator.classList.toggle('active', index === currentIndex);
+      });
+  }
 
-    window.goToSlide = function(index) {
-        if (isAnimating || index < 0 || index >= totalSlides) return;
-        currentIndex = index;
-        updateCarousel();
-        updateIndicators();
-    };
+  window.goToSlide = function(index) {
+      if (isAnimating || index < 0 || index >= totalSlides) return;
+      currentIndex = index;
+      updateCarousel();
+      updateIndicators();
+  };
 
-    function handlePrev() {
-        goToSlide(currentIndex - 1);
-    }
+  function handlePrev() {
+      const prevIndex = currentIndex - 1;
+      goToSlide(prevIndex < 0 ? totalSlides - 1 : prevIndex);
+  }
 
-    function handleNext() {
-        goToSlide(currentIndex + 1);
-    }
+  function handleNext() {
+      const nextIndex = currentIndex + 1;
+      goToSlide(nextIndex >= totalSlides ? 0 : nextIndex);
+  }
 
-    prevBtn.addEventListener('click', handlePrev);
-    nextBtn.addEventListener('click', handleNext);
+  function startAutoScroll() {
+      autoScrollInterval = setInterval(handleNext, 4000);
+  }
 
-    // Initialize
-    updateCarousel();
-    updateIndicators();
+  function resetAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+  }
 
-    // Handle window resize
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            updateCarousel();
-        }, 250);
-    });
+  // Event listeners
+  prevBtn.addEventListener('click', () => {
+      handlePrev();
+      resetAutoScroll();
+  });
+
+  nextBtn.addEventListener('click', () => {
+      handleNext();
+      resetAutoScroll();
+  });
+
+  indicators.forEach(indicator => {
+      indicator.addEventListener('click', () => {
+          const index = Array.from(indicators).indexOf(indicator);
+          goToSlide(index);
+          resetAutoScroll();
+      });
+  });
+
+  // Initialize
+  updateCarousel();
+  updateIndicators();
+  startAutoScroll();
+
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(updateCarousel, 250);
+  });
 });
