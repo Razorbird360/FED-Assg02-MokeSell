@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "cannon-es": "^0.20.0",
-    "firebase": "^10.11.1",
+    "firebase": "^10.14.1",
     "three": "^0.172.0",
     "vanilla-tilt": "^1.8.1"
   },
