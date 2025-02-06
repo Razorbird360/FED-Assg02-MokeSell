@@ -16,7 +16,7 @@
     font-weight: 300;
     font-style: normal;
 }
-@font-face {
+@font-face {    
     font-family: 'Poppins';
     src: url(/fonts/Poppins/Poppins-Medium.ttf);
     font-weight: 400;
@@ -93,7 +93,7 @@ body {
     height: 2vw;
     padding: 0.2rem;
     border-radius: 50%;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
 }
 .currentchat-profile {
     display: flex;
@@ -109,7 +109,7 @@ body {
     height: 3vw;
     padding: 0.5rem;
     border-radius: 50%;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
 }
 #current-chat {
     display: flex;
@@ -139,6 +139,7 @@ body {
     width:max-content;
     max-width: 50%;
     border-radius:1.25rem;
+    text-wrap: break-word;
 }
 
 #chat-input {
