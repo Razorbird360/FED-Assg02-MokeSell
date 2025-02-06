@@ -39,7 +39,7 @@ let myChart = new Chart(wheel, {
   type: "pie",
   data: {
     //Labels(values which are to be displayed on chart)
-    labels: ["$25 \nVoucher", "   100 Moke\n\t\t\t\tPoints", "$50 \nVoucher", "50 Moke \nPoints", "10 Moke \nPoints", "$10 \nVoucher"],
+    labels: ["$25 \nVoucher", " 100 Moke\n\t\t\t\tPoints", "$50 \nVoucher", "50 Moke \nPoints", "10 Moke \nPoints", "$10 \nVoucher"],
     //Settings for dataset/pie
     datasets: [
       {
@@ -79,7 +79,7 @@ const valueGenerator = (angleValue) => {
       break;
       }
       else {
-        finalValue.innerHTML = `<p>Congratulations! You have won ${i.value}</p>`;
+        finalValue.innerHTML = `<p>Congratulations! You have won <strong>${i.value}</strong></p>`;
         spinBtn.disabled = false;
         break;
       }

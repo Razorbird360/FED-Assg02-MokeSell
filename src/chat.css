@@ -53,7 +53,7 @@ body {
     display: flex;
     flex-direction: column;
     width:32.5vw;
-    gap: 5vh;
+    gap: 1vh;
 }
 .chat {
     display: flex;
@@ -68,6 +68,10 @@ body {
     border: 2px solid #000000;
     border-radius: 10px;
     height:10vh;
+}
+.chat:hover {
+    background-color: rgba(107, 107, 188, 0.6); 
+    border: 2px solid #5b5757;
 }
 .chat-message {
     position: absolute;
@@ -157,11 +161,6 @@ body {
     height: 1.875rem;
 }
 
-#chat-input input[type="text"]:focus {
-    border: 0.125rem solid #007bff;
-    box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.3);
-}
-
 #mic, #send {
     margin-left: 0.625rem;
 }
@@ -169,6 +168,4 @@ body {
 #send {
     margin-left: 1.25rem;
 }
-
-
 
