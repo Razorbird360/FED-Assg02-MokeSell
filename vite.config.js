@@ -40,4 +40,19 @@ export default defineConfig({
       external: ['/node_modules/vanilla-tilt/dist/vanilla-tilt.min.js'],
     }
   },
+  optimizeDeps: {
+    include: [
+      'firebase/firestore',
+      'firebase/app'
+    ]
+  },
+  server: {
+    proxy: {
+      '/google.firestore.v1.Firestore': {
+        target: 'https://firestore.googleapis.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/google\.firestore\.v1\.Firestore/, '')
+      }
+    }
+  }
 });
