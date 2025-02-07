@@ -1,9 +1,10 @@
 // Import the correct Firestore functions
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
-import { getStorage } from "firebase/storage";
+import { getStorage, ref } from "firebase/storage";
 import { getFirestore, collection, addDoc, getDoc, getDocs, Timestamp, setDoc, doc, initializeFirestore } from "firebase/firestore";
 import { add } from "three/tsl";
+import { v4 as uuidv4 } from 'uuid';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,6 +22,7 @@ const db = getFirestore(app, 'fedmokesell');
 const storage = getStorage(app)
 const auth = getAuth(app);
 
+const storageRef = ref(storage, 'photos');
 const listingsRef = collection(db, 'listings');
 
 async function postListing(listing) {
@@ -170,7 +172,7 @@ function displayListings(listings) {
     else if (
       listingData.condition &&
       (listingData.condition.toUpperCase() === "BRAND NEW" ||
-       listingData.condition.toUpperCase() === "NEW")
+       listingData.condition.toUpperCase() === "LIKE NEW")
     ) {
       newContainer.appendChild(listing);
     } 
@@ -179,7 +181,7 @@ function displayListings(listings) {
 
 async function showlistings() {
   try {
-    const listings = await fetchFirestoreListings();
+    const listings = await fetchLocalListings();
     displayListings(listings);
   } catch (error) {
     console.error("Error initializing app:", error);
@@ -221,59 +223,3 @@ async function postAllListings() {
 // postAllListings();
 
 
-const minimalTestListing = {
-  category: "Musical Instruments",
-  condition: "Brand new",
-  createdAt: Timestamp.fromDate(new Date("2025-01-24T11:00:00Z")), // Convert to Firestore Timestamp
-  description: "A portable keyboard with built-in speakers.",
-  image: "https://firebasestorage.googleapis.com/v0/b/fed-mokesell.firebasestorage.app/o/listings%2Fc80_118246_2400.jpg?alt=media&token=03a5cf5b-f7b2-4a95-b89a-1e8563be31ae",
-  likes: 18,
-  name: "Portable Keyboard",
-  price: parseFloat("199"),
-  seller: "seller404",
-  brand: "Roland"
-};
-
-// postListing(minimalTestListing);
-
-// Test Firestore connection
-async function testConnection() {
-  try {
-    console.log("Initializing connection test...");
-    
-    // Test Firestore write operation
-    const testRef = doc(db, 'test/connection');
-    await setDoc(testRef, { test: Date.now() });
-    console.log("Firestore write operation successful!");
-
-    // Test Firestore read operation
-    const docSnapshot = await getDoc(testRef);
-    if (docSnapshot.exists()) {
-      console.log("Firestore read operation successful:", docSnapshot.data());
-    } else {
-      console.error("Firestore read failed - document not found");
-    }
-
-    console.log("Firestore connection fully operational!");
-  } catch (error) {
-    console.error("Firestore connection failed:", error);
-    console.error("Full error details:", error);
-    
-    // Check Firebase project configuration
-    console.group("Firebase Configuration Verification");
-    console.log("Project ID:", firebaseConfig.projectId);
-    console.log("API Key:", firebaseConfig.apiKey);
-    console.log("Auth Domain:", firebaseConfig.authDomain);
-    console.groupEnd();
-
-    // Additional troubleshooting checks
-    if (error.code === 'permission-denied') {
-      console.error("Firestore Security Rules Issue - Check your Firestore rules in Firebase Console");
-    } else if (error.code === 'invalid-argument') {
-      console.error("Invalid project configuration - Verify Firebase config values");
-    } else if (error.code === 'unavailable') {
-      console.error("Network connection issue - Check internet connection and CORS settings");
-    }
-  }
-}
-// testConnection();
