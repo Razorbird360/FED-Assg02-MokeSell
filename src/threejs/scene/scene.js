@@ -56,9 +56,7 @@ export async function createScene() {
   scene.add(directionalLight);
 
 
-  // Define player position (replace with dynamic positioning if necessary)
   const playerPosition = { x: 0, y: 0, z: 0 };
-
 
 
   return { scene, renderer, camera, listener, controls };

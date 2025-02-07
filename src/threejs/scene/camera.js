@@ -25,24 +25,32 @@ function thirdPerson(camera, controls, characterBody, character) {
 
 
 function firstPerson(camera, controls, characterBody, character) {
-    setCharacterOpacity(character, 0);
-    controls.enabled = false;
-    let { x, y, z } = characterBody.position;
-    camera.position.set(x , y + 0.65, z);
-    const direction = new THREE.Vector3(
-        Math.sin(gameState.character.rotation.y),
-        0,
-        Math.cos(gameState.character.rotation.y)
-    );
-    const cameraOffset = 5; 
-    const targetX = x + direction.x * cameraOffset;
-    const targetZ = z + direction.z * cameraOffset;
-    const targetY = y + 1
-    controls.target.set(targetX , targetY, targetZ );
-    camera.updateMatrixWorld();
-    controls.update();
-}
+  setCharacterOpacity(character, 0);
+  controls.enabled = false;
+  let { x, y, z } = characterBody.position;
+  
+  camera.position.set(x, y + 0.65, z);
 
+  const horizontalAngle = gameState.character.rotation.y;
+  const verticalAngle = gameState.cameraVerticalAngle;
+  
+  const direction = new THREE.Vector3(
+    Math.sin(horizontalAngle) * Math.cos(verticalAngle),
+    Math.sin(verticalAngle),
+    Math.cos(horizontalAngle) * Math.cos(verticalAngle)
+  ).normalize();
+
+  const cameraOffset = 5;
+  const target = new THREE.Vector3(
+    x + direction.x * cameraOffset,
+    y + 0.65 + direction.y * cameraOffset,
+    z + direction.z * cameraOffset
+  );
+
+  controls.target.set(target.x, target.y, target.z);
+  camera.updateMatrixWorld();
+  controls.update();
+}
 
 export function setCharacterOpacity(character, opacity) {
     if (!character || typeof opacity !== 'number' || opacity < 0 || opacity > 1) {
