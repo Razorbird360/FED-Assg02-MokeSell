@@ -69,32 +69,50 @@ scrollContainers.forEach((scrollContainer) => {
 
 
 //resize listing title based on length
-document.addEventListener('DOMContentLoaded', () => {
-    const titles = document.querySelectorAll('.listing_details h3');
-  
-    titles.forEach((title) => {
-      fitTextToContainer(title);
-    });
-  
-    window.addEventListener('resize', () => {
-      titles.forEach((title) => {
-        fitTextToContainer(title);
-      });
+// Replace the DOMContentLoaded listener in main.js with:
+function initFitText() {
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes.length) {
+        const newTitles = document.querySelectorAll('.listing_details h3');
+        newTitles.forEach(title => fitTextToContainer(title));
+      }
     });
   });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Initial run
+  const titles = document.querySelectorAll('.listing_details h3');
+  titles.forEach(title => fitTextToContainer(title));
+}
+
+// Start after initial DOM load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initFitText);
+} else {
+  initFitText();
+}
   
-  function fitTextToContainer(element) {
-    const containerWidth = element.parentElement.offsetWidth;
-    let fontSize = parseFloat(window.getComputedStyle(element).fontSize); 
-  
-    const baseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    fontSize = fontSize / baseFontSize;
-  
-    while (element.scrollWidth > containerWidth && fontSize > 0.5) {
-      fontSize -= 0.1;
-      element.style.fontSize = `${fontSize}rem`;
-    }
+function fitTextToContainer(element) {
+  const container = element.parentElement;
+  const containerWidth = container.offsetWidth; // Get container width
+  const padding = parseFloat(window.getComputedStyle(container).paddingLeft) + parseFloat(window.getComputedStyle(container).paddingRight); // Account for padding
+  const availableWidth = containerWidth - padding; // Subtract padding from container width
+
+  let fontSize = parseFloat(window.getComputedStyle(element).fontSize); // Get current font size in pixels
+  const minFontSize = 12; // Set a minimum font size for readability
+
+  // Force initial reflow to ensure accurate measurements
+  void container.offsetHeight;
+
+  // Reduce font size until the text fits or minimum size is reached
+  while (element.scrollWidth > availableWidth && fontSize > minFontSize) {
+      fontSize -= 1; // Decrease by 1px each step
+      element.style.fontSize = `${fontSize}px`;
+      void element.offsetHeight; // Force reflow after each adjustment
   }
+}
 
 
 //carousel 
