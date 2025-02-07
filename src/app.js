@@ -119,9 +119,11 @@ async function fetchLocalListings() {
 function displayListings(listings) {
   const listingContainer = document.querySelector('.trending_container');
   const newContainer = document.querySelector('.newItem_container');
+  const iContainer = document.querySelector('.interested_container');
 
   listingContainer.innerHTML = '';
   newContainer.innerHTML = '';
+  iContainer.innerHTML = '';
 
   if (!listings) {
     listingContainer.innerHTML = '<p>No listings found</p>';
@@ -175,7 +177,9 @@ function displayListings(listings) {
        listingData.condition.toUpperCase() === "LIKE NEW")
     ) {
       newContainer.appendChild(listing);
-    } 
+    } else {
+      iContainer.appendChild(listing);
+    }
   });
 }
 
