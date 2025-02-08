@@ -8,19 +8,22 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyApYaYidmqLjqP31OnVBdsgOFyQ6AhHGKc",
-  authDomain: "fed-mokesell.firebaseapp.com",
-  projectId: "fed-mokesell",
-  storageBucket: "fed-mokesell.firebasestorage.app",
-  messagingSenderId: "76042505374",
-  appId: "1:76042505374:web:972de2704ed55475493f8f"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
+
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, 'fedmokesell');
 const storage = getStorage(app)
 const auth = getAuth(app);
+
 
 const storageRef = ref(storage, 'photos');
 const listingsRef = collection(db, 'listings');
@@ -168,16 +171,17 @@ function displayListings(listings) {
       // console.log('Listing clicked:', listingData);
       window.location.href = `./product.html?key=${id}`;
     });
-    if (listingData.likes > 20) {
-      listingContainer.appendChild(listing);
-    }
-    else if (
+    if (
       listingData.condition &&
       (listingData.condition.toUpperCase() === "BRAND NEW" ||
        listingData.condition.toUpperCase() === "LIKE NEW")
     ) {
       newContainer.appendChild(listing);
-    } else {
+    } 
+    else if (listingData.likes > 20) {
+      listingContainer.appendChild(listing);
+    }
+    else {
       iContainer.appendChild(listing);
     }
   });
@@ -185,8 +189,8 @@ function displayListings(listings) {
 
 async function showlistings() {
   try {
-    // const listings = await fetchFirestoreListings();
-    const listings = await fetchLocalListings();
+    const listings = await fetchFirestoreListings();
+    // const listings = await fetchLocalListings();
     displayListings(listings);
   } catch (error) {
     console.error("Error initializing app:", error);
