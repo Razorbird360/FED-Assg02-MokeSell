@@ -227,13 +227,11 @@ carousel.addEventListener('click', () => {
 //changing mokesell review
 document.addEventListener('DOMContentLoaded', () => {
   const reviews = document.querySelectorAll('.reviewsj .review');
-  const numberElement = document.querySelector('.snumber h1');
   let currentIndex = 0;
   let timeoutID = null;
   let intervalID = null;
 
   reviews[currentIndex].classList.add('active');
-  numberElement.textContent = String(currentIndex + 1).padStart(2, '0');
 
   function hideCurrentReview() {
       reviews[currentIndex].classList.remove('active');
@@ -241,28 +239,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showNextReview() {
       currentIndex = (currentIndex + 1) % reviews.length;
-      numberElement.textContent = String(currentIndex + 1).padStart(2, '0');
       reviews[currentIndex].classList.add('active');
   }
 
   function startTransitionCycle() {
-      // First transition after 2 seconds (reduced from 5s)
       timeoutID = setTimeout(() => {
           hideCurrentReview();
           
-          // Wait for fade-out animation
           setTimeout(() => {
               showNextReview();
               
-              // Start regular interval every 5 seconds
               intervalID = setInterval(() => {
                   hideCurrentReview();
                   setTimeout(() => {
                       showNextReview();
-                  }, 800); // Match CSS transition time
-              }, 5000); // Interval between transitions
+                  }, 800);
+              }, 5000);
           }, 800);
-      }, 2000); // Initial delay reduced to 2000ms (2 seconds)
+      }, 2000);
   }
 
   function stopTransitions() {
