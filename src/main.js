@@ -273,3 +273,69 @@ document.addEventListener('DOMContentLoaded', () => {
       startTransitionCycle();
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+// Navbar Scroll Logic
+document.addEventListener('DOMContentLoaded', () => {
+  // Define scroll targets
+  const scrollMap = {
+      'navcategories': () => document.querySelector('.categoriesd'),
+      'navaboutus': () => document.querySelector('.reviews2'),
+      'contact_us': () => document.querySelector('footer'),
+      'navlistings': () => {
+          const listings = document.querySelectorAll('.container');
+          return listings.length > 1 ? listings[1] : listings[0];
+      }
+  };
+
+  // Generic scroll function
+  function smoothScroll(targetElement) {
+      if (targetElement) {
+          const offset = 70; // Adjust for navbar height
+          const topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+          
+          window.scrollTo({
+              top: topPos,
+              behavior: 'smooth'
+          });
+      }
+  }
+
+  // Handle navigation
+  function handleNavClick(targetId) {
+      const currentPage = window.location.pathname.split('/').pop();
+      
+      if (currentPage !== 'index.html' && currentPage !== '') {
+          sessionStorage.setItem('scrollTarget', targetId);
+          window.location.href = 'index.html';
+      } else {
+          const targetElement = scrollMap[targetId]();
+          smoothScroll(targetElement);
+      }
+  }
+
+  // Add event listeners
+  document.querySelectorAll('.navbar_button').forEach(button => {
+      button.addEventListener('click', (e) => {
+          e.preventDefault();
+          handleNavClick(button.id);
+      });
+  });
+
+  // Handle redirect scroll
+  const storedTarget = sessionStorage.getItem('scrollTarget');
+  if (storedTarget) {
+      const targetElement = scrollMap[storedTarget]();
+      setTimeout(() => smoothScroll(targetElement), 100);
+      sessionStorage.removeItem('scrollTarget');
+  }
+});

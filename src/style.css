@@ -95,6 +95,7 @@ a {
     font-family: Poppins;
     font-weight: 300;
     font-size: 0.9rem;
+    cursor: pointer;
 }
 .navbar_button::before{
     content: '';
