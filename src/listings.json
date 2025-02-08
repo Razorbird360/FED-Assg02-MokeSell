@@ -1,5 +1,17 @@
 {
   "listings": {
+    "P6qR7sT8Uv": {
+      "category": "Winter Clothes",
+      "condition": "Brand new",
+      "createdAt": "2025-01-15T15:00:00Z",
+      "description": "These insulated gloves are designed to keep your hands warm in freezing temperatures. Made from waterproof materials, they are perfect for skiing, snowboarding, or outdoor activities in cold weather.",
+      "image": "https://firebasestorage.googleapis.com/v0/b/fed-mokesell.firebasestorage.app/o/photos%2Fgloves.png?alt=media&token=1ae7cde9-8b70-45c4-ae1e-5174875290e2",
+      "likes": 30,
+      "name": "Insulated Gloves",
+      "price": "45",
+      "seller": "StU7vWx8Yz",
+      "brand": "NorthFace"
+    },
     "A1bC2dE3Fg": {
       "category": "Musical Instruments",
       "condition": "Brand new",
@@ -179,18 +191,6 @@
       "price": "200",
       "seller": "KlM5nOp6Qr",
       "brand": "Samsung"
-    },
-    "P6qR7sT8Uv": {
-      "category": "Winter Clothes",
-      "condition": "Brand new",
-      "createdAt": "2025-01-15T15:00:00Z",
-      "description": "These insulated gloves are designed to keep your hands warm in freezing temperatures. Made from waterproof materials, they are perfect for skiing, snowboarding, or outdoor activities in cold weather.",
-      "image": "https://firebasestorage.googleapis.com/v0/b/fed-mokesell.firebasestorage.app/o/photos%2Fgloves.png?alt=media&token=1ae7cde9-8b70-45c4-ae1e-5174875290e2",
-      "likes": 30,
-      "name": "Insulated Gloves",
-      "price": "45",
-      "seller": "StU7vWx8Yz",
-      "brand": "NorthFace"
     },
     "Q7rS8tU9Vw": {
       "category": "Winter Clothes",

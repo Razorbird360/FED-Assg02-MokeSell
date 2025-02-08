@@ -431,7 +431,6 @@ a {
     margin-top: 2vh;
     width: 100vw;
     height: 12vh;
-    background-color: #bdbdbd;
 }
 
 
@@ -554,7 +553,6 @@ a {
     background-color: #376774;
     opacity: 0.5;
     transition: 0.5s;
-    border-radius: 0 0.7rem 0.7rem 0;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -567,11 +565,13 @@ a {
 }
 
 .prev_container {
+    border-radius: 0 0.7rem 0.7rem 0;
     left: 0;
 }
 
 .next_container {
     right: 0;
+    border-radius: 0.7rem 0 0 0.7rem;
 }
 
 .carousel_btn img {
@@ -653,6 +653,148 @@ a {
 }
 
 
+.categoriesd{
+    width: 100vw;
+    height: 55vh;
+    position: relative;
+    display: flex;
+    margin-bottom: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+.categories_containerd{
+    position: relative;
+    width: 60vw;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.catrow{
+    position: relative;
+    width: 20vw;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.catItem_tall {
+    position: relative;
+    height: 50vh;
+    width: 19vw;
+    background-color: #146b88;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+.catItem_tall::before, .cs::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    transition: 0.5s;
+}
+.catItem_tall:hover::before, .cs:hover::before {
+    height: 0;
+}
+.row1 .catItem_tall::after {
+    content: "Pc Parts";
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Poppins';
+    font-weight: 300;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transition: 0.5s;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+}
+.row3 .catItem_tall::after {
+    content: "Winter Clothes";
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Poppins';
+    font-weight: 300;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transition: 0.5s;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+}
+.catItem_short1::after {
+    content: "Books";
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Poppins';
+    font-weight: 300;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transition: 0.5s;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+}
+.catItem_short2::after {
+    content: "Toys";
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Poppins';
+    font-weight: 300;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transition: 0.5s;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+}
+.catItem_tall:hover::after, .cs:hover::after {
+    transform: translate(-50%, -50%) scale(1.5);
+
+}
+.cs {
+    margin: 0;
+    position: relative;
+    height: 24vh;
+    width: 19vw;
+    background-color: #146b88;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.row2 {
+    flex-direction: column;
+}
+
+.catItem_short1 {
+    margin-bottom: 1vw;
+}
+.cs, .catItem_tall {
+    cursor: pointer;
+}
+
+.catItem_tall img, .cs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(3px);
+}
+
+.mobilecat {
+    display: none;
+}
+
+
+
 
 
 @media (max-width: 800px){
@@ -700,6 +842,57 @@ a {
     }
     .carousel_btn {
         width: 12vw;
+    }
+
+
+    .catItem_tall {
+        display: none;
+    }
+    .cs{
+        width: 60vw;
+        margin: 0 0 1vh 0;
+    }
+
+    .categoriesd {
+        height: 90vh;
+    }
+    .categories_containerd {
+        height: 90vh;
+    }
+    .row2 {
+        height: 90vh;
+    }
+    .mobilecat {
+        display: flex;
+    }
+
+    .catItem_short3::after {
+        content: "Pc Parts";
+        position: absolute;
+        color: white;
+        font-size: 1.5rem;
+        font-family: 'Poppins';
+        font-weight: 300;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transition: 0.5s;
+        z-index: 2;
+        transform: translate(-50%, -50%);
+    }
+    .catItem_short4::after {
+        content: "Winter Clothes";
+        position: absolute;
+        color: white;
+        font-size: 1.5rem;
+        font-family: 'Poppins';
+        font-weight: 300;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transition: 0.5s;
+        z-index: 2;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -774,6 +967,9 @@ footer {
     text-align: center;
     font-family: 'Roboto', sans-serif;
 }
+
+
+
 @media (max-width: 800px){
 
     footer {

@@ -87,7 +87,6 @@ function getTimeAgo(timestamp) {
 }
 
 
-
 async function fetchLocalListings() {
   try {
     const response = await fetch('./listings.json');
@@ -166,8 +165,9 @@ function displayListings(listings) {
         return;
       }
     
-      console.log('Listing clicked:', listingData);
-    });    
+      // console.log('Listing clicked:', listingData);
+      window.location.href = `./product.html?key=${id}`;
+    });
     if (listingData.likes > 20) {
       listingContainer.appendChild(listing);
     }
@@ -185,6 +185,7 @@ function displayListings(listings) {
 
 async function showlistings() {
   try {
+    // const listings = await fetchFirestoreListings();
     const listings = await fetchLocalListings();
     displayListings(listings);
   } catch (error) {
