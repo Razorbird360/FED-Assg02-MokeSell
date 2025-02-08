@@ -48,66 +48,47 @@
                 <a href="./login.html" id="profilelink">
                     <p id="profilename">Login</p>
                 </a>
-
             </div>
         </div>
     </nav>
 
     <div class="ice_container"></div>
     <div class="ice_background"></div>
-
-    <div class="mobile_menu">
-        <button class="mobile_menu_trigger">
-            <img src="/images/Logos/menu.svg" alt="Menu">
-        </button>
-        <div class="mobile_menu_items">
-            <a href="#" class="menu_item">
-                <img src="/images/Logos/about_us.svg" alt="About us">
-                <span>About Us</span>
-            </a>
-            <a href="#" class="menu_item">
-                <img src="/images/Logos/email.svg" alt="Contact us">
-                <span>Contact Us</span>
-            </a>
-            <a href="#" class="menu_item">
-                <img src="/images/Logos/listing.svg" alt="Listings">
-                <span>Listings</span>
-            </a>
-            <a href="#" class="menu_item">
-                <img src="/images/Logos/user-regular.svg" alt="Profile">
-                <span>Profile</span>
-            </a>
-        </div>
-    </div>
     
-    <div class="categories_container desktoph">
-        <div class="category_item">
-            <img src="/images/Logos/electronics.svg" alt="Electronics">
-            <p>Electronics</p>
-        </div>
-    </div>
+    <div id="responsive-header">
+        <a href="./index.html" id="back-home">
+            <img src="/images/Logos/play-solid.svg" alt="Menu">
+        </a>
+        <a href="./chat.html" id="back-chat">
+            <img src="/images/Logos/play-solid.svg" alt="Menu">
+        </a>
+        <h1>Chat</h1>
 
+    </div>
     <div id="chat-container">
+        <!-- Chat List -->
         <div class="chats">
-            <div class="chat">
-                <div class="chat-profile" id="chat1">
+            <div class="chat" data-chat="1">
+                <div class="chat-profile">
                     <img src="/images/Logos/user-regular.svg" alt="Profile Picture" class="profile-pic">
                     <p class="chat-name">Name</p>
                 </div>
-                <p class="chat-message">Message here</p>
+                <p class="chat-message">Message</p>
             </div>
-            <div class="chat">
-                <div class="chat-profile" id="chat2">
+            <div class="chat" data-chat="2">
+                <div class="chat-profile">
                     <img src="/images/Logos/user-regular.svg" alt="Profile Picture" class="profile-pic">
                     <p class="chat-name">Name</p>
                 </div>
-                <p class="chat-message">Message here</p>
+                <p class="chat-message">Message</p>
             </div>
         </div>
-        <div id="current-chat">
+
+        <!-- Current Chat -->
+        <div class="current-chat">
             <div class="currentchat-profile">
                 <img src="/images/Logos/user-regular.svg" alt="Profile Picture" class="profile-pic">
-                <p class="chat-name">Name</p>
+                <p class="chat-name" id="current-chat-name">Name</p>
             </div>
             <div id="messages"></div>
             <div id="chat-input">
@@ -118,47 +99,7 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div id="footer-content">  
-            <div id="footer-logo">
-                <img src="/images/Logos/Logo.png" alt="MokeSell Logo" data-tilt data-tilt-glare>
-            </div>
-            <div id="footer-group">
-                <div id="our-location" class="footer-text">
-                    <h3>Our Location</h3>
-                    <p>5 Science Park, <br>
-                        Singapore 118265</p>
-                    <p>Mon - Sat
-                        11:00 - 9:00 PM</p>
-                    <p>1800 283 7019</p>
-                </div>
-                <div id="join-us" class="footer-text">
-                    <h3>Join Us</h3>
-                    <a href="#" class="footer-links">Subscribe</a>
-                    <a href="#" class="footer-links">Customer Service</a>
-                    <a href="#" class="footer-links">Latest News</a>
-                    <a href="#" class="footer-links">Work At MokaSell</a>
-                </div>
-                <div id="follow-us" class="footer-text">
-                    <h3>Follow Us</h3>
-                    <div id="social-media-icons">
-                        <img src="/images/Logos/instagram-brands-solid.svg" alt="Instagram">
-                        <img src="/images/Logos/facebook-brands-solid.svg" alt="Facebook">
-                        <img src="/images/Logos/x-twitter-brands-solid.svg" alt="Twitter">
-                        <img src="/images/Logos/youtube-brands-solid.svg" alt="Youtube">
-                        <img src="/images/Logos/tiktok-brands-solid.svg" alt="Tiktok">
-                        <img src="/images/Logos/reddit-brands-solid.svg" alt="Reddit">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <hr>
-        <div class="copyright_container">
-            <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
-        </div>
-    </footer>
-    <script type="module" src="chat.js"></script>
-    <script type="module" src="main.js"></script>
+    <script src="main.js"></script>
+    <script src="chat.js"></script>
 </body>
 </html>
