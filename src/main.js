@@ -217,3 +217,45 @@ document.addEventListener('DOMContentLoaded', () => {
       resizeTimeout = setTimeout(updateCarousel, 250);
   });
 });
+
+const carousel = document.querySelector('.container_wrapper');
+carousel.addEventListener('click', () => {
+  window.location.href = './rewards.html';
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reviews = document.querySelectorAll('.review');
+  const numberElement = document.querySelector('.snumber h1');
+  let currentIndex = 0;
+  let isTransitioning = false;
+  let reviewInterval = null;
+
+  function switchReview() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      reviews[currentIndex].classList.remove('active');  
+      currentIndex = (currentIndex + 1) % reviews.length;
+      numberElement.textContent = String(currentIndex + 1).padStart(2, '0');
+      
+      setTimeout(() => {
+          reviews[currentIndex].classList.add('active');
+          isTransitioning = false;
+      }, 800);
+  }
+
+  function startInterval() {
+      if (reviewInterval) clearInterval(reviewInterval);
+      reviewInterval = setInterval(switchReview, 5000);
+  }
+
+  reviews[0].classList.add('active');
+  startInterval();
+
+  const container = document.querySelector('.reviews_container');
+  container.addEventListener('mouseenter', () => {
+      clearInterval(reviewInterval);
+  });
+  
+  container.addEventListener('mouseleave', startInterval);
+});

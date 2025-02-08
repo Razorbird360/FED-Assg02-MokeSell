@@ -136,9 +136,9 @@ function displayListings(listings) {
     const listing = document.createElement('div');
     listing.className = 'listing';
     listing.innerHTML = `
-      <span class="listing_photo" style="background-image: url('${listingData.image}')">
-        <span class="rating">${listingData.likes || 0}</span>
-      </span>
+    <img src="/images/Logos/heart.svg" class="heartrating" alt="heart rating">
+    <span class="rating">${listingData.likes || 0}</span>
+      <span class="listing_photo" style="background-image: url('${listingData.image}')"></span>
       <div class="listing_details">
         <h3>${listingData.name || 'No Title'}</h3>
         <h5>${listingData.brand || 'Unknown Brand'}</h5>
