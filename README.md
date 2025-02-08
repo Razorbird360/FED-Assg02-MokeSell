@@ -1,7 +1,6 @@
 #FED Assignment 2 (MokeSell)
 View project live [here](https://razorbird360.github.io/FED-Assg02-MokeSell/)
 
-
 ### Team Members
 Ranen Sim | S10267339B  
 Amir | S10267740H
@@ -22,3 +21,5 @@ npm run build
 npm run serve
 ```
 > Run build for production ready version & serve to preview the Web App
+
+## Design Process   
