@@ -252,6 +252,13 @@
     background: linear-gradient(to bottom, #27bdf0 0%, #94d9f0 100%);
   }
 @media (max-width: 768px) {
+  #flexbox {
+    display: flex;
+    flex-direction: column;
+/*     margin: 0 auto;
+    padding:0;
+    width:80vw; */
+  }
   #rewards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -264,13 +271,25 @@
     width:55vw;
   }
   .wheelcontainer {
-    width: 70%;
+    width: 100%;
   }
   #spin-btn {
     font-size: 20px;
   }
   #final-value {
-    font-size: 1rem;
+    font-size: 1.6rem;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin-top: 0;
+    margin-bottom:15vh;
+    margin-left:5vw;
+    margin-right:5vw;
+    width:70vw;
+    height:20vh;
+    border: 2px solid #202020;
+    border-radius: 40px;
+    font-family:"Poppins";
+    background: linear-gradient(to bottom, #27bdf0 0%, #94d9f0 100%);
   }
   #arrow {
     width:2rem; 

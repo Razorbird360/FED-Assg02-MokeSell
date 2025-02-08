@@ -24,11 +24,11 @@ var pieColors = [
 ];
 function getFontSize() {
   if (window.innerWidth <= 480) {
-    return 12; // Small screens, use a smaller font size
+    return 20; // Small screens, use a smaller font size
   } else if (window.innerWidth <= 768) {
-    return 18; // Medium screens, use a medium font size
+    return 21; // Medium screens, use a medium font size
   } else {
-    return 20; // Larger screens, use the default font size
+    return 21; // Larger screens, use the default font size
   }
 }
 //Create chart
