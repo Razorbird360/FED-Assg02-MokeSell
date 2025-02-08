@@ -223,39 +223,59 @@ carousel.addEventListener('click', () => {
   window.location.href = './rewards.html';
 });
 
+
+//changing mokesell review
 document.addEventListener('DOMContentLoaded', () => {
-  const reviews = document.querySelectorAll('.review');
+  const reviews = document.querySelectorAll('.reviewsj .review');
   const numberElement = document.querySelector('.snumber h1');
   let currentIndex = 0;
-  let isTransitioning = false;
-  let reviewInterval = null;
+  let timeoutID = null;
+  let intervalID = null;
 
-  function switchReview() {
-      if (isTransitioning) return;
-      isTransitioning = true;
+  reviews[currentIndex].classList.add('active');
+  numberElement.textContent = String(currentIndex + 1).padStart(2, '0');
 
-      reviews[currentIndex].classList.remove('active');  
+  function hideCurrentReview() {
+      reviews[currentIndex].classList.remove('active');
+  }
+
+  function showNextReview() {
       currentIndex = (currentIndex + 1) % reviews.length;
       numberElement.textContent = String(currentIndex + 1).padStart(2, '0');
-      
-      setTimeout(() => {
-          reviews[currentIndex].classList.add('active');
-          isTransitioning = false;
-      }, 800);
+      reviews[currentIndex].classList.add('active');
   }
 
-  function startInterval() {
-      if (reviewInterval) clearInterval(reviewInterval);
-      reviewInterval = setInterval(switchReview, 5000);
+  function startTransitionCycle() {
+      // First transition after 2 seconds (reduced from 5s)
+      timeoutID = setTimeout(() => {
+          hideCurrentReview();
+          
+          // Wait for fade-out animation
+          setTimeout(() => {
+              showNextReview();
+              
+              // Start regular interval every 5 seconds
+              intervalID = setInterval(() => {
+                  hideCurrentReview();
+                  setTimeout(() => {
+                      showNextReview();
+                  }, 800); // Match CSS transition time
+              }, 5000); // Interval between transitions
+          }, 800);
+      }, 2000); // Initial delay reduced to 2000ms (2 seconds)
   }
 
-  reviews[0].classList.add('active');
-  startInterval();
+  function stopTransitions() {
+      clearTimeout(timeoutID);
+      clearInterval(intervalID);
+  }
 
-  const container = document.querySelector('.reviews_container');
-  container.addEventListener('mouseenter', () => {
-      clearInterval(reviewInterval);
+  startTransitionCycle();
+
+  const container = document.querySelector('.rcj');
+  container.addEventListener('mouseenter', stopTransitions);
+  container.addEventListener('mouseleave', () => {
+      stopTransitions();
+      startTransitionCycle();
   });
-  
-  container.addEventListener('mouseleave', startInterval);
 });
