@@ -11,21 +11,11 @@
 <body>
     <nav class="desktop_navbar">
         <div class="navbar_left">
-            <img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo">
-            <div class="dropdown mobileh">
-                <a href="#" class="navbar_categories">Categories</a>
-                <div class="dropdown-cat">
-                    <a href="#">Electronics</a>
-                    <a href="#">Clothing</a>
-                    <a href="#">Furniture</a>
-                    <a href="#">Books</a>
-                    <a href="#">Toys</a>
-                    <a href="#">Others</a>
-                </div>
-            </div>
-            <a href="#" class="navbar_button mobileh">About Us</a>
-            <a href="#" class="navbar_button mobileh" id="contact_us">Contact Us</a>
-            <a href="#" class="navbar_button mobileh">Listings</a>
+            <a href="index.html"><img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo"></a>
+            <span class="navbar_button mobileh" id="navcategories">Categories</span>
+            <span class="navbar_button mobileh" id="navaboutus">About Us</span>
+            <span class="navbar_button mobileh" id="contact_us">Contact Us</span>
+            <span class="navbar_button mobileh" id="navlistings">Listings</span>
         </div>
         <div class="navbar_right">
             <div class="search_container">
@@ -33,12 +23,18 @@
                 <button class="search_button" id="search_button">
                     <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
                 </button>
-            </div>           
-            <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
-            <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </div>    
+            <a href="./favourites.html">
+                <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
+            </a>       
+            <a href="./chat.html">
+                <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </a>
             <div id="profile" class="mobileh">
-                <div class="profilepic_container"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></div>
-                <a href="" id="profilelink">
+                <div class="profilepic_container">
+                    <a href="./profile.html"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></a>
+                </div>
+                <a href="./login.html" id="profilelink">
                     <p id="profilename">Login</p>
                 </a>
 
@@ -49,58 +45,56 @@
     <div class="ice_container"></div>
     <div class="ice_background"></div>
 
+    
     <div class="mobile_menu">
         <button class="mobile_menu_trigger">
             <img src="/images/Logos/menu.svg" alt="Menu">
         </button>
         <div class="mobile_menu_items">
-            <a href="#" class="menu_item">
+            <span class="menu_item navbar_button" id="navaboutus">
                 <img src="/images/Logos/about_us.svg" alt="About us">
                 <span>About Us</span>
-            </a>
-            <a href="#" class="menu_item">
+            </span>
+            <span class="menu_item navbar_button" id="navcontact_us">
                 <img src="/images/Logos/email.svg" alt="Contact us">
                 <span>Contact Us</span>
-            </a>
-            <a href="#" class="menu_item">
+            </span>
+            <span class="menu_item navbar_button" id="navlistings">
                 <img src="/images/Logos/listing.svg" alt="Listings">
                 <span>Listings</span>
-            </a>
-            <a href="#" class="menu_item">
-                <img src="/images/Logos/user-regular.svg" alt="Profile">
-                <span>Profile</span>
-            </a>
+            </span>
+            <span class="menu_item navbar_button" id="navcategories">
+                <img src="/images/Logos/bars-solid.svg" alt="Categories">
+                <span>Categories</span>
+            </span>
         </div>
     </div>
     
-    <div class="categories_container desktoph">
-        <div class="category_item">
-            <img src="/images/Logos/electronics.svg" alt="Electronics">
-            <p>Electronics</p>
-        </div>
-    </div>
     
     <div class="threejs_container">
-        <div id="threejs">
-            <a href="./threejs/threejs-index.html">scene here</a>
-        </div>
+        <a href="./threejs/threejs-index.html"><div id="threejs"></div></a>
     </div>
 
-    <a href="./login.html">login here</a>
-    <a href="./rewards.html">rewards</a>
 
     
+    <div class="addlisting_container">
+        <a href="./listingcreation.html">
+            <div class="addlisting">
+                <p>Add Listing</p>
+                <img src="/images/Logos/plus.svg" alt="add listing icon">
+            </div>
+        </a>
+    </div>
     <div class="container">
         <div class="container_title">
             <h1>Trending Now</h1>
-            <button></button>
         </div>
         <div class="listing_container trending_container">
             <div class="listing">
                 <span class="listing_photo">
                     <span class="rating">rating</span>
                 </span>
-
+                
                 <div class="listing_details">
                     <h3>Title</h3>
                     <h5>Brand Name</h5>
@@ -116,14 +110,13 @@
     <div class="container">
         <div class="container_title">
             <h1>Brand New</h1>
-            <button></button>
         </div>
         <div class="listing_container newItem_container">
             <div class="listing">
                 <span class="listing_photo">
                     <span class="rating">rating</span>
                 </span>
-
+                
                 <div class="listing_details">
                     <h3>Title</h3>
                     <h5>Brand Name</h5>
@@ -136,28 +129,30 @@
         </div>
     </div>
 
+
+    
     <section class="carousel">
         <div class="container_wrapper">
             <div class="carousel_container">
                 <div class="carousel_item">
-                    <img src="/images/main/3dshopping.jpg" alt="Advertisement Event">
-                    <h3>Item Name 1</h3>
-                    <h4>$328.10</h4>
+                    <img src="/images/main/springposter.jpg" alt="Advertisement Event">
+                    <!-- <h3>Item Name 1</h3>
+                    <h4>$328.10</h4> -->
                 </div>
                 <div class="carousel_item">
-                    <img src="/images/main/3dshopping.jpg" alt="Advertisement Event">
-                    <h3>Item Name 2</h3>
-                    <h4>$199.99</h4>
+                    <img src="/images/main/summerposter.jpg" alt="Advertisement Event">
+                    <!-- <h3>Item Name 1</h3>
+                    <h4>$328.10</h4> -->
                 </div>
                 <div class="carousel_item">
-                    <img src="/images/main/3dshopping.jpg" alt="Advertisement Event">
-                    <h3>Item Name 3</h3>
-                    <h4>$49.99</h4>
+                    <img src="/images/main/fallposter.jpg" alt="Advertisement Event">
+                    <!-- <h3>Item Name 1</h3>
+                    <h4>$328.10</h4> -->
                 </div>
                 <div class="carousel_item">
-                    <img src="/images/main/3dshopping.jpg" alt="Advertisement Event">
-                    <h3>Item Name 4</h3>
-                    <h4>$249.50</h4>
+                    <img src="/images/main/winterposter.jpg" alt="Advertisement Event">
+                    <!-- <h3>Item Name 1</h3>
+                    <h4>$328.10</h4> -->
                 </div>
             </div>
         </div>
@@ -176,9 +171,162 @@
                 <span class="indicator" data-index="3" onclick="goToSlide(3)"></span>
             </div>
         </div>
-
+        
     </section>
 
+
+    <div class="container">
+        <div class="container_title">
+            <h1>You may be interested in</h1>
+        </div>
+        <div class="listing_container interested_container">
+            <div class="listing">
+                <img src="/images/Logos/heart.svg" class="heartrating" alt="heart rating">
+                <span class="rating">rating</span>
+                <span class="listing_photo"></span>
+                
+                <div class="listing_details">
+                    <h3>Title</h3>
+                    <h5>Brand Name</h5>
+                    <div class="details_container">
+                        <h4>$328.10</h4>
+                        <h5>17h</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="categoriesd">
+        <div class="categories_containerd">
+            <div class="row1 catrow">
+                <a href="listings.html?category=PC+Parts">
+                    <div class="catItem_tall">
+                        <img src="/images/main/pcparts.jpg" alt="pc parts">
+                    </div>
+                </a>
+            </div>
+    
+            <div class="row2 catrow">
+                <a href="listings.html?category=Books">
+                    <div class="catItem_short1 cs">
+                        <img src="/images/main/books.jpg" alt="books">
+                    </div>
+                </a>
+    
+                <a href="listings.html?category=Toys">
+                    <div class="catItem_short2 cs">
+                        <img src="/images/main/toys.jpg" alt="toys">
+                    </div>
+                </a>
+    
+                <a href="listings.html?category=PC+Parts">
+                    <div class="catItem_short3 cs mobilecat">
+                        <img src="/images/main/pcparts.jpg" alt="pc parts">
+                    </div>
+                </a>
+    
+                <a href="listings.html?category=Winter+Clothes">
+                    <div class="catItem_short4 cs mobilecat">
+                        <img src="/images/main/winterclothes.jpg" alt="winter clothes">
+                    </div>
+                </a>
+            </div>
+    
+            <div class="row3 catrow">
+                <a href="listings.html?category=Winter+Clothes">
+                    <div class="catItem_tall">
+                        <img src="/images/main/winterclothes.jpg" alt="winter clothes">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="reviews reviewsj">
+        <h1 class="reviewtitle rtj">Mokesell Reviews</h1>
+        <div class="reviews_container rcj">
+            <div class="snumber snumh">
+                <h1>01</h1>
+            </div>
+            <div class="review reviewj" data-tilt data-tilt-glare>
+                <h3>A Great Platform for finding Items!</h3>
+                <h5>@Rafe Chan</h5>
+                <p>I absolutely love MokeSell! As someone who is passionate about sustainability, this platform makes it so easy to buy and sell secondhand items. The interface is clean and user-friendly, and I found some amazing deals on high-quality products that I wouldn't have been able to afford otherwise. Shipping was fast, and the seller communication tools are fantastic. Plus, I love that MokeSell encourages eco-conscious shopping by promoting reuse and recycling. My only suggestion would be to add more filters for searching items, but overall, this is a 10/10 experience!</p>
+                <div class="stars_container">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                </div>
+            </div>
+
+            <div class="review" data-number="02" data-tilt data-tilt-glare>
+                <h3>Amazing Customer Service!</h3>
+                <h5>@Jing Shun</h5>
+                <p>I recently started using MokeSell, and it's been a game-changer! The variety of items available is impressive, from clothing to electronics, and everything is in great condition. I love how eco-friendly the concept is—it's shopping with a purpose. The checkout process was smooth, and delivery was faster than expected. My only suggestion would be to include more sorting options, but other than that, I'm thrilled with the service and will definitely keep coming back!</p>
+                <div class="stars_container">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                </div>
+            </div>
+            
+            <div class="review" data-number="03" data-tilt data-tilt-glare>
+                <h3>Best Marketplace Experience!</h3>
+                <h5>@Caden Tang</h5>
+                <p>MokeSell has completely transformed how I shop for secondhand items. The platform is intuitive, and I've discovered so many unique treasures that I wouldn’t have found elsewhere. The sellers are reliable, and the ratings system helps me feel confident about my purchases. My only minor gripe is that sometimes the search results could be more precise, but the overall experience is fantastic. Highly recommend this site to anyone looking to save money and reduce waste!</p>
+                <div class="stars_container">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                    <img src="/images/Logos/star.svg" alt="star icon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews reviews2">
+        <h1 class="reviewtitle rt2">About Us</h1>
+        <div class="reviews_container rc2">
+            <div class="snumber snumh">
+                <h1>02</h1>
+            </div>
+            <div class="review" data-tilt data-tilt-glare>
+                <h3>MokeSell</h3>
+                <p>MokeSell is an online marketplace where users can buy and sell second-hand items with ease. After signing up for an account, users can interact directly with each other through chats to discuss offers and negotiate deals. The platform allows users to browse listings, post their own items for sale, and view detailed product descriptions and seller reviews, helping them make informed and confident decisions. Users can also edit their profiles and customize their experience. Additionally, MokeSell offers an engaging 3D game where users can explore, earn points, and redeem rewards such as vouchers or spin a lucky wheel for exciting prizes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews reviews3">
+        <h1 class="reviewtitle rt3">WishList Wednesday</h1>
+        <div class="reviews_container">
+            <div class="snumber snumh">
+                <h1>03</h1>
+            </div>
+            <div class="review review3" data-tilt data-tilt-glare>
+                <p>Curious about what other MokeSellers have been adding to their inventory? WishList Wednesday is your chance to explore trending categories and check out trends in item listings. Get inspried & stay ahead of the curve. Make your listings stand out this week! </p>
+                <input type="email" id="wwemail" placeholder="Email">
+                <div class="postal_container">
+                    <p>Receive updates in your region:</p>
+                    <input type="text" id="postalc" placeholder="Postal Code">
+                </div>
+                <div class="checkbox_container checkbox_container1">
+                    <input type="checkbox" id="wwcheckbox" class="checkboxx">
+                    <label for="wwcheckbox" class="labell">Send me tips and info for selling</label>
+                </div>
+                <div class="checkbox_container">
+                    <input type="checkbox" id="wwcheckbox2" class="checkboxx">
+                    <label for="wwcheckbox2" class="labell">Send me items I may like</label>
+                </div>
+                <a href=""><img src="/images/Logos/send_arrow.svg" alt="submit form" id="send_arrow"></a>
+            </div>
+        </div>
+    </section>
+    
     <footer>
         <div id="footer-content">  
             <div id="footer-logo">
@@ -188,9 +336,9 @@
                 <div id="our-location" class="footer-text">
                     <h3>Our Location</h3>
                     <p>5 Science Park, <br>
-                        Singapore 118265</p>
+                    Singapore 118265</p>
                     <p>Mon - Sat
-                        11:00 - 9:00 PM</p>
+                    11:00 - 9:00 PM</p>
                     <p>1800 283 7019</p>
                 </div>
                 <div id="join-us" class="footer-text">
@@ -212,16 +360,14 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <hr>
         <div class="copyright_container">
             <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
         </div>
     </footer>
-
-    
-    
+            
+            
     <canvas id="canvas"></canvas>
     <script type="module" src="app.js"></script>
     <script type="module" src="main.js"></script>

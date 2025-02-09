@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/Logos/Favicon.ico">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="rewards.css">
@@ -12,21 +12,11 @@
 <body>
     <nav class="desktop_navbar">
         <div class="navbar_left">
-            <img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo">
-            <div class="dropdown mobileh">
-                <a href="#" class="navbar_categories">Categories</a>
-                <div class="dropdown-cat">
-                    <a href="#">Electronics</a>
-                    <a href="#">Clothing</a>
-                    <a href="#">Furniture</a>
-                    <a href="#">Books</a>
-                    <a href="#">Toys</a>
-                    <a href="#">Others</a>
-                </div>
-            </div>
-            <a href="#" class="navbar_button mobileh">About Us</a>
-            <a href="#" class="navbar_button mobileh" id="contact_us">Contact Us</a>
-            <a href="#" class="navbar_button mobileh">Listings</a>
+            <a href="index.html"><img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo"></a>
+            <span class="navbar_button mobileh" id="navcategories">Categories</span>
+            <span class="navbar_button mobileh" id="navaboutus">About Us</span>
+            <span class="navbar_button mobileh" id="contact_us">Contact Us</span>
+            <span class="navbar_button mobileh" id="navlistings">Listings</span>
         </div>
         <div class="navbar_right">
             <div class="search_container">
@@ -34,39 +24,53 @@
                 <button class="search_button" id="search_button">
                     <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
                 </button>
-            </div>
-                        
-            <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
-            <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </div>    
+            <a href="./favourites.html">
+                <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
+            </a>       
+            <a href="./chat.html">
+                <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </a>
             <div id="profile" class="mobileh">
-                <div class="profilepic_container"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></div>
-                <p id="profilename">Name</p>
+                <div class="profilepic_container">
+                    <a href="./profile.html"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></a>
+                </div>
+                <a href="./login.html" id="profilelink">
+                    <p id="profilename">Login</p>
+                </a>
+
             </div>
         </div>
     </nav>
+
+    <div class="ice_container"></div>
+    <div class="ice_background"></div>
+
     <div class="mobile_menu">
         <button class="mobile_menu_trigger">
             <img src="/images/Logos/menu.svg" alt="Menu">
         </button>
         <div class="mobile_menu_items">
-            <a href="#" class="menu_item">
+            <span class="menu_item navbar_button" id="navaboutus">
                 <img src="/images/Logos/about_us.svg" alt="About us">
                 <span>About Us</span>
-            </a>
-            <a href="#" class="menu_item">
+            </span>
+            <span class="menu_item navbar_button" id="navcontact_us">
                 <img src="/images/Logos/email.svg" alt="Contact us">
                 <span>Contact Us</span>
-            </a>
-            <a href="#" class="menu_item">
+            </span>
+            <span class="menu_item navbar_button" id="navlistings">
                 <img src="/images/Logos/listing.svg" alt="Listings">
                 <span>Listings</span>
-            </a>
-            <a href="#" class="menu_item">
-                <img src="/images/Logos/user-regular.svg" alt="Profile">
-                <span>Profile</span>
-            </a>
+            </span>
+            <span class="menu_item navbar_button" id="navcategories">
+                <img src="/images/Logos/bars-solid.svg" alt="Categories">
+                <span>Categories</span>
+            </span>
         </div>
     </div>
+    
+    
     
     
     <div id="reward-content">
@@ -139,9 +143,9 @@
         </div>
     </footer>
 
-
-    <!-- Script -->
+    <canvas id="canvas"></canvas>
     <script type="module" src="rewards.js"></script>
+    <script type="module" src="snowflakes.js"></script>
     <script type="module" src="main.js"></script>
 </body>
 </html>

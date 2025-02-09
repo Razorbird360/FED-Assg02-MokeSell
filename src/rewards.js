@@ -64,7 +64,3 @@ rewards.forEach(function(reward) {
   rewardDiv.classList.add("reward");
   rewardsContainer.appendChild(rewardDiv);
 });
-
-
-
-

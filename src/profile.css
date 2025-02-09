@@ -42,9 +42,16 @@ body {
 }
 #back-home {
     position: absolute;
-    top: 8vh;
-    left: 5vw;
-    font-size: 1rem;
+    top: 16vh;
+    left: 8vw;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #000000;
+    font-family: "Roboto", sans-serif;
+    z-index: 1;
+}
+#back-home:hover {
+    font-weight: bold;
 }
 a {
     text-decoration: none;
@@ -93,6 +100,7 @@ label {
     top:5vh;
     left:0;
     padding:1rem;
+    gap:0.2rem;
 }
 #profilepic-page {
     position: relative;
@@ -157,10 +165,42 @@ label {
     width:40vw;
     top: 5vh;
 }
+.submit_cont{
+    margin-top: 2vh;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.submit{
+    border-radius: 1rem;
+    background-color: aqua;
+    height: 5vh;
+    width: 20vw;
+}
+#logout{
+    margin-top: 3vh;
+    width: 15vw;
+    height: 5vh;
+    background-color: #ddd;
+    border-radius: 1rem;
+    background-color: red;
+}
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     #edit-profile-form{
         width:70vw;
     }
-    
+    #back-home {
+        position: absolute;
+        top: 30vh;
+        left: 8vw;
+    }
+    .submit {
+        width: 40vw;
+    }
+    #logout {
+        width: 30vw;
+    }
 }
+

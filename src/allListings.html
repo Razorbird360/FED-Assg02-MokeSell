@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MokeSell Listings</title>
+    <link rel="stylesheet" href="Normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="allListings.css">
+    <link rel="icon" href="/images/Logos/Favicon.ico">
+</head>
+<body>
+    <nav class="desktop_navbar">
+        <div class="navbar_left">
+            <a href="index.html"><img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo"></a>
+            <span class="navbar_button mobileh" id="navcategories">Categories</span>
+            <span class="navbar_button mobileh" id="navaboutus">About Us</span>
+            <span class="navbar_button mobileh" id="contact_us">Contact Us</span>
+            <span class="navbar_button mobileh" id="navlistings">Listings</span>
+        </div>
+        <div class="navbar_right">
+            <div class="search_container">
+                <input type="text" id="search" placeholder="Search...">
+                <button class="search_button" id="search_button">
+                    <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
+                </button>
+            </div>    
+            <a href="./favourites.html">
+                <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
+            </a>       
+            <a href="./chat.html">
+                <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </a>
+            <div id="profile" class="mobileh">
+                <div class="profilepic_container">
+                    <a href="./profile.html"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></a>
+                </div>
+                <a href="./login.html" id="profilelink">
+                    <p id="profilename">Login</p>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="ice_container"></div>
+    <div class="ice_background"></div>
+
+    <div class="mobile_menu">
+        <button class="mobile_menu_trigger">
+            <img src="/images/Logos/menu.svg" alt="Menu">
+        </button>
+        <div class="mobile_menu_items">
+            <span class="menu_item navbar_button" id="navaboutus">
+                <img src="/images/Logos/about_us.svg" alt="About us">
+                <span>About Us</span>
+            </span>
+            <span class="menu_item navbar_button" id="navcontact_us">
+                <img src="/images/Logos/email.svg" alt="Contact us">
+                <span>Contact Us</span>
+            </span>
+            <span class="menu_item navbar_button" id="navlistings">
+                <img src="/images/Logos/listing.svg" alt="Listings">
+                <span>Listings</span>
+            </span>
+            <span class="menu_item navbar_button" id="navcategories">
+                <img src="/images/Logos/bars-solid.svg" alt="Categories">
+                <span>Categories</span>
+            </span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container_title">
+            <h1>All Listings</h1>
+        </div>
+        <div class="listing_container">
+            <div class="listing">
+                <img src="/images/Logos/heart.svg" class="heartrating" alt="heart rating">
+                <span class="rating">rating</span>
+                <span class="listing_photo"></span>
+                
+                <div class="listing_details">
+                    <h3>Title</h3>
+                    <h5>Brand Name</h5>
+                    <div class="details_container">
+                        <h4>$328.10</h4>
+                        <h5>17h</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer-content">  
+            <div id="footer-logo">
+                <img src="/images/Logos/Logo.png" alt="MokeSell Logo" data-tilt data-tilt-glare>
+            </div>
+            <div id="footer-group">
+                <div id="our-location" class="footer-text">
+                    <h3>Our Location</h3>
+                    <p>5 Science Park, <br>
+                    Singapore 118265</p>
+                    <p>Mon - Sat
+                    11:00 - 9:00 PM</p>
+                    <p>1800 283 7019</p>
+                </div>
+                <div id="join-us" class="footer-text">
+                    <h3>Join Us</h3>
+                    <a href="#" class="footer-links">Subscribe</a>
+                    <a href="#" class="footer-links">Customer Service</a>
+                    <a href="#" class="footer-links">Latest News</a>
+                    <a href="#" class="footer-links">Work At MokaSell</a>
+                </div>
+                <div id="follow-us" class="footer-text">
+                    <h3>Follow Us</h3>
+                    <div id="social-media-icons">
+                        <img src="/images/Logos/instagram-brands-solid.svg" alt="Instagram">
+                        <img src="/images/Logos/facebook-brands-solid.svg" alt="Facebook">
+                        <img src="/images/Logos/x-twitter-brands-solid.svg" alt="Twitter">
+                        <img src="/images/Logos/youtube-brands-solid.svg" alt="Youtube">
+                        <img src="/images/Logos/tiktok-brands-solid.svg" alt="Tiktok">
+                        <img src="/images/Logos/reddit-brands-solid.svg" alt="Reddit">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="copyright_container">
+            <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
+        </div>
+    </footer>
+            
+    <canvas id="canvas"></canvas>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="snowflakes.js"></script>
+    <script type="module" src="allListings.js"></script>
+</body>
+</html>

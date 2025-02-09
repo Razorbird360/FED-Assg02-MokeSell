@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="Normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="icon" href="/images/Logos/Favicon.ico">
+</head>
+<body>
+    <nav class="desktop_navbar">
+        <div class="navbar_left">
+            <a href="index.html"><img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo"></a>
+            <span class="navbar_button mobileh" id="navcategories">Categories</span>
+            <span class="navbar_button mobileh" id="navaboutus">About Us</span>
+            <span class="navbar_button mobileh" id="contact_us">Contact Us</span>
+            <span class="navbar_button mobileh" id="navlistings">Listings</span>
+        </div>
+        <div class="navbar_right">
+            <div class="search_container">
+                <input type="text" id="search" placeholder="Search...">
+                <button class="search_button" id="search_button">
+                    <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
+                </button>
+            </div>    
+            <a href="./favourites.html">
+                <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
+            </a>       
+            <a href="./chat.html">
+                <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </a>
+            <div id="profile" class="mobileh">
+                <div class="profilepic_container">
+                    <a href="./profile.html"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></a>
+                </div>
+                <a href="./login.html" id="profilelink">
+                    <p id="profilename">Login</p>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="ice_container"></div>
+    <div class="ice_background"></div>
+    
+    <div id="responsive-header">
+        <a href="./index.html" id="back-home">
+            <img src="/images/Logos/play-solid.svg" alt="Menu">
+        </a>
+        <a href="./chat.html" id="back-chat">
+            <img src="/images/Logos/play-solid.svg" alt="Menu">
+        </a>
+        <h1>Chat</h1>
+
+    </div>
+    <div id="chat-container">
+        <!-- Chat List -->
+        <div class="chats">
+            <div class="chat" data-chat="1">
+                <div class="chat-profile">
+                    <img src="/images/Logos/user-regular.svg" alt="Profile Picture" class="profile-pic">
+                    <p class="chat-name">Amir</p>
+                </div>
+                <p class="chat-message">Message</p>
+            </div>
+            <div class="chat" data-chat="2">
+                <div class="chat-profile">
+                    <img src="/images/Logos/user-regular.svg" alt="Profile Picture" class="profile-pic">
+                    <p class="chat-name">Jeff</p>
+                </div>
+                <p class="chat-message">Message</p>
+            </div>
+        </div>
+
+        <!-- Current Chat -->
+        <div class="current-chat">
+            <div class="currentchat-profile">
+                <img src="/images/Logos/user-regular.svg" alt="Profile Picture" class="profile-pic">
+                <p class="chat-name" id="current-chat-name">Select chat</p>
+            </div>
+            <div id="messages"></div>
+            <div id="chat-input">
+                <img src="/images/Logos/paperclip-solid.svg" alt="clip" id="clip">
+                <input id="user-message" type="text" placeholder="Type a message...">
+                <img src="/images/Logos/microphone-solid.svg" alt="mic" id="mic">
+                <img src="/images/Logos/paper-plane-regular.svg" alt="send" id="send">
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>

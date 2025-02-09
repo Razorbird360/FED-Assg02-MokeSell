@@ -34,16 +34,28 @@
                 <button class="search_button" id="search_button">
                     <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
                 </button>
-            </div>
-                        
-            <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
-            <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </div>    
+            <a href="./favourites.html">
+                <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
+            </a>       
+            <a href="./chat.html">
+                <img src="/images/Logos/comment.svg" class="nav-icons" alt="Chat" id="chat">
+            </a>
             <div id="profile" class="mobileh">
-                <div class="profilepic_container"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></div>
-                <p id="profilename">Name</p>
+                <div class="profilepic_container">
+                    <a href="./profile.html"><img src="/images/Logos/user-regular.svg" class="nav-icons" alt="Profile" id="profilepic"></a>
+                </div>
+                <a href="./login.html" id="profilelink">
+                    <p id="profilename">Login</p>
+                </a>
+
             </div>
         </div>
     </nav>
+
+    <div class="ice_container"></div>
+    <div class="ice_background"></div>
+
     <div class="mobile_menu">
         <button class="mobile_menu_trigger">
             <img src="/images/Logos/menu.svg" alt="Menu">
@@ -67,9 +79,17 @@
             </a>
         </div>
     </div>
+    
+    <div class="categories_container desktoph">
+        <div class="category_item">
+            <img src="/images/Logos/electronics.svg" alt="Electronics">
+            <p>Electronics</p>
+        </div>
+    </div>
+    
     <!-- Add data like mokapoints and free tier up-->
      <div id="flexbox">
-        <div class="container">
+        <div class="wheelcontainer">
             <canvas id="wheel"></canvas>
             <button id="spin-btn">Spin</button>
             <img src="/images/Logos/play-solid.svg" id="arrow" alt="Arrow">
@@ -119,12 +139,11 @@
         </div>
     </footer>
     
-    <!-- Chart JS -->
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <!-- Chart JS Plugin for displaying text over chart -->
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
-    <!-- Script -->
+    <canvas id="canvas"></canvas>
     <script type="module" src="main.js"></script>
+    <script type="module" src="snowflakes.js"></script>
     <script type="module" src="wheelspin.js"></script>
 </body>
 </html>
