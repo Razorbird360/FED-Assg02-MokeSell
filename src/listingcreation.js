@@ -5,9 +5,7 @@ import { auth, db, storage } from './app.js';
 import { doc, addDoc, collection, Timestamp, getDoc } from "firebase/firestore";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 
-// -------------------------------
 // Popup Notification Functionality
-// -------------------------------
 function showNotification(message, type = 'success') {
   // Check if a notification container exists; if not, create one.
   let container = document.getElementById('notification-container');
@@ -16,18 +14,43 @@ function showNotification(message, type = 'success') {
     container.id = 'notification-container';
     document.body.appendChild(container);
   }
-  
+
   // Create a notification element.
   const notification = document.createElement('div');
   notification.className = `notification ${type === 'error' ? 'notification-error' : 'notification-success'}`;
-  notification.textContent = message;
-  container.appendChild(notification);
   
+  if (type === 'success') {
+    // Add Lottie animation for success notification
+    const lottiePlayer = document.createElement('dotlottie-player');
+    lottiePlayer.src = 'https://lottie.host/a0be8245-1988-41dc-abc7-891aa5d88de9/aWyYRxAueM.lottie'; // Your Lottie animation file
+    lottiePlayer.background = 'transparent';
+    lottiePlayer.speed = 1;
+    lottiePlayer.style.width = '30vw';  // Increased size
+    lottiePlayer.style.height = '30vw'; // Increased size
+    lottiePlayer.setAttribute('autoplay', 'true');
+    
+    // Center the Lottie animation inside the notification
+    const lottieWrapper = document.createElement('div');
+    lottieWrapper.style.display = 'flex';
+    lottieWrapper.style.alignItems = 'center';
+    lottieWrapper.style.justifyContent = 'center';
+    lottieWrapper.style.marginRight = '10px'; // Adjust margin between the animation and the text
+    lottieWrapper.appendChild(lottiePlayer);
+    notification.appendChild(lottieWrapper);
+  }
+
+  // Add message text
+  const messageText = document.createElement('span');
+  messageText.textContent = message;
+  notification.appendChild(messageText);
+  
+  container.appendChild(notification);
+
   // Trigger the CSS transition.
   setTimeout(() => {
     notification.classList.add('show');
   }, 100);
-  
+
   // Remove the notification after 3 seconds (with a fade-out transition).
   setTimeout(() => {
     notification.classList.remove('show');
@@ -36,6 +59,7 @@ function showNotification(message, type = 'success') {
     }, 300);
   }, 3000);
 }
+
 
 // Redirect to login if there is no signed-in user.
 auth.onAuthStateChanged((user) => {

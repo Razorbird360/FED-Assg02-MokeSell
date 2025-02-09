@@ -209,7 +209,6 @@ body {
 .file-preview span {
     font-size: 0.9rem;
 }
-
 @media (max-width: 800px) {
     .product-form {
         max-width: 90vw;
@@ -232,10 +231,10 @@ body {
     min-width: 300px;
     margin-bottom: 10px;
     padding: 15px 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     color: #fff;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.4rem;
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(-20px);
   }
