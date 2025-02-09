@@ -243,7 +243,7 @@ a {
 #join-us {
     display: flex;
     flex-direction: column;
-    gap: -0.5rem;
+    gap: 0.5rem;
 }
 #join-us a {
     height: 1.5vh;
@@ -495,6 +495,28 @@ a {
     z-index: 0;
 }
 
+.addlisting_container{
+    width: 100vw;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addlisting{
+    height: 7vh;
+    width: 20vw;
+    background: rgb(13,80,103);
+    background: linear-gradient(135deg, rgba(13,80,103,1) 0%, rgba(24,25,25,1) 100%);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.addlisting p{
+    font-family: Poppins_Light;
+    font-size: 1.2rem;
+    color: white;
+}   
 
 .carousel {
     position: relative;
@@ -1246,7 +1268,10 @@ a {
         width: auto;
     }
 
-    
+    .addlisting {
+        width: 45vw;
+    }
+
 
 }
 

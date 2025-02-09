@@ -173,7 +173,7 @@ form {
     align-items: center;
     margin-bottom: 9vh;
 }
-#google-signin button p {
+#google-signin button span {
     margin:0 auto;
 }
 #sign-up {

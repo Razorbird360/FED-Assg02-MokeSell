@@ -3,54 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MokeSell Listings</title>
+    <title>MokeSell</title>
     <link rel="stylesheet" href="Normalize.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="allListings.css">
+    <link rel="stylesheet" href="listingcreation.css">
     <link rel="icon" href="/images/Logos/Favicon.ico">
-<!--     <style>
-        .container{
-    margin-top: 5vh;
-    display: flex;
-    height: auto;
-    justify-content: flex-start;
-    width: 100vw;
-    align-items: center;
-}
-.listing_container {
-    margin: 0;
-    height: auto;
-    width: 90vw;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-}
-.listing {
-    width: 100%;
-    margin: 0;
-}
-.container_title h1{
-    font-family: Itim;
-    font-size: 3rem;
-}
-.container_title {
-    width: 80vw;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-    </style> -->
 </head>
 <body>
     <nav class="desktop_navbar">
         <div class="navbar_left">
-            <a href="index.html"><img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo"></a>
-            <span class="navbar_button mobileh" id="navcategories">Categories</span>
-            <span class="navbar_button mobileh" id="navaboutus">About Us</span>
-            <span class="navbar_button mobileh" id="contact_us">Contact Us</span>
-            <span class="navbar_button mobileh" id="navlistings">Listings</span>
+            <img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo">
+            <div class="dropdown mobileh">
+                <a href="#" class="navbar_categories">Categories</a>
+                <div class="dropdown-cat">
+                    <a href="#">Electronics</a>
+                    <a href="#">Clothing</a>
+                    <a href="#">Furniture</a>
+                    <a href="#">Books</a>
+                    <a href="#">Toys</a>
+                    <a href="#">Others</a>
+                </div>
+            </div>
+            <a href="#" class="navbar_button mobileh">About Us</a>
+            <a href="#" class="navbar_button mobileh" id="contact_us">Contact Us</a>
+            <a href="#" class="navbar_button mobileh">Listings</a>
         </div>
         <div class="navbar_right">
             <div class="search_container">
@@ -72,6 +48,7 @@
                 <a href="./login.html" id="profilelink">
                     <p id="profilename">Login</p>
                 </a>
+
             </div>
         </div>
     </nav>
@@ -102,29 +79,70 @@
             </a>
         </div>
     </div>
-
-
-    <div class="container">
-        <div class="container_title">
-            <h1>All Listings</h1>
-        </div>
-        <div class="listing_container">
-            <div class="listing">
-                <img src="/images/Logos/heart.svg" class="heartrating" alt="heart rating">
-                <span class="rating">rating</span>
-                <span class="listing_photo"></span>
-                
-                <div class="listing_details">
-                    <h3>Title</h3>
-                    <h5>Brand Name</h5>
-                    <div class="details_container">
-                        <h4>$328.10</h4>
-                        <h5>17h</h5>
-                    </div>
-                </div>
-            </div>
+    
+    <div class="categories_container desktoph">
+        <div class="category_item">
+            <img src="/images/Logos/electronics.svg" alt="Electronics">
+            <p>Electronics</p>
         </div>
     </div>
+
+    <form class="product-form">
+        <h3>Title</h3>
+        <p>Use words people would describe when looking for your product</p>
+        <input type="text" id="title" name="title" placeholder="Title" required>
+    
+        <h4>Product Details<span>(Required)</span></h4>
+        <p>Condition</p>
+        <select name="condition" id="condition" required>
+            <option value="" disabled selected>Select Condition</option>
+            <option value="brandnew">Brand New</option>
+            <option value="likenew">Like New</option>
+            <option value="lightlyused">Lightly Used</option>
+            <option value="faircondition">Fair Condition</option>
+            <option value="slightlydamaged">Slightly Damaged</option>
+            <option value="notfullyfunctional">Not Fully Functional</option>
+        </select>
+    
+        <div class="form-row">
+            <div class="form-group">
+                <label for="brand">Brand</label>
+                <input type="text" id="brand" name="brand" placeholder="Brand" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" placeholder="Price" required>
+            </div>
+        </div>
+    
+        <div class="form-section">
+            <h4>Product Image</h4>
+            <div class="file-upload-area" id="file-upload-area">
+                <p>Drag & Drop your files here or <span class="browse-files">Browse</span></p>
+                <input type="file" id="image" name="image" required multiple>
+            </div>
+            <div id="file-preview-container"></div>
+        </div>
+    
+        <div class="form-section">
+            <h4>Product Description</h4>
+            <textarea name="bio" placeholder="Describe your product here..."></textarea>
+        </div>
+    
+        <div class="terms">
+            By using MokeSell, you agree to comply with our <a href="#">Terms and Conditions</a>. 
+            These include policies regarding the purchase and sale of items, payment methods, shipping, returns, 
+            and customer reviews. MokeSell is not responsible for any issues that arise between buyers and sellers. 
+            All users must adhere to our guidelines, ensuring a secure and respectful marketplace experience. 
+            For more information on how we protect your data and transactions, please refer to our 
+            <a href="#">Privacy Policy</a> and <a href="#">Payment Security</a> section.
+        </div>
+    
+        <div class="button-container">
+            <button type="submit" class="submit-button">Submit</button>
+        </div>
+        
+    </form>
 
     <footer>
         <div id="footer-content">  
@@ -135,9 +153,9 @@
                 <div id="our-location" class="footer-text">
                     <h3>Our Location</h3>
                     <p>5 Science Park, <br>
-                    Singapore 118265</p>
+                        Singapore 118265</p>
                     <p>Mon - Sat
-                    11:00 - 9:00 PM</p>
+                        11:00 - 9:00 PM</p>
                     <p>1800 283 7019</p>
                 </div>
                 <div id="join-us" class="footer-text">
@@ -159,15 +177,14 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <hr>
         <div class="copyright_container">
             <p id="copyright">Copyright © 1996-2015 MokeSell SocietyCopyright © 2015-2025 MokeSell Partners, LLC. All rights reserved</p>
         </div>
     </footer>
-            
-    <canvas id="canvas"></canvas>
-    <script type="module" src="snowflakes.js"></script>
-    <script type="module" src="./allListings.js"></script>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="listingcreation.js"></script>
 </body>
 </html>

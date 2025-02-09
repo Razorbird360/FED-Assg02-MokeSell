@@ -165,7 +165,9 @@ body {
     width: max-content;
     max-width: 50%;
     border-radius: 1.25rem;
-    text-wrap: break-word;
+    word-break: break-word; /* Ensures long words break */
+    overflow-wrap: break-word; /* Alternative for better compatibility */
+    white-space: normal; 
     background-color: rgba(245, 245, 245, 0.7);
 }
 
@@ -177,7 +179,9 @@ body {
     width: max-content;
     max-width: 50%;
     border-radius: 1.25rem;
-    text-wrap: break-word;
+    word-break: break-word; /* Ensures long words break */
+    overflow-wrap: break-word; /* Alternative for better compatibility */
+    white-space: normal; 
     background-color: rgba(245, 245, 245, 0.7);
 }
 #chat-input {
