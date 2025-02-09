@@ -12,21 +12,11 @@
 <body>
     <nav class="desktop_navbar">
         <div class="navbar_left">
-            <img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo">
-            <div class="dropdown mobileh">
-                <a href="#" class="navbar_categories">Categories</a>
-                <div class="dropdown-cat">
-                    <a href="#">Electronics</a>
-                    <a href="#">Clothing</a>
-                    <a href="#">Furniture</a>
-                    <a href="#">Books</a>
-                    <a href="#">Toys</a>
-                    <a href="#">Others</a>
-                </div>
-            </div>
-            <a href="#" class="navbar_button mobileh">About Us</a>
-            <a href="#" class="navbar_button mobileh" id="contact_us">Contact Us</a>
-            <a href="#" class="navbar_button mobileh">Listings</a>
+            <a href="index.html"><img class="logo" src="/images/Logos/Favicon_PNG.png" alt="MokeSell Logo"></a>
+            <span class="navbar_button mobileh" id="navcategories">Categories</span>
+            <span class="navbar_button mobileh" id="navaboutus">About Us</span>
+            <span class="navbar_button mobileh" id="contact_us">Contact Us</span>
+            <span class="navbar_button mobileh" id="navlistings">Listings</span>
         </div>
         <div class="navbar_right">
             <div class="search_container">
@@ -34,7 +24,7 @@
                 <button class="search_button" id="search_button">
                     <img src="/images/Logos/magnifying-glass-solid.svg" alt="Search" id="search-icon">
                 </button>
-            </div>
+            </div>    
             <a href="./favourites.html">
                 <img src="/images/Logos/heart.svg" class="nav-icons" alt="Favourite" id="favourite">
             </a>       
@@ -61,24 +51,26 @@
             <img src="/images/Logos/menu.svg" alt="Menu">
         </button>
         <div class="mobile_menu_items">
-            <a href="#" class="menu_item">
+            <span class="menu_item navbar_button" id="navaboutus">
                 <img src="/images/Logos/about_us.svg" alt="About us">
                 <span>About Us</span>
-            </a>
-            <a href="#" class="menu_item">
+            </span>
+            <span class="menu_item navbar_button" id="navcontact_us">
                 <img src="/images/Logos/email.svg" alt="Contact us">
                 <span>Contact Us</span>
-            </a>
-            <a href="#" class="menu_item">
+            </span>
+            <span class="menu_item navbar_button" id="navlistings">
                 <img src="/images/Logos/listing.svg" alt="Listings">
                 <span>Listings</span>
-            </a>
-            <a href="#" class="menu_item">
-                <img src="/images/Logos/user-regular.svg" alt="Profile">
-                <span>Profile</span>
-            </a>
+            </span>
+            <span class="menu_item navbar_button" id="navcategories">
+                <img src="/images/Logos/bars-solid.svg" alt="Categories">
+                <span>Categories</span>
+            </span>
         </div>
     </div>
+
+
     
     <div class="categories_container desktoph">
         <div class="category_item">
@@ -114,7 +106,10 @@
                 <label for="home-address">Home Address:</label>
                 <input type="text" id="home-address" name="address" required>    
             </div>
-            <div class="submit_cont"><button type="submit" class="submit">Save Changes</button></div>
+            <div class="submit_cont">
+                <button type="submit" class="submit">Save Changes</button>
+                <button id="logout" onclick="logoutUser()">Log Out</button>
+            </div>
         </form>
 
 
@@ -162,6 +157,7 @@
 
     
     <canvas id="canvas"></canvas>
+    <script type="module" src="snowflakes.js"></script>
     <script type="module" src="main.js"></script>
     <script type="module" src="profile.js"></script>
 </body>

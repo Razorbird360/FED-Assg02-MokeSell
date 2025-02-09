@@ -34,3 +34,12 @@
     justify-content: center;
     align-items: center;
 }
+.file-upload-area input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 1;
+  }
+  

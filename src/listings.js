@@ -207,7 +207,7 @@ function fitTextToContainer(element) {
         void element.offsetHeight; // Force reflow after each adjustment
     }
 }
-  
+
 
 
 

@@ -1,143 +1,153 @@
 import { auth } from './app.js';
 import VanillaTilt from 'vanilla-tilt';
-document.querySelector('.mobile_menu_trigger').addEventListener('click', function() {
-    const mobileMenu = document.querySelector('.mobile_menu');
-    
-    if (mobileMenu.classList.contains('active')) {
-        mobileMenu.classList.add('closing');
-        
-        setTimeout(() => {
+
+document.addEventListener('DOMContentLoaded', () => {
+  // *********************
+  // Mobile Menu Toggle
+  // *********************
+  const mobileMenuTrigger = document.querySelector('.mobile_menu_trigger');
+  if (mobileMenuTrigger) {
+    mobileMenuTrigger.addEventListener('click', function () {
+      const mobileMenu = document.querySelector('.mobile_menu');
+      if (mobileMenu) {
+        if (mobileMenu.classList.contains('active')) {
+          mobileMenu.classList.add('closing');
+          setTimeout(() => {
             mobileMenu.classList.remove('active', 'closing');
-        }, 300);
-    } else {
-        mobileMenu.classList.add('active');
-    }
-});
-
-
-//allow listing container to scroll horizontally
-const scrollContainers = document.querySelectorAll('.listing_container');
-
-scrollContainers.forEach((scrollContainer) => {
-  let isDragging = false;
-  let startX;
-  let scrollLeft;
-
-  scrollContainer.querySelectorAll('a, button').forEach((element) => {
-    element.addEventListener('mousedown', (event) => event.preventDefault());
-  });
-
-  scrollContainer.addEventListener('mousedown', (event) => {
-    isDragging = true;
-    startX = event.pageX - scrollContainer.offsetLeft;
-    scrollLeft = scrollContainer.scrollLeft;
-  });
-
-  scrollContainer.addEventListener('mousemove', (event) => {
-    if (!isDragging) return;
-
-    event.preventDefault();
-    scrollContainer.querySelectorAll('a, button').forEach((element) => {
-      element.classList.add('inactiveLink');
-    });
-
-    const x = event.pageX - scrollContainer.offsetLeft;
-    const moved = (x - startX) * 0.8;
-    scrollContainer.scrollLeft = scrollLeft - moved;
-  });
-
-  scrollContainer.addEventListener('mouseup', () => {
-    isDragging = false;
-    scrollContainer.querySelectorAll('a, button').forEach((element) => {
-      element.classList.remove('inactiveLink');
-    });
-  });
-
-  scrollContainer.addEventListener('mouseleave', () => {
-    isDragging = false;
-    scrollContainer.querySelectorAll('a, button').forEach((element) => {
-      element.classList.remove('inactiveLink');
-    });
-  });
-
-  scrollContainer.addEventListener('wheel', (event) => {
-    if (event.deltaX !== 0) {
-      event.preventDefault();
-      scrollContainer.scrollLeft += event.deltaX;
-    }
-  });
-});
-
-
-//resize listing title based on length
-function initFitText() {
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.addedNodes.length) {
-        const newTitles = document.querySelectorAll('.listing_details h3');
-        newTitles.forEach(title => fitTextToContainer(title));
+          }, 300);
+        } else {
+          mobileMenu.classList.add('active');
+        }
       }
     });
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
-
-  // Initial run
-  const titles = document.querySelectorAll('.listing_details h3');
-  titles.forEach(title => fitTextToContainer(title));
-}
-
-// Start after initial DOM load
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initFitText);
-} else {
-  initFitText();
-}
-  
-function fitTextToContainer(element) {
-  const container = element.parentElement;
-  const containerWidth = container.offsetWidth; // Get container width
-  const padding = parseFloat(window.getComputedStyle(container).paddingLeft) + parseFloat(window.getComputedStyle(container).paddingRight); // Account for padding
-  const availableWidth = containerWidth - padding; // Subtract padding from container width
-
-  let fontSize = parseFloat(window.getComputedStyle(element).fontSize); // Get current font size in pixels
-  const minFontSize = 12; // Set a minimum font size for readability
-
-  // Force initial reflow to ensure accurate measurements
-  void container.offsetHeight;
-
-  // Reduce font size until the text fits or minimum size is reached
-  while (element.scrollWidth > availableWidth && fontSize > minFontSize) {
-      fontSize -= 1; // Decrease by 1px each step
-      element.style.fontSize = `${fontSize}px`;
-      void element.offsetHeight; // Force reflow after each adjustment
   }
-}
 
+  // *********************************************
+  // Allow listing container to scroll horizontally
+  // *********************************************
+  const scrollContainers = document.querySelectorAll('.listing_container');
+  if (scrollContainers.length) {
+    scrollContainers.forEach((scrollContainer) => {
+      let isDragging = false;
+      let startX;
+      let scrollLeft;
 
-//carousel 
-document.addEventListener('DOMContentLoaded', () => {
-  const carousel = document.querySelector('.carousel');
-  const container = document.querySelector('.carousel_container');
+      // Prevent default on links and buttons within the container
+      scrollContainer.querySelectorAll('a, button').forEach((element) => {
+        element.addEventListener('mousedown', (event) => event.preventDefault());
+      });
+
+      scrollContainer.addEventListener('mousedown', (event) => {
+        isDragging = true;
+        startX = event.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+      });
+
+      scrollContainer.addEventListener('mousemove', (event) => {
+        if (!isDragging) return;
+        event.preventDefault();
+        scrollContainer.querySelectorAll('a, button').forEach((element) => {
+          element.classList.add('inactiveLink');
+        });
+
+        const x = event.pageX - scrollContainer.offsetLeft;
+        const moved = (x - startX) * 0.8;
+        scrollContainer.scrollLeft = scrollLeft - moved;
+      });
+
+      scrollContainer.addEventListener('mouseup', () => {
+        isDragging = false;
+        scrollContainer.querySelectorAll('a, button').forEach((element) => {
+          element.classList.remove('inactiveLink');
+        });
+      });
+
+      scrollContainer.addEventListener('mouseleave', () => {
+        isDragging = false;
+        scrollContainer.querySelectorAll('a, button').forEach((element) => {
+          element.classList.remove('inactiveLink');
+        });
+      });
+
+      scrollContainer.addEventListener('wheel', (event) => {
+        if (event.deltaX !== 0) {
+          event.preventDefault();
+          scrollContainer.scrollLeft += event.deltaX;
+        }
+      });
+    });
+  }
+
+  // *********************************************
+  // Resize Listing Title Based on Container Width
+  // *********************************************
+  function fitTextToContainer(element) {
+    const container = element.parentElement;
+    if (!container) return;
+    const containerWidth = container.offsetWidth;
+    const computedStyle = window.getComputedStyle(container);
+    const padding =
+      parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
+    const availableWidth = containerWidth - padding;
+
+    let fontSize = parseFloat(window.getComputedStyle(element).fontSize);
+    const minFontSize = 12; // minimum font size for readability
+
+    // Force a reflow
+    void container.offsetHeight;
+
+    // Reduce font size until text fits or minimum is reached
+    while (element.scrollWidth > availableWidth && fontSize > minFontSize) {
+      fontSize -= 1;
+      element.style.fontSize = `${fontSize}px`;
+      void element.offsetHeight;
+    }
+  }
+
+  function initFitText() {
+    // Observe DOM changes to adjust new titles dynamically
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          const newTitles = document.querySelectorAll('.listing_details h3');
+          newTitles.forEach(title => fitTextToContainer(title));
+        }
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Initial run for existing titles
+    const titles = document.querySelectorAll('.listing_details h3');
+    titles.forEach(title => fitTextToContainer(title));
+  }
+  // Call fitText immediately since we are inside DOMContentLoaded
+  initFitText();
+
+  // *********************
+  // Carousel Functionality
+  // *********************
+  const carouselEl = document.querySelector('.carousel');
+  const carouselContainer = document.querySelector('.carousel_container');
   const prevBtn = document.querySelector('.prev_container');
   const nextBtn = document.querySelector('.next_container');
   const indicators = document.querySelectorAll('.indicator');
-  const totalSlides = 4;
-  let currentIndex = 0;
-  let isAnimating = false;
-  let autoScrollInterval;
+  if (carouselEl && carouselContainer && prevBtn && nextBtn && indicators.length) {
+    const totalSlides = 4;
+    let currentIndex = 0;
+    let isAnimating = false;
+    let autoScrollInterval;
 
-  function getSlideWidth() {
+    function getSlideWidth() {
       const item = document.querySelector('.carousel_item');
       return item ? item.offsetWidth : 0;
-  }
+    }
 
-  function getMargin() {
-      const containerStyle = window.getComputedStyle(container);
+    function getMargin() {
+      const containerStyle = window.getComputedStyle(carouselContainer);
       return parseFloat(containerStyle.gap) || 0;
-  }
+    }
 
-  function updateCarousel() {
+    function updateCarousel() {
       if (isAnimating) return;
       isAnimating = true;
 
@@ -146,252 +156,227 @@ document.addEventListener('DOMContentLoaded', () => {
       const containerWidth = (slideWidth * totalSlides) + (margin * (totalSlides - 1));
       const translateX = -currentIndex * (slideWidth + margin);
 
-      container.style.width = `${containerWidth}px`;
-      container.style.transform = `translateX(${translateX}px)`;
+      carouselContainer.style.width = `${containerWidth}px`;
+      carouselContainer.style.transform = `translateX(${translateX}px)`;
 
       setTimeout(() => {
-          isAnimating = false;
+        isAnimating = false;
       }, 500);
-  }
+    }
 
-  function updateIndicators() {
+    function updateIndicators() {
       indicators.forEach((indicator, index) => {
-          indicator.classList.toggle('active', index === currentIndex);
+        indicator.classList.toggle('active', index === currentIndex);
       });
-  }
+    }
 
-  window.goToSlide = function(index) {
+    window.goToSlide = function (index) {
       if (isAnimating || index < 0 || index >= totalSlides) return;
       currentIndex = index;
       updateCarousel();
       updateIndicators();
-  };
+    };
 
-  function handlePrev() {
+    function handlePrev() {
       const prevIndex = currentIndex - 1;
-      goToSlide(prevIndex < 0 ? totalSlides - 1 : prevIndex);
-  }
+      window.goToSlide(prevIndex < 0 ? totalSlides - 1 : prevIndex);
+    }
 
-  function handleNext() {
+    function handleNext() {
       const nextIndex = currentIndex + 1;
-      goToSlide(nextIndex >= totalSlides ? 0 : nextIndex);
-  }
+      window.goToSlide(nextIndex >= totalSlides ? 0 : nextIndex);
+    }
 
-  function startAutoScroll() {
+    function startAutoScroll() {
       autoScrollInterval = setInterval(handleNext, 4000);
-  }
+    }
 
-  function resetAutoScroll() {
+    function resetAutoScroll() {
       clearInterval(autoScrollInterval);
       startAutoScroll();
-  }
+    }
 
-  // Event listeners
-  prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener('click', () => {
       handlePrev();
       resetAutoScroll();
-  });
+    });
 
-  nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', () => {
       handleNext();
       resetAutoScroll();
-  });
+    });
 
-  indicators.forEach(indicator => {
+    indicators.forEach(indicator => {
       indicator.addEventListener('click', () => {
-          const index = Array.from(indicators).indexOf(indicator);
-          goToSlide(index);
-          resetAutoScroll();
+        const index = Array.from(indicators).indexOf(indicator);
+        window.goToSlide(index);
+        resetAutoScroll();
       });
-  });
+    });
 
-  // Initialize
-  updateCarousel();
-  updateIndicators();
-  startAutoScroll();
+    updateCarousel();
+    updateIndicators();
+    startAutoScroll();
 
-  // Handle window resize
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(updateCarousel, 250);
-  });
-});
+    });
+  }
 
-const carousel = document.querySelector('.container_wrapper');
-carousel.addEventListener('click', () => {
-  window.location.href = './rewards.html';
-});
+  // ***********************************************
+  // Redirect on Carousel Wrapper Click (if exists)
+  // ***********************************************
+  const carouselWrapper = document.querySelector('.container_wrapper');
+  if (carouselWrapper) {
+    carouselWrapper.addEventListener('click', () => {
+      window.location.href = './rewards.html';
+    });
+  }
 
-
-//changing mokesell review
-document.addEventListener('DOMContentLoaded', () => {
+  // ******************************
+  // Changing Mokesell Review Cycle
+  // ******************************
+  const reviewContainer = document.querySelector('.rcj');
   const reviews = document.querySelectorAll('.reviewsj .review');
-  let currentIndex = 0;
-  let timeoutID = null;
-  let intervalID = null;
+  if (reviewContainer && reviews.length) {
+    let currentReviewIndex = 0;
+    let timeoutID = null;
+    let intervalID = null;
 
-  reviews[currentIndex].classList.add('active');
+    reviews[currentReviewIndex].classList.add('active');
 
-  function hideCurrentReview() {
-      reviews[currentIndex].classList.remove('active');
-  }
+    function hideCurrentReview() {
+      reviews[currentReviewIndex].classList.remove('active');
+    }
 
-  function showNextReview() {
-      currentIndex = (currentIndex + 1) % reviews.length;
-      reviews[currentIndex].classList.add('active');
-  }
+    function showNextReview() {
+      currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+      reviews[currentReviewIndex].classList.add('active');
+    }
 
-  function startTransitionCycle() {
+    function startTransitionCycle() {
       timeoutID = setTimeout(() => {
-          hideCurrentReview();
-          
-          setTimeout(() => {
+        hideCurrentReview();
+        setTimeout(() => {
+          showNextReview();
+          intervalID = setInterval(() => {
+            hideCurrentReview();
+            setTimeout(() => {
               showNextReview();
-              
-              intervalID = setInterval(() => {
-                  hideCurrentReview();
-                  setTimeout(() => {
-                      showNextReview();
-                  }, 800);
-              }, 5000);
-          }, 800);
+            }, 800);
+          }, 5000);
+        }, 800);
       }, 2000);
-  }
+    }
 
-  function stopTransitions() {
+    function stopTransitions() {
       clearTimeout(timeoutID);
       clearInterval(intervalID);
-  }
+    }
 
-  startTransitionCycle();
+    startTransitionCycle();
 
-  const container = document.querySelector('.rcj');
-  container.addEventListener('mouseenter', stopTransitions);
-  container.addEventListener('mouseleave', () => {
+    reviewContainer.addEventListener('mouseenter', stopTransitions);
+    reviewContainer.addEventListener('mouseleave', () => {
       stopTransitions();
       startTransitionCycle();
-  });
-});
+    });
+  }
 
-
-
-
-
-
-
-
-
-
-
-// Navbar Scroll Logic
-document.addEventListener('DOMContentLoaded', () => {
-  // Define scroll targets
-  const scrollMap = {
+  // ******************************
+  // Navbar Scroll Logic
+  // ******************************
+  const navbarButtons = document.querySelectorAll('.navbar_button');
+  if (navbarButtons.length) {
+    // Map button IDs to scroll targets or actions
+    const scrollMap = {
       'navcategories': () => document.querySelector('.categoriesd'),
       'navaboutus': () => document.querySelector('.reviews2'),
       'contact_us': () => document.querySelector('footer'),
       'navlistings': () => {
-          window.location.href = 'allListings.html';
+        window.location.href = 'allListings.html';
       }
-  };
+    };
 
-  // Generic scroll function
-  function smoothScroll(targetElement) {
+    function smoothScroll(targetElement) {
       if (targetElement) {
-          const offset = 70; // Adjust for navbar height
-          const topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-          
-          window.scrollTo({
-              top: topPos,
-              behavior: 'smooth'
-          });
+        const offset = 70; // adjust for navbar height
+        const topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({
+          top: topPos,
+          behavior: 'smooth'
+        });
       }
-  }
+    }
 
-  // Handle navigation
-  function handleNavClick(targetId) {
+    function handleNavClick(targetId) {
       const currentPage = window.location.pathname.split('/').pop();
-      
       if (currentPage !== 'index.html' && currentPage !== '') {
-          sessionStorage.setItem('scrollTarget', targetId);
-          window.location.href = 'index.html';
+        sessionStorage.setItem('scrollTarget', targetId);
+        window.location.href = 'index.html';
       } else {
-          const targetElement = scrollMap[targetId]();
-          smoothScroll(targetElement);
+        const targetElement = scrollMap[targetId]();
+        smoothScroll(targetElement);
       }
-  }
+    }
 
-  // Add event listeners
-  document.querySelectorAll('.navbar_button').forEach(button => {
+    navbarButtons.forEach(button => {
       button.addEventListener('click', (e) => {
-          e.preventDefault();
-          handleNavClick(button.id);
+        e.preventDefault();
+        handleNavClick(button.id);
       });
-  });
+    });
 
-  // Handle redirect scroll
-  const storedTarget = sessionStorage.getItem('scrollTarget');
-  if (storedTarget) {
+    // Handle a potential redirect scroll
+    const storedTarget = sessionStorage.getItem('scrollTarget');
+    if (storedTarget) {
       const targetElement = scrollMap[storedTarget]();
       setTimeout(() => smoothScroll(targetElement), 100);
       sessionStorage.removeItem('scrollTarget');
+    }
   }
-});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Update navigation bar based on auth state
-function updateNavbar(user) {
+  // ***********************************************
+  // Update Navigation Bar Based on Authentication State
+  // ***********************************************
+  function updateNavbar(user) {
     const profileName = document.getElementById('profilename');
     const profilePic = document.getElementById('profilepic');
     const profileLink = document.getElementById('profilelink');
 
-    if (user) {
+    if (profileName && profilePic && profileLink) {
+      if (user) {
         profileName.textContent = user.displayName || 'Profile';
         profilePic.src = user.photoURL || '/images/Logos/user-regular.svg';
         profileLink.href = './profile.html';
-    } else {
+      } else {
         profileName.textContent = 'Login';
         profilePic.src = '/images/Logos/user-regular.svg';
         profileLink.href = './login.html';
+      }
     }
-}
+  }
 
-// Listen for auth state changes
-auth.onAuthStateChanged(user => {
-    // Store user data in localStorage
-    if (user) {
+  // Initialize navbar on page load using localStorage
+  const userData = localStorage.getItem('currentUser');
+  updateNavbar(userData ? JSON.parse(userData) : null);
+
+  // Listen for auth state changes (if auth is available)
+  if (auth && typeof auth.onAuthStateChanged === 'function') {
+    auth.onAuthStateChanged(user => {
+      if (user) {
         localStorage.setItem('currentUser', JSON.stringify({
-            displayName: user.displayName,
-            email: user.email,
-            photoURL: user.photoURL,
-            uid: user.uid
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          uid: user.uid
         }));
-    } else {
+      } else {
         localStorage.removeItem('currentUser');
-    }
-    
-    updateNavbar(user);
-});
-
-// Initialize navbar on page load
-document.addEventListener('DOMContentLoaded', () => {
-    const userData = localStorage.getItem('currentUser');
-    updateNavbar(userData ? JSON.parse(userData) : null);
+      }
+      updateNavbar(user);
+    });
+  }
 });

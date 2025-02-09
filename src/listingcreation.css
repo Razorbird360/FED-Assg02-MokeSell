@@ -40,12 +40,13 @@ body {
 }
 
 .product-form {
-    max-width: 600px;
+    max-width: 50vw;
     margin: 10vh auto;
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 3rem;
+    border-radius: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: aliceblue;
 }
 
 .product-form h3 {
@@ -208,3 +209,50 @@ body {
 .file-preview span {
     font-size: 0.9rem;
 }
+
+@media (max-width: 800px) {
+    .product-form {
+        max-width: 90vw;
+        padding: 2rem;
+    }
+}
+
+/* Notification Container (positioned at the top center) */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+  }
+  
+  /* Base styles for a notification popup */
+  .notification {
+    opacity: 0;
+    min-width: 300px;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-20px);
+  }
+  
+  /* When the notification is active (shown) */
+  .notification.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Success style */
+  .notification-success {
+    background-color: #28a745;
+  }
+  
+  /* Error style */
+  .notification-error {
+    background-color: #dc3545;
+  }
+  

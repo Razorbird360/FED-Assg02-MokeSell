@@ -169,7 +169,8 @@ label {
     margin-top: 2vh;
     width: 80vw;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .submit{
     border-radius: 1rem;
@@ -177,8 +178,16 @@ label {
     height: 5vh;
     width: 20vw;
 }
+#logout{
+    margin-top: 3vh;
+    width: 15vw;
+    height: 5vh;
+    background-color: #ddd;
+    border-radius: 1rem;
+    background-color: red;
+}
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     #edit-profile-form{
         width:70vw;
     }
@@ -187,4 +196,11 @@ label {
         top: 30vh;
         left: 8vw;
     }
+    .submit {
+        width: 40vw;
+    }
+    #logout {
+        width: 30vw;
+    }
 }
+

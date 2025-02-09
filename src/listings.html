@@ -8,44 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="listings.css">
     <link rel="icon" href="/images/Logos/Favicon.ico">
-<!--     <style>
-        .container{
-    margin-top: 5vh;
-    display: flex;
-    height: auto;
-    justify-content: flex-start;
-    width: 100vw;
-    align-items: center;
-}
-.listing_container {
-    margin: 0;
-    height: auto;
-    width: 90vw;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-}
-.listing {
-    width: 95%;
-    margin: 0;
-}
-.listing {
-    width: 100%;
-    margin: 0;
-}
-.container_title h1{
-    font-family: Itim;
-    font-size: 3rem;
-}
-.container_title {
-    width: 80vw;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-    </style> -->
 </head>
 <body>
     <nav class="desktop_navbar">
@@ -76,6 +38,7 @@
                 <a href="./login.html" id="profilelink">
                     <p id="profilename">Login</p>
                 </a>
+
             </div>
         </div>
     </nav>
@@ -88,22 +51,22 @@
             <img src="/images/Logos/menu.svg" alt="Menu">
         </button>
         <div class="mobile_menu_items">
-            <a href="#" class="menu_item">
+            <span class="menu_item navbar_button" id="navaboutus">
                 <img src="/images/Logos/about_us.svg" alt="About us">
                 <span>About Us</span>
-            </a>
-            <a href="#" class="menu_item">
+            </span>
+            <span class="menu_item navbar_button" id="navcontact_us">
                 <img src="/images/Logos/email.svg" alt="Contact us">
                 <span>Contact Us</span>
-            </a>
-            <a href="#" class="menu_item">
+            </span>
+            <span class="menu_item navbar_button" id="navlistings">
                 <img src="/images/Logos/listing.svg" alt="Listings">
                 <span>Listings</span>
-            </a>
-            <a href="#" class="menu_item">
-                <img src="/images/Logos/user-regular.svg" alt="Profile">
-                <span>Profile</span>
-            </a>
+            </span>
+            <span class="menu_item navbar_button" id="navcategories">
+                <img src="/images/Logos/bars-solid.svg" alt="Categories">
+                <span>Categories</span>
+            </span>
         </div>
     </div>
 
@@ -172,7 +135,7 @@
             
     <canvas id="canvas"></canvas>
     <script type="module" src="snowflakes.js"></script>
+    <script type="module" src="main.js"></script>
     <script type="module" src="listings.js"></script>
-
 </body>
 </html>

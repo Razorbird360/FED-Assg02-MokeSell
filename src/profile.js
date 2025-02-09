@@ -3,6 +3,24 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { updateProfile, EmailAuthProvider, reauthenticateWithCredential, onAuthStateChanged } from "firebase/auth";
 
+import { signOut } from "firebase/auth"; 
+
+function logoutUser() {
+    signOut(auth)
+      .then(() => {
+        showToast("Logged out successfully!", false);
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1500);
+      })
+      .catch((error) => {
+        showToast("Error logging out: " + error.message, true);
+      });
+}
+
+// Make the function available globally so your HTML can call it via onclick
+window.logoutUser = logoutUser;
+
 // Toast Notification System
 function showToast(message, isError = false) {
     const toast = document.createElement('div');
