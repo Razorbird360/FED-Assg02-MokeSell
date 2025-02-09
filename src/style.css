@@ -1408,9 +1408,6 @@ footer {
     .footer-text{
         margin: 0;
     }
-    #favourites h1 {
-        text-align: center;
-    }
     .fav_listing_container {
         position: relative;
         width: 100%;            /* Ensures it takes full width of the parent */
@@ -1426,21 +1423,6 @@ footer {
         box-sizing: border-box; /* Include padding in width calculation */
     }
     
-    .favlisting {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 50vw;            /* Width of each item */
-        height: 100%;           /* Height of each item */
-        background-color: antiquewhite;
-        align-items: center;
-        margin: 0 0.5vw;        /* Space between items */
-        padding: 0.5rem;        /* Padding inside each item */
-        flex-shrink: 0;         /* Prevent shrinking */
-        border-radius: 1rem;
-        transition: transform 0.2s ease-in-out;
-        user-select: none;
-    }
     
     /* Optional: Styling for custom scrollbars (for WebKit browsers) */
     .fav_listing_container::-webkit-scrollbar {

@@ -80,48 +80,6 @@
     <div id="favourites">
         <h1>Favourites</h1>
         <div class="fav_listing_container">
-            <div class="favlisting">
-                <span class="listing_photo">
-                    <span class="rating">rating</span>
-                </span>
-
-                <div class="listing_details">
-                    <h3>Title</h3>
-                    <h5>Brand Name</h5>
-                    <div class="details_container">
-                        <h4>$328.10</h4>
-                        <h5>17h</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="favlisting">
-                <span class="listing_photo">
-                    <span class="rating">rating</span>
-                </span>
-
-                <div class="listing_details">
-                    <h3>Title</h3>
-                    <h5>Brand Name</h5>
-                    <div class="details_container">
-                        <h4>$328.10</h4>
-                        <h5>17h</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="favlisting">
-                <span class="listing_photo">
-                    <span class="rating">rating</span>
-                </span>
-
-                <div class="listing_details">
-                    <h3>Title</h3>
-                    <h5>Brand Name</h5>
-                    <div class="details_container">
-                        <h4>$328.10</h4>
-                        <h5>17h</h5>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <footer>
@@ -168,5 +126,103 @@
     <canvas id="canvas"></canvas>
     <script type="module" src="main.js"></script>
     <script type="module" src="snowflakes.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('listings.json') // Replace with the path to your JSON file
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json(); // Parse the response as JSON
+        })
+        .then(data => {
+            console.log('Fetched data:', data); // Debugging log
+
+            // Extract the listings object and convert it into an array
+            const listingsObject = data.listings; // Access the "listings" property
+            if (!listingsObject || typeof listingsObject !== 'object') {
+                throw new Error('Invalid listings data.');
+            }
+
+            // Convert the listings object into an array of listing items
+            const listingsArray = Object.values(listingsObject);
+
+            // Limit the listings to the first 3 items
+            const limitedListings = listingsArray.slice(0, 3);
+
+            // Clear existing listings
+            const favListingContainer = document.querySelector('.fav_listing_container');
+            favListingContainer.innerHTML = '';
+
+            // Populate the listings dynamically
+            limitedListings.forEach(listing => {
+                const listingDiv = document.createElement('div');
+                listingDiv.classList.add('listing');
+
+                // Listing Photo
+                const listingPhoto = document.createElement('span');
+                listingPhoto.classList.add('listing_photo');
+                listingPhoto.style.backgroundImage = `url(${listing.image})`;
+                listingPhoto.style.backgroundSize = 'cover';
+                listingPhoto.style.backgroundPosition = 'center';
+
+                const ratingSpan = document.createElement('span');
+                ratingSpan.classList.add('rating');
+                ratingSpan.textContent = `${listing.likes} ★`; // Use likes as the rating
+                listingPhoto.appendChild(ratingSpan);
+
+                // Listing Details
+                const listingDetails = document.createElement('div');
+                listingDetails.classList.add('listing_details');
+
+                const title = document.createElement('h3');
+                title.textContent = listing.name;
+
+                const brand = document.createElement('h5');
+                brand.textContent = listing.brand;
+
+                const detailsContainer = document.createElement('div');
+                detailsContainer.classList.add('details_container');
+
+                const price = document.createElement('h4');
+                price.textContent = `$${listing.price}`;
+
+                const timeLeft = document.createElement('h5');
+                // Assuming `listing.createdAt` is a string or timestamp, so we convert it to a Date object
+                const currentDate = new Date();
+                console.log('Current date:', currentDate);
+
+                // Convert listing.createdAt to a Date object if it isn't already one
+                const createdAtDate = new Date(listing.createdAt);  // Ensure listing.createdAt is a valid Date object
+
+                // Calculate the difference in milliseconds
+                const timeDifferenceInMilliseconds = currentDate - createdAtDate;
+
+                // Convert milliseconds to days
+                const timeDifferenceInDays = Math.floor(timeDifferenceInMilliseconds / (1000 * 3600 * 24));
+
+                console.log('Time difference in days:', timeDifferenceInDays);
+                timeLeft.textContent = `${timeDifferenceInDays}days`; // Add logic for time left if needed
+
+                detailsContainer.appendChild(price);
+                detailsContainer.appendChild(timeLeft);
+
+                listingDetails.appendChild(title);
+                listingDetails.appendChild(brand);
+                listingDetails.appendChild(detailsContainer);
+
+                listingDiv.appendChild(listingPhoto);
+                listingDiv.appendChild(listingDetails);
+
+                favListingContainer.appendChild(listingDiv);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching listings:', error);
+            const favListingContainer = document.querySelector('.fav_listing_container');
+            favListingContainer.innerHTML = '<p style="text-align: center;">Failed to load favourites. Please try again later.</p>';
+        });
+});
+    </script>
 </body>
 </html>
