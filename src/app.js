@@ -23,6 +23,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, 'fedmokesell');
 const storage = getStorage(app)
 const auth = getAuth(app);
+export { app, db , storage, auth };
 
 
 const storageRef = ref(storage, 'photos');
@@ -66,27 +67,35 @@ function getTimeAgo(timestamp) {
 
   if (timestamp && typeof timestamp.toDate === 'function') {
     postedDate = timestamp.toDate();
-  }
-  else if (typeof timestamp === 'string') {
+  } else if (typeof timestamp === 'string') {
     postedDate = new Date(timestamp);
-  }
-  else if (timestamp instanceof Date) {
+  } else if (timestamp instanceof Date) {
     postedDate = timestamp;
-  }
-  else {
+  } else {
     console.error("Invalid or missing timestamp:", timestamp);
     return "Unknown";
   }
-
+  if (isNaN(postedDate.getTime())) {
+    console.error("Invalid date:", postedDate);
+    return "Unknown";
+  }
   const now = new Date();
   const diff = now - postedDate;
+  if (diff < 0) {
+    return "Just now";
+  }
   const minutes = Math.floor(diff / 60000);
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
-
-  if (minutes < 60) return `${minutes}m`;
-  if (hours < 24) return `${hours}h`;
-  return `${days}d`;
+  if (minutes < 1) {
+    return "Just now";
+  } else if (minutes < 60) {
+    return `${minutes}m`;
+  } else if (hours < 24) {
+    return `${hours}h`;
+  } else {
+    return `${days}d`;
+  }
 }
 
 
@@ -123,9 +132,9 @@ function displayListings(listings) {
   const newContainer = document.querySelector('.newItem_container');
   const iContainer = document.querySelector('.interested_container');
 
-  listingContainer.innerHTML = '';
-  newContainer.innerHTML = '';
-  iContainer.innerHTML = '';
+  if (listingContainer) listingContainer.innerHTML = '';
+  if (newContainer) newContainer.innerHTML = '';
+  if (iContainer) iContainer.innerHTML = '';
 
   if (!listings) {
     listingContainer.innerHTML = '<p>No listings found</p>';
@@ -189,6 +198,7 @@ function displayListings(listings) {
 
 async function showlistings() {
   try {
+    if (!document.querySelector('.trending_container')) return;
     const listings = await fetchFirestoreListings();
     // const listings = await fetchLocalListings();
     displayListings(listings);

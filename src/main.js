@@ -69,7 +69,6 @@ scrollContainers.forEach((scrollContainer) => {
 
 
 //resize listing title based on length
-// Replace the DOMContentLoaded listener in main.js with:
 function initFitText() {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -292,8 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'navaboutus': () => document.querySelector('.reviews2'),
       'contact_us': () => document.querySelector('footer'),
       'navlistings': () => {
-          const listings = document.querySelectorAll('.container');
-          return listings.length > 1 ? listings[1] : listings[0];
+          window.location.href = 'allListings.html';
       }
   };
 
