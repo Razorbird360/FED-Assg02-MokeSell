@@ -1,3 +1,4 @@
+import { auth } from './app.js';
 import VanillaTilt from 'vanilla-tilt';
 document.querySelector('.mobile_menu_trigger').addEventListener('click', function() {
     const mobileMenu = document.querySelector('.mobile_menu');
@@ -336,4 +337,61 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => smoothScroll(targetElement), 100);
       sessionStorage.removeItem('scrollTarget');
   }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Update navigation bar based on auth state
+function updateNavbar(user) {
+    const profileName = document.getElementById('profilename');
+    const profilePic = document.getElementById('profilepic');
+    const profileLink = document.getElementById('profilelink');
+
+    if (user) {
+        profileName.textContent = user.displayName || 'Profile';
+        profilePic.src = user.photoURL || '/images/Logos/user-regular.svg';
+        profileLink.href = './profile.html';
+    } else {
+        profileName.textContent = 'Login';
+        profilePic.src = '/images/Logos/user-regular.svg';
+        profileLink.href = './login.html';
+    }
+}
+
+// Listen for auth state changes
+auth.onAuthStateChanged(user => {
+    // Store user data in localStorage
+    if (user) {
+        localStorage.setItem('currentUser', JSON.stringify({
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            uid: user.uid
+        }));
+    } else {
+        localStorage.removeItem('currentUser');
+    }
+    
+    updateNavbar(user);
+});
+
+// Initialize navbar on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const userData = localStorage.getItem('currentUser');
+    updateNavbar(userData ? JSON.parse(userData) : null);
 });
