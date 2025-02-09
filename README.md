@@ -57,6 +57,14 @@ We wanted to provide an intuitive user experience while being aesthetic
     - Used to simplify api usage for database
 - [Vite](https://vite.dev/)
     - A fast build tool and development server that offers quick hot module replacement and fast build times for web apps.
+- [Cannon-es]
+    - Library used for 3D engine
+- [Vanilla-tint]()
+    - Used for css
+- [UUID](https://www.npmjs.com/package/uuid)
+    - Generate unique identifiers for usage in the website
+- [Cloudflare](https://www.cloudflare.com/)
+    - Used charts to create the spinwheel
 ## Assitive AI
 These are the list of AI used for debugging purposes
 - ChatGPT
