@@ -25,9 +25,11 @@ export async function createScene() {
   camera.add(listener);
 
   const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.25;
 
   // Add helper axes
-  const axesHelper = new THREE.AxesHelper(5);
+  const axesHelper = new THREE.AxesHelper(10);
   scene.add(axesHelper);
 
   // Add ambient light
@@ -54,9 +56,7 @@ export async function createScene() {
   scene.add(directionalLight);
 
 
-  // Define player position (replace with dynamic positioning if necessary)
   const playerPosition = { x: 0, y: 0, z: 0 };
-
 
 
   return { scene, renderer, camera, listener, controls };
