@@ -1,3 +1,13 @@
+import { auth, db, storage } from './app.js';
+import { doc, addDoc, collection, Timestamp, getDoc } from "firebase/firestore";
+import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
+
+auth.onAuthStateChanged((user) => {
+    if (!user) {
+      window.location.href = 'login.html';
+    }
+  });
+
 document.addEventListener('DOMContentLoaded', function () {
     const backChat = document.getElementById('back-chat');
     const backHome = document.getElementById('back-home');
