@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'Itim';
+    src: url('/fonts/Itim-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins_Light';
+    src: url('/fonts/Poppins/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.product-form {
+    max-width: 600px;
+    margin: 10vh auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-form h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #008cfe;
+}
+
+.product-form h4 {
+    font-size: 1.25rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-form h4 span {
+    font-size: 0.875rem;
+    color: #e74c3c;
+    margin-left: 5px;
+}
+
+.product-form p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form select,
+.product-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.product-form input[type="text"]:focus,
+.product-form input[type="number"]:focus,
+.product-form select:focus,
+.product-form textarea:focus {
+    border-color: #008cfe;
+    outline: none;
+}
+
+.product-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-section {
+    margin-top: 20px;
+}
+
+.terms {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.terms a {
+    color: #008cfe;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #008cfe;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button-container {
+    text-align: center;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.file-upload-area {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.file-upload-area:hover {
+    border-color: #008cfe;
+}
+
+.file-upload-area p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+.browse-files {
+    color: #008cfe;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.file-upload-area input[type="file"] {
+    display: none;
+}
+
+#file-preview-container {
+    margin-top: 10px;
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.file-preview img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.file-preview span {
+    font-size: 0.9rem;
+}
