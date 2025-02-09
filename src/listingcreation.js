@@ -1,9 +1,8 @@
-// listingcreation.js
-
 // Import necessary functions and instances from your app.js and Firebase
 import { auth, db, storage } from './app.js';
 import { doc, addDoc, collection, Timestamp, getDoc } from "firebase/firestore";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 as uuidv4 } from 'uuid';  // Import the uuid function for generating unique IDs
 
 // Popup Notification Functionality
 function showNotification(message, type = 'success') {
@@ -59,7 +58,6 @@ function showNotification(message, type = 'success') {
     }, 300);
   }, 3000);
 }
-
 
 // Redirect to login if there is no signed-in user.
 auth.onAuthStateChanged((user) => {
@@ -166,10 +164,13 @@ document.addEventListener('DOMContentLoaded', function () {
       if (fileInput && fileInput.files.length > 0) {
         const file = fileInput.files[0];
         if (file.size > 2 * 1024 * 1024) { // 2MB in bytes
-            showNotification('Image size must be less than 2MB.', 'error');
-            return;
-          }
-        const imageRef = storageRef(storage, `listings/${user.uid}/${Date.now()}_${file.name}`);
+          showNotification('Image size must be less than 2MB.', 'error');
+          return;
+        }
+        // Generate a unique ID for the file name using uuidv4
+        const uniqueId = uuidv4();
+        // Store image in the "photos" folder.
+        const imageRef = storageRef(storage, `photos/${user.uid}/${uniqueId}_${file.name}`);
         try {
           const snapshot = await uploadBytes(imageRef, file);
           imageUrl = await getDownloadURL(snapshot.ref);
