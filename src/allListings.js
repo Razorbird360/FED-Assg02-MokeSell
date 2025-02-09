@@ -98,7 +98,7 @@ function getTimeAgo(timestamp) {
       const listing = document.createElement('div');
       listing.className = 'listing';
       listing.innerHTML = `
-      <img src="/images/Logos/heart.svg" class="heartrating" alt="heart rating">
+      <img src="images/Logos/heart.svg" class="heartrating" alt="heart rating">
       <span class="rating">${listingData.likes || 0}</span>
         <span class="listing_photo" style="background-image: url('${listingData.image}')"></span>
         <div class="listing_details">
