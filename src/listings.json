@@ -9,7 +9,7 @@
       "likes": 52,
       "name": "Insulated Gloves",
       "price": "45",
-      "seller": "StU7vWx8Yz",
+      "seller": "John Smith",
       "brand": "NorthFace"
     },
     "A1bC2dE3Fg": {
@@ -21,7 +21,7 @@
       "likes": 12,
       "name": "Acoustic Guitar",
       "price": "299",
-      "seller": "XyZ7aBc8De",
+      "seller": "Chloe Tay",
       "brand": "Yamaha"
     },
     "B2cD3eF4Gh": {
@@ -33,7 +33,7 @@
       "likes": 8,
       "name": "Electric Piano",
       "price": "450",
-      "seller": "KlM9nOp0Qr",
+      "seller": "Michael Johnson",
       "brand": "Casio"
     },
     "C3dE4fG5Hi": {
@@ -45,7 +45,7 @@
       "likes": 20,
       "name": "Drum Set",
       "price": "799",
-      "seller": "StU1vWx2Yz",
+      "seller": "Emily Davis",
       "brand": "Pearl"
     },
     "D4eF5gH6Ij": {
@@ -57,7 +57,7 @@
       "likes": 5,
       "name": "Vintage Trumpet",
       "price": "150",
-      "seller": "AbC3dEf4Gh",
+      "seller": "David Brown",
       "brand": "Bach"
     },
     "E5fG6hI7Jk": {
@@ -69,7 +69,7 @@
       "likes": 15,
       "name": "Ukulele",
       "price": "89",
-      "seller": "IjK5lMn6Op",
+      "seller": "Sarah Wilson",
       "brand": "Kala"
     },
     "F6gH7iJ8Kl": {
@@ -81,7 +81,7 @@
       "likes": 10,
       "name": "Classic Violin",
       "price": "300",
-      "seller": "QrS7tUv8Wx",
+      "seller": "Daniel Lee",
       "brand": "Stradivarius"
     },
     "G7hI8jK9Lm": {
@@ -93,7 +93,7 @@
       "likes": 18,
       "name": "Portable Keyboard",
       "price": "199",
-      "seller": "YzA9bCd0Ef",
+      "seller": "Olivia Martin",
       "brand": "Roland"
     },
     "H8iJ9kL0Mn": {
@@ -105,7 +105,7 @@
       "likes": 3,
       "name": "Music Stand",
       "price": "25",
-      "seller": "GhI1jKl2Mn",
+      "seller": "James Taylor",
       "brand": "Manhasset"
     },
     "I9jK0lM1No": {
@@ -117,7 +117,7 @@
       "likes": 22,
       "name": "Compact Synthesizer",
       "price": "350",
-      "seller": "OpQ3rSt4Uv",
+      "seller": "Sophia Miller",
       "brand": "Korg"
     },
     "J0kL1mN2Op": {
@@ -129,7 +129,7 @@
       "likes": 7,
       "name": "Tambourine",
       "price": "15",
-      "seller": "WxY5zA6bCd",
+      "seller": "Robert Anderson",
       "brand": "Remo"
     },
     "K1lM2nO3Pq": {
@@ -141,7 +141,7 @@
       "likes": 50,
       "name": "RTX 4090",
       "price": "1599",
-      "seller": "EfG7hIj8Kl",
+      "seller": "Emma Thompson",
       "brand": "NVIDIA"
     },
     "L2mN3oP4Qr": {
@@ -153,7 +153,7 @@
       "likes": 35,
       "name": "Ryzen 9 7950X",
       "price": "699",
-      "seller": "MnO9pQr0St",
+      "seller": "William Harris",
       "brand": "AMD"
     },
     "M3nO4pQ5Rs": {
@@ -165,7 +165,7 @@
       "likes": 40,
       "name": "Corsair DDR5 32GB RAM",
       "price": "250",
-      "seller": "UvW1xYz2Ab",
+      "seller": "Ava Clark",
       "brand": "Corsair"
     },
     "N4oP5qR6St": {
@@ -177,7 +177,7 @@
       "likes": 28,
       "name": "Core i9-13900K",
       "price": "599",
-      "seller": "CdE3fGh4Ij",
+      "seller": "Joseph Lewis",
       "brand": "Intel"
     },
     "O5pQ6rS7Tu": {
@@ -189,7 +189,7 @@
       "likes": 30,
       "name": "2TB NVMe SSD",
       "price": "200",
-      "seller": "KlM5nOp6Qr",
+      "seller": "Mia Walker",
       "brand": "Samsung"
     },
     "Q7rS8tU9Vw": {
@@ -201,7 +201,7 @@
       "likes": 50,
       "name": "Down Jacket",
       "price": "120",
-      "seller": "AbC9dEf0Gh",
+      "seller": "Charles Young",
       "brand": "Columbia"
     },
     "R8sT9uV0Wx": {
@@ -213,7 +213,7 @@
       "likes": 25,
       "name": "Merino Wool Socks",
       "price": "15",
-      "seller": "IjK1lMn2Op",
+      "seller": "Isabella Hall",
       "brand": "Smartwool"
     },
     "S9tU0vW1Xy": {
@@ -225,7 +225,7 @@
       "likes": 40,
       "name": "Fleece-Lined Beanie",
       "price": "20",
-      "seller": "QrS3tUv4Wx",
+      "seller": "Thomas King",
       "brand": "Carhartt"
     },
     "T0uV1wX2Yz": {
@@ -237,7 +237,7 @@
       "likes": 35,
       "name": "Thermal Base Layer Set",
       "price": "60",
-      "seller": "YzA5bCd6Ef",
+      "seller": "Amelia Wright",
       "brand": "Under Armour"
     },
     "U1vW2xY3Za": {
@@ -245,11 +245,11 @@
       "condition": "Used",
       "createdAt": "2025-01-10T16:30:00Z",
       "description": "These waterproof boots are designed for extreme cold and wet conditions. They feature a rugged sole for traction and a removable liner for added warmth. Perfect for work or outdoor adventures.",
-      "image": "https://firebasestorage.googleapis.com/v0/b/fed-mokesell.firebasestorage.app/o/photos%2Fwilruefhlweriu.jpg?alt=media&token=213ea089-cca1-4070-ba6d-775ba2c35bf0",
+      "image": "https://firebasestorage.googleapis.com/v0/b/fed-mokesell.firebasestorage.app/o/photos%2Fs-l400.jpg?alt=media&token=1a9b207c-605e-4855-873f-0cf8f743263f",
       "likes": 28,
       "name": "Waterproof Boots",
       "price": "85",
-      "seller": "GhI7jKl8Mn",
+      "seller": "Christopher Scott",
       "brand": "Sorel"
     },
     "V2wX3yZ4Ab": {
@@ -261,7 +261,7 @@
       "likes": 45,
       "name": "Puffer Vest",
       "price": "75",
-      "seller": "OpQ9rSt0Uv",
+      "seller": "Lily Adams",
       "brand": "Patagonia"
     },
     "W3xY4zA5Bc": {
@@ -273,7 +273,7 @@
       "likes": 32,
       "name": "Ski Goggles",
       "price": "50",
-      "seller": "WxY1zA2bCd",
+      "seller": "Matthew Baker",
       "brand": "Oakley"
     },
     "X4yZ5aB6Cd": {
@@ -285,7 +285,7 @@
       "likes": 27,
       "name": "Cashmere Scarf",
       "price": "65",
-      "seller": "EfG3hIj4Kl",
+      "seller": "Grace Mitchell",
       "brand": "Burberry"
     },
     "Y5zA6bC7De": {
@@ -297,7 +297,7 @@
       "likes": 42,
       "name": "Heated Insoles",
       "price": "90",
-      "seller": "MnO5pQr6St",
+      "seller": "Andrew Perez",
       "brand": "HotHands"
     },
     "Bk1aB2cD3e": {
@@ -309,7 +309,7 @@
       "likes": 25,
       "name": "Harry Potter 25th Anniversary Edition",
       "price": "35",
-      "seller": "S3llerID1234",
+      "seller": "Zoe Rivera",
       "brand": "Bloomsbury"
     },
     "Bk4eF5gH6i": {
@@ -321,7 +321,7 @@
       "likes": 18,
       "name": "LOTR Illustrated Fellowship",
       "price": "45",
-      "seller": "S3llerID1234",
+      "seller": "Benjamin Carter",
       "brand": "HarperCollins"
     },
     "Bk7jK8lM9n": {
@@ -333,7 +333,7 @@
       "likes": 32,
       "name": "Dune Special Edition",
       "price": "60",
-      "seller": "S3llerID1234",
+      "seller": "Victoria Phillips",
       "brand": "Ace Books"
     },
     "Bk0oP1qR2s": {
@@ -345,7 +345,7 @@
       "likes": 40,
       "name": "The Hobbit 75th Anniversary",
       "price": "75",
-      "seller": "S3llerID1234",
+      "seller": "Joshua Evans",
       "brand": "Houghton Mifflin"
     },
     "Bk3tU4vW5x": {
@@ -357,7 +357,7 @@
       "likes": 28,
       "name": "The Stand Uncut Edition",
       "price": "40",
-      "seller": "S3llerID1234",
+      "seller": "Hannah Edwards",
       "brand": "Doubleday"
     },
     "Bk6yZ7aB8c": {
@@ -369,7 +369,7 @@
       "likes": 15,
       "name": "The Photo Ark Collection",
       "price": "55",
-      "seller": "S3llerID1234",
+      "seller": "Samuel Lee",
       "brand": "National Geographic"
     },
     "Bk9dE0fG1h": {
@@ -381,7 +381,7 @@
       "likes": 50,
       "name": "Calvin & Hobbes Complete Set",
       "price": "150",
-      "seller": "S3llerID1234",
+      "seller": "Ethan Wright",
       "brand": "Andrews McMeel"
     },
     "Bk2iJ3kL4m": {
@@ -393,7 +393,7 @@
       "likes": 22,
       "name": "The Great Gatsby Deluxe",
       "price": "30",
-      "seller": "S3llerID1234",
+      "seller": "Zoe Rivera",
       "brand": "Scribner"
     },
     "Bk5nO6pQ7r": {
@@ -405,7 +405,7 @@
       "likes": 38,
       "name": "The Martian Signed Edition",
       "price": "85",
-      "seller": "S3llerID1234",
+      "seller": "Megan Foster",
       "brand": "Crown"
     },
     "Bk8sT9uV0w": {
@@ -417,7 +417,7 @@
       "likes": 33,
       "name": "Lovecraft Complete Works",
       "price": "65",
-      "seller": "S3llerID1234",
+      "seller": "Jacob Roberts",
       "brand": "Barnes & Noble"
     },
     "Ty1xY2zA3b": {
@@ -429,7 +429,7 @@
       "likes": 40,
       "name": "Nerf Ultra Pharaoh",
       "price": "89",
-      "seller": "S3llerID1234",
+      "seller": "Avery Collins",
       "brand": "Nerf"
     },
     "Ty4cD5eF6g": {
@@ -441,7 +441,7 @@
       "likes": 55,
       "name": "LEGO Star Wars Falcon",
       "price": "799",
-      "seller": "S3llerID1234",
+      "seller": "Logan Murphy",
       "brand": "LEGO"
     },
     "Ty7hI8jK9l": {
@@ -453,7 +453,7 @@
       "likes": 27,
       "name": "Hot Wheels Mega Garage",
       "price": "120",
-      "seller": "S3llerID1234",
+      "seller": "Ella Ramirez",
       "brand": "Mattel"
     },
     "Ty0mN1oP2q": {
@@ -465,7 +465,7 @@
       "likes": 35,
       "name": "Barbie Dreamhouse",
       "price": "299",
-      "seller": "S3llerID1234",
+      "seller": "Ryan Brooks",
       "brand": "Barbie"
     },
     "Ty3rS4tU5v": {
@@ -477,7 +477,7 @@
       "likes": 29,
       "name": "Frozen 2 Magic Castle",
       "price": "150",
-      "seller": "S3llerID1234",
+      "seller": "Zachary Cooper",
       "brand": "Disney"
     },
     "Ty6wX7yZ8a": {
@@ -489,7 +489,7 @@
       "likes": 48,
       "name": "Iron Man Armor Collection",
       "price": "250",
-      "seller": "S3llerID1234",
+      "seller": "Lillian Reed",
       "brand": "Hasbro"
     },
     "Ty9bC0dE1f": {
@@ -501,32 +501,8 @@
       "likes": 42,
       "name": "Pokémon Ultra Collection",
       "price": "199",
-      "seller": "S3llerID1234",
+      "seller": "Noah Stewart",
       "brand": "Pokémon"
-    },
-    "Ty5lM6nO7p": {
-      "category": "Toys",
-      "condition": "Brand new",
-      "createdAt": "2025-02-19T12:00:00Z",
-      "description": "Monopoly Ultimate Banking Edition - Electronic banking system with NFC transactions. Includes 6 collectible tokens, 32 properties, and animated LED tower. Features updated modern landmarks.",
-      "image": "https://firebasestorage.googleapis.com/v0/b/fed-mokesell.firebasestorage.app/o/photos%2FMONOPOLY-ULTIMATE-BANKING-BIGFUN.jpg?alt=media&token=b79533f3-1a6e-432a-b8eb-63425be5fa54",
-      "likes": 37,
-      "name": "Monopoly Ultimate Banking",
-      "price": "65",
-      "seller": "S3llerID1234",
-      "brand": "Hasbro"
-    },
-    "Ty8qR9sT0u": {
-      "category": "Toys",
-      "condition": "Brand new",
-      "createdAt": "2025-02-20T14:35:00Z",
-      "description": "Transformers Optimus Prime Auto-Converting Collectible - 18-inch die-cast figure with voice commands and 500+ transformation steps. Includes light-up ion blaster and authentic Peter Cullen voice lines.",
-      "image": "https://firebasestorage.googleapis.com/v0/b/fed-mokesell.firebasestorage.app/o/photos%2Fsg-11134207-7rdx1-m0bcb2ijvtha7e.jpg?alt=media&token=d7815e2c-3a88-45b5-941b-ab1137b11ab4",
-      "likes": 44,
-      "name": "Transformers Optimus Prime",
-      "price": "349",
-      "seller": "S3llerID1234",
-      "brand": "Takara Tomy"
     }
   }
 }

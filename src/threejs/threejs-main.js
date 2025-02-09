@@ -4,9 +4,12 @@ import {characterMovement, initCharacter, isMoving} from './scene/character.js';
 import { gameState } from './utils/state.js';
 import {setupInputHandlers} from './utils/input.js';
 import {initAudio} from './scene/audio.js';
-import {initPhysicalBodies, setupCharacterPhysics, setupPhysicsWorld, updatePhysics} from './scene/physics.js';
+import {initPhysicalBodies, setupCharacterPhysics, setupPhysicsWorld, updatePhysics, createBorders} from './scene/physics.js';
+import { loadWorldObjects } from "./scene/objects.js";
+import { updateCamera } from "./scene/camera.js";
 
 
+gameState.keys.t = 2;
 
 
 async function init() {
@@ -15,7 +18,7 @@ async function init() {
 
 
   const { characterBody, hitboxMesh } = setupCharacterPhysics(world, groundMat);
-
+  gameState.characterBody = characterBody;
   
   const { scene, renderer, camera, listener, controls} = await createScene();
   gameState.camera = camera;
@@ -27,9 +30,9 @@ async function init() {
   await Promise.all([
     initCharacter(scene),
     initAudio(listener),
-    // loadWorldObjects(scene),
+    loadWorldObjects(scene),
     initPhysicalBodies(scene, world),
-    // createBorders(world)
+    createBorders(world)
   ]);
 
   
@@ -53,23 +56,24 @@ async function init() {
 
   setupInputHandlers();
 
-  async function animate() {
-    requestAnimationFrame(animate);
-    controls.update();  
-    const deltaTime = clock.getDelta();
-    renderer.render(scene, camera);
+// Modify the animate function:
+async function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
   
-    if (gameState.mixer) {
-      gameState.mixer.update(deltaTime);
-    }
+  const deltaTime = clock.getDelta();
+  renderer.render(scene, camera);
 
-    console.log(gameState.keys);
-
-    if (gameState.character) {
-      characterMovement(deltaTime);
-      updatePhysics(deltaTime, ground, groundBody);
-    }
+  if (gameState.mixer) {
+    gameState.mixer.update(deltaTime);
   }
+
+  if (gameState.character) {
+    characterMovement(deltaTime);
+    updatePhysics(deltaTime, ground, groundBody);
+    updateCamera(camera, controls, gameState.characterBody, gameState.character);
+  }
+}
   animate();
 }
 

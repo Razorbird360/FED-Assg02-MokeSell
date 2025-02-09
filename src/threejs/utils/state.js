@@ -23,6 +23,9 @@ export class GameState {
         running: null,
       };
       this.interactive = null;
+      this.cameraVerticalAngle = 0;
+      this.isDraggingCamera = false;
+      this.lastMouseY = 0;
     }
   }
   
