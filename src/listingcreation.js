@@ -141,7 +141,10 @@ document.addEventListener('DOMContentLoaded', function () {
       let imageUrl = '';
       if (fileInput && fileInput.files.length > 0) {
         const file = fileInput.files[0];
-        // Create a storage reference path: listings/{userID}/{timestamp_filename}
+        if (file.size > 2 * 1024 * 1024) { // 2MB in bytes
+            showNotification('Image size must be less than 2MB.', 'error');
+            return;
+          }
         const imageRef = storageRef(storage, `listings/${user.uid}/${Date.now()}_${file.name}`);
         try {
           const snapshot = await uploadBytes(imageRef, file);
