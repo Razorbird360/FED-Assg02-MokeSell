@@ -62,7 +62,6 @@ function stopMovementSounds() {
 }
 
 
-// creds to chatGPT :)
 export function characterMovement(deltaTime) {
   const walkingSpeed = 150;
   const runningSpeed = 300;
