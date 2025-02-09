@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
 const finalValue = document.getElementById("final-value");
@@ -370,5 +371,5 @@ const stop = () => {
       confetti.stop()
   }, 5000); 
 };
-
+});
 
