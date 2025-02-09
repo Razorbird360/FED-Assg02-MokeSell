@@ -1093,6 +1093,10 @@ a {
 }
 
 
+
+
+
+
 @media (max-width: 1200px) {
     .review3 p{
         height: 20vh;
@@ -1263,9 +1267,11 @@ a {
     .details_container h5{
         width: auto;
     }
+
     .addlisting {
         width: 45vw;
     }
+
 
 }
 

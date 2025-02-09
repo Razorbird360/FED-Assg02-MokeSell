@@ -165,6 +165,18 @@ label {
     width:40vw;
     top: 5vh;
 }
+.submit_cont{
+    margin-top: 2vh;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+}
+.submit{
+    border-radius: 1rem;
+    background-color: aqua;
+    height: 5vh;
+    width: 20vw;
+}
 
 @media (max-width: 768px) {
     #edit-profile-form{
