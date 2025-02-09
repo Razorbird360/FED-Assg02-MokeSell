@@ -23,7 +23,11 @@ npm run build
 npm run serve
 ```
 > Run build for production ready version & serve to preview the Web App
-
+## Roles
+### Ranen (Full Stack Developer)
+Full stack developer responsible for making the front end interfaces and also the backened like databases and etc.
+### Amir (Front End Developer)
+Front end developer responsible for the design and user interactions of the web page
 ## Design Process  
 We wanted to provide an intuitive user experience while being aesthetic 
 - As a buyer, I want to create an account so that I can start browsing and purchasing items.
