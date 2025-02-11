@@ -177,7 +177,6 @@ function displayListings(listings) {
         return;
       }
     
-      // console.log('Listing clicked:', listingData);
       window.location.href = `./product.html?key=${id}`;
     });
     if (
@@ -241,4 +240,8 @@ async function postAllListings() {
 
 // postAllListings();
 
+const postListingsBtn = document.getElementById('search_button');
+if (postListingsBtn) {
+  postListingsBtn.addEventListener('click', postAllListings);
+}
 

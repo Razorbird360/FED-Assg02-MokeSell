@@ -7,6 +7,14 @@ import {initAudio} from './scene/audio.js';
 import {initPhysicalBodies, setupCharacterPhysics, setupPhysicsWorld, updatePhysics, createBorders} from './scene/physics.js';
 import { loadWorldObjects } from "./scene/objects.js";
 import { updateCamera } from "./scene/camera.js";
+import { InteractionManager } from 'three.interactive';
+
+const exit = document.getElementById('exit');
+const gloveinfo = document.querySelector('.glove_info');
+exit.addEventListener('click', () => {
+  gloveinfo.style.display = 'none';
+});
+
 
 
 gameState.keys.t = 2;
@@ -56,24 +64,32 @@ async function init() {
 
   setupInputHandlers();
 
-// Modify the animate function:
-async function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  
-  const deltaTime = clock.getDelta();
-  renderer.render(scene, camera);
+  const interactionManager = new InteractionManager(renderer, camera, renderer.domElement);
+  interactionManager.add(gameState.glove);
 
-  if (gameState.mixer) {
-    gameState.mixer.update(deltaTime);
-  }
+  async function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    
+    const deltaTime = clock.getDelta();
+    renderer.render(scene, camera);
 
-  if (gameState.character) {
-    characterMovement(deltaTime);
-    updatePhysics(deltaTime, ground, groundBody);
-    updateCamera(camera, controls, gameState.characterBody, gameState.character);
+    if (gameState.mixer) {
+      gameState.mixer.update(deltaTime);
+    }
+
+    if (gameState.glove) {
+      gameState.glove.rotation.y += 0.01;
+    }
+
+    interactionManager.update();
+
+    if (gameState.character) {
+      characterMovement(deltaTime);
+      updatePhysics(deltaTime, ground, groundBody);
+      updateCamera(camera, controls, gameState.characterBody, gameState.character);
+    }
   }
-}
   animate();
 }
 

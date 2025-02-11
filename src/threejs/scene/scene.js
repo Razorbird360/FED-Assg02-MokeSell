@@ -4,7 +4,7 @@ import { WebGLRenderer } from "three";
 
 export async function createScene() {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x87CEEB);
+  scene.background = new THREE.Color(0x000000);
 
   const renderer = new WebGLRenderer({
     canvas: document.querySelector("#canvas"),
@@ -33,7 +33,7 @@ export async function createScene() {
   scene.add(axesHelper);
 
   // Add ambient light
-  const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
   scene.add(ambientLight);
 
   const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
@@ -68,7 +68,6 @@ export function createGround() {
   canvas.height = 1024;
   const ctx = canvas.getContext("2d");
 
-  // Create radial gradient for the ground
   const gradient = ctx.createRadialGradient(
     canvas.width / 2,
     canvas.height / 2,
@@ -77,28 +76,31 @@ export function createGround() {
     canvas.height / 2,
     canvas.width / 2
   );
-  gradient.addColorStop(0, "#5AC45A"); // Inner color
-  gradient.addColorStop(0.3, "#228B22"); // Outer color
+
+  gradient.addColorStop(0, "#8B7D5D"); 
+  gradient.addColorStop(0.4, "#6D6545");
+  gradient.addColorStop(1, "#5A553D");
 
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Create ground texture and geometry
   const texture = new THREE.CanvasTexture(canvas);
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  texture.anisotropy = 16;
+
   const planeGeometry = new THREE.PlaneGeometry(100, 100);
   const planeMaterial = new THREE.MeshStandardMaterial({
     map: texture,
     side: THREE.DoubleSide,
   });
+
   const ground = new THREE.Mesh(planeGeometry, planeMaterial);
   ground.receiveShadow = true;
-
-
-  // Rotate ground to be flat
   ground.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2);
 
   return ground;
 }
+
 
 export function resize(renderer, camera) {
   camera.aspect = window.innerWidth / window.innerHeight;

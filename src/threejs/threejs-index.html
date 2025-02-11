@@ -7,23 +7,52 @@
     <link rel="stylesheet" href="threejs-style.css">
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-
+    
     <a href="../index.html" id="backlink">Back</a>
-
+    
     <section class="controls_container">
         <div class="controls">
             <p>WASD/Arrow Keys: Move character</p>
             <p>Left Mouse: Move camera up/down in FPP</p>
             <p>Space: Dance</p>
             <p>Shift: Sprint</p>
-            <p>L: Toggle light direction & intensity</p>
-            <p>R: Reset selected objects</p>
-            <p>N: Normalize position</p>
-            <p>Q/E: Rotate object</p>
+            <p>L: Toggle camera angle</p>
         </div>
     </section>
     
+    <section class="glove_info">
+        <div class="glove_container">
+            <img src="/images/Logos/cross.svg" alt="exit" id="exit">
+            <div class="glove">
+                <a href="../product.html?key=KYmTofaAjFZUaQAn1FnH"><img src="/images/listings/gloves.png" alt="Glove img"></a>
+            </div>
+            <div class="glove_text">
+                <h1>Insulated Gloves</h1>
+                <div class="glove_details">
+                    <div class="details_header">
+                        <h3>Price:</h3>
+                        <h5>Category:</h5>
+                        <h5>Condition:</h5>
+                        <h5>Posted On:</h5>
+                        <h5>Likes:</h5>
+                        <h5>Seller:</h5>
+                        <h5>Brand:</h5>
+                    </div>
+                    <div class="details">
+                        <h3>$45.00</h3>
+                        <h5>Winter Clothes</h5>
+                        <h5>Lightly Used</h5>
+                        <h5>2025/01/15</h5>
+                        <h5>52</h5>
+                        <h5>John Smith</h5>
+                        <h5>Northface</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <canvas id="canvas"></canvas>
     <script type="module" src="threejs-main.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@ body{
     bottom: 0;
     left: 0;
     width: 23vw;
-    height: 28vh;
+    height: 20vh;
     background-color: rgba(70, 14, 39, 0.15);
     display: flex;
     justify-content: center;
@@ -71,4 +71,168 @@ body{
     font-family: 'Times New Roman', Times, serif;
     color: rgb(186, 223, 255);
     pointer-events: none;
+}
+
+.glove_info {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.glove_container {
+    border-radius: 1rem;
+    position: relative;
+    width: 35vw;
+    height: 80vh;
+    display: flex;
+    background: rgb(45,88,89);
+    background: linear-gradient(135deg, rgba(45,88,89,1) 5%, rgba(0,0,0,1) 50%, rgba(26,99,133,1) 100%);    flex-direction: column;
+    align-items: center;
+}
+#exit {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+}
+.glove {
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    width: 30vw;
+    height: 40vh;
+}
+.glove a {
+    position: relative;
+    display: inline-block;
+}
+  
+.glove a img {
+    display: block;
+}
+  
+.glove a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0); 
+    border-radius: inherit; 
+    transition: background 0.3s ease;
+    z-index: 1;
+    border-radius: 1rem !important;
+}
+  
+.glove a::after {
+    content: "Click to view product";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    white-space: nowrap;
+}
+  
+.glove a:hover::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+  
+.glove a:hover::after {
+    opacity: 1;
+}
+  
+.glove img{
+    border-radius: 1rem !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.glove a::before {
+    content: '';
+}
+.glove_text {
+    width: 30vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.glove_details {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem 1rem 2rem 1rem;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    box-sizing: border-box;
+}
+
+.details_header {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.details {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.details_header h3, .details h3 {
+    margin: 0.3rem 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #7ccfff;
+}
+
+.details_header h5, .details h5 {
+    margin: 0.3rem 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+
+
+@media (max-width: 800px) {
+    .controls_container {
+        width: 100vw;
+    }
+    .glove_container {
+        width: 90vw;
+        height: 60vh;
+    }
+    .glove {
+        height: 30vh;
+        width: 85vw;
+    }
+    .glove_text {
+        height: 23vh;
+        width: 85vw;
+    }
+    .glove_details {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0.5rem;
+    }
+    .details_header, .details {
+        width: 50%; 
+        text-align: left
+    }
+    .details_header h3, .details h3 {
+        font-size: 1.5rem;
+    }
+    .details_header h5, .details h5 {
+        font-size: 1rem;
+    }
 }

@@ -12,6 +12,11 @@ export function setupInputHandlers() {
 function onKeyDown(event) {
   if (!gameState.character || !gameState.mixer) return;
 
+  let key = event.key.toLowerCase();
+  if (key === " ") {
+    key = "space";
+  }
+
   const keyActions = {
     w: () => { gameState.keys.w = true; },
     a: () => { gameState.keys.a = true; },
@@ -21,26 +26,30 @@ function onKeyDown(event) {
     t: () => {
       gameState.keys.t = gameState.keys.t === 1 ? 2 : 1;
     },
-    space: () => { gameState.keys.space = true; }
+    space: () => { gameState.keys.space = gameState.keys.space ? false : true; }
   };
 
-  const action = keyActions[event.key.toLowerCase()];
+  const action = keyActions[key];
   if (action) action();
 }
 
 function onKeyUp(event) {
   if (!gameState.character || !gameState.mixer) return;
 
+  let key = event.key.toLowerCase();
+  if (key === " ") {
+    key = "space";
+  }
+
   const keyActions = {
     w: () => gameState.keys.w = false,
     a: () => gameState.keys.a = false,
     s: () => gameState.keys.s = false,
     d: () => gameState.keys.d = false,
-    shift: () => gameState.keys.shift = false,
-    space: () => gameState.keys.space = true
+    shift: () => gameState.keys.shift = false
   };
 
-  const action = keyActions[event.key.toLowerCase()];
+  const action = keyActions[key];
   if (action) action();
 }
 

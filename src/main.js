@@ -341,21 +341,46 @@ document.addEventListener('DOMContentLoaded', () => {
   // ***********************************************
   // Update Navigation Bar Based on Authentication State
   // ***********************************************
+  // Wrap the user name to the next line if it doesn't fit
+  function fitProfileName() {
+    const profileNameEl = document.getElementById('profilename')
+    if (!profileNameEl) return
+    profileNameEl.style.whiteSpace = "nowrap"
+    const container = profileNameEl.parentElement
+    if (!container) return
+    const containerWidth = container.offsetWidth
+    const computedStyle = window.getComputedStyle(container)
+    const padding = parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight)
+    const availableWidth = containerWidth - padding
+    let fontSize = parseFloat(window.getComputedStyle(profileNameEl).fontSize)
+    const minFontSize = 12
+    while (profileNameEl.scrollWidth > availableWidth && fontSize > minFontSize) {
+      fontSize -= 1
+      profileNameEl.style.fontSize = fontSize + "px"
+    }
+  }
+
+
   function updateNavbar(user) {
     const profileName = document.getElementById('profilename');
     const profilePic = document.getElementById('profilepic');
     const profileLink = document.getElementById('profilelink');
-
+  
     if (profileName && profilePic && profileLink) {
       if (user) {
         profileName.textContent = user.displayName || 'Profile';
-        profilePic.src = user.photoURL || '/images/Logos/user-regular.svg';
+        profilePic.onerror = function() {
+          this.src = `${import.meta.env.BASE_URL}images/Logos/user-regular.svg`;
+          this.onerror = null; // Prevent infinite loop if default image fails
+        };
+        profilePic.src = user.photoURL || `${import.meta.env.BASE_URL}images/Logos/user-regular.svg`;
         profileLink.href = './profile.html';
       } else {
         profileName.textContent = 'Login';
-        profilePic.src = '/images/Logos/user-regular.svg';
+        profilePic.src = `${import.meta.env.BASE_URL}images/Logos/user-regular.svg`;
         profileLink.href = './login.html';
       }
+      fitProfileName();
     }
   }
 
@@ -378,5 +403,34 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       updateNavbar(user);
     });
+  }
+});
+
+
+// *********************
+// Search Functionality
+// *********************
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('search');
+  const searchButton = document.getElementById('search_button');
+
+  function handleSearch() {
+    if (!searchInput) return;
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+      const encodedTerm = encodeURIComponent(searchTerm);
+      // Redirect to listings.html with searchTerm query parameter
+      window.location.href = `listings.html?searchTerm=${encodedTerm}`;
+    } else {
+      window.location.href = 'listings.html';
+    }
+  }
+
+  if (searchInput && searchButton) {
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleSearch();
+    });
+
+    searchButton.addEventListener('click', handleSearch);
   }
 });

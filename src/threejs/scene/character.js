@@ -1,8 +1,9 @@
+// character.js
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { BASE_PATH } from "@/threejs/utils/utils.js";
 import { gameState } from "@/threejs/utils/state.js";
-
+import { fadeInDance, fadeOutDance } from "@/threejs/scene/audio.js";
 
 export function playAnimation(event) {
   if (!gameState.mixer) return;
@@ -38,7 +39,6 @@ export function move(speed, deltaTime) {
     Math.cos(gameState.character.rotation.y)
   ).normalize();
 
-  // Apply direction based on speed sign
   gameState.characterBody.velocity.set(
     direction.x * speed * deltaTime,
     gameState.characterBody.velocity.y,
@@ -61,7 +61,6 @@ function stopMovementSounds() {
   if (gameState.sounds.running.isPlaying) gameState.sounds.running.stop();
 }
 
-
 export function characterMovement(deltaTime) {
   const walkingSpeed = 150;
   const runningSpeed = 300;
@@ -69,13 +68,21 @@ export function characterMovement(deltaTime) {
   const turnSpeed = 3;
 
   if (gameState.keys.space) {
-    gameState.dancing = true;
-    playAnimation("dance");
+    if (gameState.currentAction !== gameState.animations.dance) {
+      gameState.dancing = true;
+      playAnimation("dance");
+      if (gameState.sounds.dance) {
+        fadeInDance(gameState.sounds.dance, 0.2, 500); // 0.5 sec to fade in
+      }
+    }
     stopMovementSounds();
     gameState.characterBody.velocity.x = 0;
     gameState.characterBody.velocity.z = 0;
     return;
   } else {
+    if (gameState.sounds.dance && gameState.sounds.dance.isPlaying) {
+      fadeOutDance(gameState.sounds.dance, 1000); // 1 sec to fade out
+    }
     gameState.dancing = false;
   }
 
@@ -100,6 +107,7 @@ export function characterMovement(deltaTime) {
     if (gameState.currentAction !== gameState.animations.walk) {
       playAnimation("walk");
     }
+    // A minimal movement when only turning.
     move(0.1, deltaTime);
   } else {
     playAnimation("idle");
@@ -134,9 +142,9 @@ export async function initCharacter(scene) {
 
 export function isMoving() {
   const velocity = gameState.characterBody.velocity;
-  const moving = 
+  return (
     Math.abs(velocity.x) > 0.02 ||
     Math.abs(velocity.y) > 0.02 ||
-    Math.abs(velocity.z) > 0.02;
-  return moving;
+    Math.abs(velocity.z) > 0.02
+  );
 }

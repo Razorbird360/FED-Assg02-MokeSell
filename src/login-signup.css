@@ -33,6 +33,12 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 11vw;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+#logoc_link {
+    text-decoration: none;
 }
 .logo {
     height: 5vh;
@@ -212,7 +218,12 @@ form {
     from { transform: translate(-50%, 100%); }
     to { transform: translate(-50%, 0); }
 }
-
+#canvas{
+    position: fixed;
+    top: 0;
+    pointer-events: none;
+    z-index: 100;
+}
 
 
 /*Footer Styling */
@@ -301,6 +312,9 @@ footer {
     }
     input,button {
         height:5vh !important;
+    }
+    .logo-container {
+        width: 40vw;
     }
 }
 
